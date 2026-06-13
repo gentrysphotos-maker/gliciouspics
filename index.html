@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G.Licious Pics — Fine Art Photography · Hawaiʻi</title>
+  <meta name="description"
+    content="Fine art prints of Hawaiʻi's natural wonders. Underwater, landscapes, nightscapes, aerials and more by photographer Gentry aka G.Licious." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="site-header" id="site-header">
+    <a href="index.html" class="logo">G.Licious</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <div class="nav-dropdown">
+        <span class="nav-link dropdown-trigger">Shop ▾</span>
+        <div class="dropdown-menu">
+          <a href="pages/underwater.html">Underwater</a>
+          <a href="pages/landscapes.html">Landscapes</a>
+          <a href="pages/flora-fauna.html">Plants &amp; Animals</a>
+          <a href="pages/nightscapes.html">Nightscapes</a>
+          <a href="pages/aerial.html">Aerial</a>
+          <a href="pages/travel.html">Travel</a>
+          <a href="pages/panoramas.html">Panoramas</a>
+        </div>
+      </div>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <div class="nav-socials">
+        <a href="https://instagram.com/gliciouspics" target="_blank" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+          </svg>
+        </a>
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-slideshow">
+      <div class="slide active"
+        style="background-image: url('https://res.cloudinary.com/dbqfibadw/image/upload/w_2560,q_100,c_limit/v1778875971/gliciouspics/homepage/hidden-honu-hawaii-green-sea-turtle-underwater.jpg');">
+      </div>
+      <div class="slide"
+        style="background-image: url('https://res.cloudinary.com/dbqfibadw/image/upload/w_2560,q_100,c_limit/v1778875981/gliciouspics/homepage/seal-beach-hawaii-coastal-landscape-sunset-01.jpg');">
+      </div>
+      <div class="slide"
+        style="background-image: url('https://res.cloudinary.com/dbqfibadw/image/upload/w_2560,q_100,c_limit/v1778875982/gliciouspics/homepage/oahu-makapuu-beach-night-sky-milky-way-photography.jpg');">
+      </div>
+      <div class="slide"
+        style="background-image: url('https://res.cloudinary.com/dbqfibadw/image/upload/w_2560,q_100,c_limit/v1778875972/gliciouspics/homepage/fuji-love-mount-fuji-japan-travel-photography-01.jpg');">
+      </div>
+      <div class="slide"
+        style="background-image: url('https://res.cloudinary.com/dbqfibadw/image/upload/w_2560,q_100,c_limit/v1778875978/gliciouspics/homepage/oahu-mountain-valley-landscape-photography-01.jpg');">
+      </div>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-text">
+      <p class="hero-eyebrow">Fine Art Photography</p>
+      <h1 class="hero-title">The Natural<br /><em>Wonders of</em><br />Hawaiʻi</h1>
+      <p class="hero-sub">Bold, colorful prints by Gentry — capturing the essence of the islands and beyond.</p>
+      <a href="#galleries" class="btn-primary">Explore &amp; Shop Prints</a>
+    </div>
+
+    <div class="hero-dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+      <span class="dot" data-index="3"></span>
+      <span class="dot" data-index="4"></span>
+    </div>
+  </section>
+
+  <!-- GALLERY CATEGORIES -->
+  <section class="galleries" id="galleries">
+    <div class="section-header">
+      <span class="section-eyebrow">The Collection</span>
+      <h2 class="section-title">Explore &amp; Shop</h2>
+    </div>
+    <div class="gallery-grid">
+      <a href="pages/underwater.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/v1778878142/gliciouspics/underwater/hawaii-tropical-spotted-eagle-ray-nature-fine-art-print-03.jpg')">
+        <div class="gallery-card__inner">
+          <span class="gallery-card__label">Underwater</span>
+          <span class="gallery-card__cta">Shop Prints →</span>
+        </div>
+      </a>
+      <a href="pages/landscapes.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/v1778876850/gliciouspics/landscapes/oahu-koko-head-landscape-fine-art.jpg')">
+        <div class="gallery-card__inner">
+          <span class="gallery-card__label">Landscapes</span>
+          <span class="gallery-card__cta">Shop Prints →</span>
+        </div>
+      </a>
+      <a href="pages/nightscapes.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/v1778877565/gliciouspics/nightscapes/oahu-makapuu-beach-night-sky-milky-way-photography.jpg')">
+        <div class="gallery-card__inner">
+          <span class="gallery-card__label">Nightscapes</span>
+          <span class="gallery-card__cta">Shop Prints →</span>
+        </div>
+      </a>
+      <a href="pages/aerial.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/v1778876199/gliciouspics/aerial/hawaii-aerial-scenic-coastline-from-above-01.jpg')">
+        <div class="gallery-card__inner">
+          <span class="gallery-card__label">Aerial</span>
+          <span class="gallery-card__cta">Shop Prints →</span>
+        </div>
+      </a>
+      <a href="pages/flora-fauna.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/v1778876341/gliciouspics/flora-fauna/hawaii-tropical-flower-heliconia-fine-art-print-01.jpg')">
+        <div class="gallery-card__inner">
+          <span class="gallery-card__label">Plants &amp; Animals</span>
+          <span class="gallery-card__cta">Shop Prints →</span>
+        </div>
+      </a>
+      <a href="pages/travel.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/v1778877846/gliciouspics/travel/chicago-train-blue-line-fine-art-ptint.jpg')">
+        <div class="gallery-card__inner">
+          <span class="gallery-card__label">Travel</span>
+          <span class="gallery-card__cta">Shop Prints →</span>
+        </div>
+      </a>
+    </div>
+    <div class="galleries-extra">
+      <a href="pages/panoramas.html" class="btn-outline">View Panoramas →</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-img-wrap">
+      <img
+        src="https://res.cloudinary.com/dbqfibadw/image/upload/w_1600,q_100,f_auto/v1779766734/gliciouspics/profilepic/DSG05975.jpg"
+        alt="Gentry — G.Licious Pics" loading="lazy" />
+    </div>
+    <div class="about-text">
+      <span class="section-eyebrow">About the Artist</span>
+      <h2 class="section-title">G.Licious Pics</h2>
+      <p>My name is Gentry, aka G.Licious. I have been curious about nature and the earth since I was a kid — always
+        drawn to landscapes, animals, textures, and colors.</p>
+      <p>I discovered photography as a way to capture these beautiful things and have them as permanent memories. Over
+        10 years behind the lens, I've had the chance to travel to some extraordinary places.</p>
+      <p>The vibrant beauty of Hawaiʻi is my main muse. Through bold and colorful subjects, each photograph tells a
+        unique story — reflecting the essence of Hawaiʻi's natural wonders and rich topography, with a few other
+        favorite locations sprinkled in.</p>
+      <a href="mailto:gentrysphotos@gmail.com" class="btn-outline">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <span class="section-eyebrow">Let's Connect</span>
+        <h2 class="section-title">Message Me</h2>
+        <p>For inquiries, collaborations, or custom print orders, please reach out. I offer my favorite prints and
+          mediums here, but I'm open to new things — just let me know what you need.</p>
+        <div class="contact-links">
+          <a href="mailto:gentrysphotos@gmail.com">gentrysphotos@gmail.com</a>
+          <a href="https://instagram.com/gliciouspics" target="_blank">@g.liciouspics</a>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Send Message</button>
+        <p class="form-success" id="form-success">Message sent! I'll be in touch soon.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">G.Licious</a>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="#galleries">Shop</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="pages/faq.html">FAQ</a>
+      </nav>
+      <div class="footer-socials">
+        <a href="https://instagram.com/gliciouspics" target="_blank" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+          </svg>
+        </a>
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copy">© 2026 G.Licious Pics by Gentry. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
