@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G.Licious Pics — Production Readiness Review</title>
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --surface: #1a1a1a;
+      --surface2: #242424;
+      --border: #333;
+      --text: #e8e4dc;
+      --muted: #9a9a9a;
+      --accent: #c8a96e;
+      --critical: #e05c5c;
+      --high: #e09a4a;
+      --medium: #d4b84a;
+      --low: #6aab8a;
+      --done: #5a9e6f;
+      --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: ui-monospace, "SF Mono", Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.65;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .wrap { max-width: 960px; margin: 0 auto; }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .meta strong { color: var(--text); font-weight: 500; }
+
+    .progress-bar-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+      color: var(--muted);
+    }
+
+    .progress-track {
+      height: 8px;
+      background: var(--surface2);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #e0c88a);
+      border-radius: 99px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .progress-actions {
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-sm {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.78rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-sm:hover { border-color: var(--accent); color: var(--accent); }
+
+    nav.toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    nav.toc h2 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    nav.toc ol {
+      padding-left: 1.25rem;
+      columns: 2;
+      column-gap: 2rem;
+    }
+
+    @media (max-width: 600px) { nav.toc ol { columns: 1; } }
+
+    nav.toc a { color: var(--text); text-decoration: none; font-size: 0.92rem; }
+    nav.toc a:hover { color: var(--accent); }
+
+    section {
+      margin-bottom: 2.75rem;
+      scroll-margin-top: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.6rem;
+      color: var(--accent);
+    }
+
+    p, li { font-size: 0.95rem; }
+    p { margin-bottom: 0.75rem; }
+    ul, ol { padding-left: 1.35rem; margin-bottom: 0.75rem; }
+    li { margin-bottom: 0.35rem; }
+
+    .callout {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0 1.25rem;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.92rem;
+    }
+
+    .callout.warn { border-left-color: var(--critical); }
+    .callout.info { border-left-color: var(--low); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    code, .path {
+      font-family: var(--mono);
+      font-size: 0.84em;
+      background: var(--surface2);
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+
+    .status-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+    }
+
+    .status-card .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .status-card .value { font-size: 1.1rem; font-weight: 600; }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.15em 0.5em;
+      border-radius: 3px;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+    .badge-critical { background: rgba(224,92,92,0.2); color: var(--critical); }
+    .badge-high { background: rgba(224,154,74,0.2); color: var(--high); }
+    .badge-medium { background: rgba(212,184,74,0.2); color: var(--medium); }
+    .badge-low { background: rgba(106,171,138,0.2); color: var(--low); }
+    .badge-done { background: rgba(90,158,111,0.2); color: var(--done); }
+    .badge-mock { background: rgba(154,154,154,0.2); color: var(--muted); }
+
+    .task-group { margin-top: 1.25rem; }
+
+    .task-group-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .task-list { list-style: none; padding: 0; }
+
+    .task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.65rem 0.85rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      margin-bottom: 0.4rem;
+      transition: opacity 0.2s, border-color 0.2s;
+    }
+
+    .task-item.done {
+      opacity: 0.55;
+      border-color: rgba(90,158,111,0.35);
+    }
+
+    .task-item.done .task-text { text-decoration: line-through; color: var(--muted); }
+
+    .task-item input[type="checkbox"] {
+      margin-top: 0.25rem;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .task-text { flex: 1; font-size: 0.9rem; }
+    .task-text .detail { display: block; color: var(--muted); font-size: 0.82rem; margin-top: 0.15rem; }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>G.Licious Pics — Production Readiness Review</h1>
+      <p class="meta">
+        Generated <strong>June 15, 2026</strong> ·
+        Review type: Full site audit (code, design, commerce, deployment) ·
+        Repo: static HTML/CSS/JS photography portfolio + print shop
+      </p>
+
+      <div class="progress-bar-wrap">
+        <div class="progress-label">
+          <span>Launch checklist progress</span>
+          <span id="progress-count">0 / 0 complete</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="progress-actions">
+          <button class="btn-sm" id="expand-all">Expand all sections</button>
+          <button class="btn-sm" id="reset-checks">Reset all checkboxes</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#summary">Executive Summary</a></li>
+        <li><a href="#current-state">Current State</a></li>
+        <li><a href="#blockers">Launch Blockers</a></li>
+        <li><a href="#commerce">Payments &amp; Print Fulfillment</a></li>
+        <li><a href="#performance">Images &amp; Performance</a></li>
+        <li><a href="#code">Code Quality &amp; Organization</a></li>
+        <li><a href="#design">Design &amp; UX</a></li>
+        <li><a href="#seo">SEO &amp; Discoverability</a></li>
+        <li><a href="#legal">Legal &amp; Trust</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#deployment">Deployment &amp; Ops</a></li>
+        <li><a href="#roadmap">Recommended Launch Roadmap</a></li>
+        <li><a href="#checklist">Full Task Checklist</a></li>
+      </ol>
+    </nav>
+
+    <!-- ── EXECUTIVE SUMMARY ── -->
+    <section id="summary">
+      <h2>1. Executive Summary</h2>
+      <p>
+        G.Licious Pics is a polished, visually strong static site with <strong>130 catalogued prints</strong>,
+        Cloudinary-hosted imagery, category galleries, product detail pages, FAQ content, and a
+        localStorage shopping cart. The photography presentation and brand aesthetic are production-quality.
+      </p>
+      <div class="callout warn">
+        <strong>Bottom line:</strong> The site is <em>not ready for real sales</em> today. Checkout is a mock modal,
+        the contact form does not send messages, there is no payment processor, no order backend, and no print-lab
+        integration. Cart prices live entirely in the browser and can be edited by anyone.
+      </div>
+      <p>
+        Estimated readiness: <strong>~55% complete</strong> for a portfolio showcase,
+        <strong>~25% complete</strong> for a functioning e-commerce store.
+        With focused work on payments + fulfillment + a thin backend layer, a soft launch is achievable in
+        <strong>2–4 weeks</strong> depending on which print workflow you choose.
+      </p>
+
+      <div class="status-grid">
+        <div class="status-card">
+          <div class="label">Products in catalog</div>
+          <div class="value">130</div>
+        </div>
+        <div class="status-card">
+          <div class="label">Gallery pages</div>
+          <div class="value">7 categories</div>
+        </div>
+        <div class="status-card">
+          <div class="label">Payment integration</div>
+          <div class="value" style="color:var(--critical)">None</div>
+        </div>
+        <div class="status-card">
+          <div class="label">Print fulfillment API</div>
+          <div class="value" style="color:var(--critical)">None</div>
+        </div>
+        <div class="status-card">
+          <div class="label">Contact form</div>
+          <div class="value" style="color:var(--high)">Placeholder</div>
+        </div>
+        <div class="status-card">
+          <div class="label">Deployment config</div>
+          <div class="value" style="color:var(--high)">Missing</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CURRENT STATE ── -->
+    <section id="current-state">
+      <h2>2. Current State — What Exists Today</h2>
+
+      <h3>Architecture</h3>
+      <table>
+        <thead><tr><th>Layer</th><th>Technology</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Frontend</td><td>Static HTML, CSS, vanilla JS</td><td><span class="badge badge-done">Working</span></td></tr>
+          <tr><td>Product data</td><td><code>products.json</code> (~200 KB, 4,868 lines)</td><td><span class="badge badge-done">Working</span></td></tr>
+          <tr><td>Images</td><td>Cloudinary CDN with transforms</td><td><span class="badge badge-done">Working</span></td></tr>
+          <tr><td>Cart</td><td><code>localStorage</code> via <code>js/cart.js</code></td><td><span class="badge badge-mock">Client-only</span></td></tr>
+          <tr><td>Checkout</td><td>Mock modal in <code>pages/cart.html</code></td><td><span class="badge badge-mock">Not real</span></td></tr>
+          <tr><td>Contact</td><td>Form with <code>preventDefault</code> only</td><td><span class="badge badge-mock">Not wired</span></td></tr>
+          <tr><td>Backend / API</td><td>None</td><td><span class="badge badge-critical">Missing</span></td></tr>
+          <tr><td>Build tooling</td><td>None (no package.json)</td><td><span class="badge badge-medium">Manual</span></td></tr>
+        </tbody>
+      </table>
+
+      <h3>File structure</h3>
+      <ul>
+        <li><code>index.html</code> — Homepage with hero slideshow, category cards, about, contact</li>
+        <li><code>pages/*.html</code> — 7 gallery pages, 3 product templates, cart, FAQ</li>
+        <li><code>js/main.js</code> — Slideshow, nav, contact placeholder, lightbox, scroll animations</li>
+        <li><code>js/cart.js</code> — Cart CRUD + nav badge</li>
+        <li><code>css/style.css</code> — Shared styles (~900 lines, cohesive dark editorial theme)</li>
+        <li><code>products.json</code> — Single source of truth for product metadata &amp; pricing</li>
+        <li><code>scratch/</code> — Ad-hoc Node scripts to validate gallery ↔ JSON sync</li>
+      </ul>
+
+      <h3>Catalog coverage</h3>
+      <p>Gallery HTML is manually maintained and mostly in sync with <code>products.json</code>:</p>
+      <table>
+        <thead><tr><th>Category</th><th>In JSON</th><th>In Gallery HTML</th><th>Gap</th></tr></thead>
+        <tbody>
+          <tr><td>Underwater</td><td>19</td><td>19</td><td>—</td></tr>
+          <tr><td>Landscapes</td><td>36</td><td>35</td><td>1 missing: <code>oahu-koko-head-landscape-fine-art-02</code></td></tr>
+          <tr><td>Plants &amp; Animals</td><td>29</td><td>29</td><td>—</td></tr>
+          <tr><td>Nightscapes</td><td>3</td><td>3</td><td>—</td></tr>
+          <tr><td>Aerial</td><td>7</td><td>7</td><td>—</td></tr>
+          <tr><td>Travel</td><td>23</td><td>22</td><td>1 missing: <code>japan-mount-fuji-honcho-street-photography</code></td></tr>
+          <tr><td>Panoramas</td><td>13</td><td>13</td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <h3>What works well</h3>
+      <ul>
+        <li>Strong visual identity — typography, color palette, photography-forward layout</li>
+        <li>Cloudinary transforms on gallery thumbnails (<code>f_auto,q_auto,w_800</code>) are mostly correct</li>
+        <li>Product pages dynamically render size/material pricing from JSON</li>
+        <li>FAQ page is thorough and matches real print-shop concerns</li>
+        <li>Responsive nav with mobile dropdown and cart badge</li>
+        <li>Scratch validation scripts show awareness of data sync issues</li>
+      </ul>
+    </section>
+
+    <!-- ── BLOCKERS ── -->
+    <section id="blockers">
+      <h2>3. Launch Blockers <span class="badge badge-critical">Critical</span></h2>
+      <p>These must be resolved before accepting real money or orders.</p>
+
+      <h3>Mock checkout must be replaced</h3>
+      <p>
+        <code>pages/cart.html</code> shows a modal saying <em>"Thank you for your mock order"</em> and clears the cart.
+        There is no Stripe, PayPal, or any payment flow.
+      </p>
+
+      <h3>Product not-found shows wrong product</h3>
+      <p>
+        All three product templates (<code>product-standard.html</code>, <code>product-panorama.html</code>,
+        <code>product-aerial.html</code>) fall back to the <strong>first product in their category</strong>
+        when an <code>?id=</code> is missing or invalid — instead of showing the "Coming Soon" state.
+        A bad link could let a customer order the wrong print.
+      </p>
+      <div class="callout warn">
+        Fix: Remove the fallback lines (~788 in each product template). Only call <code>renderProduct()</code>
+        when a matching ID exists; otherwise call <code>renderNotFound()</code>.
+      </div>
+
+      <h3>No server-side price validation</h3>
+      <p>
+        Cart items store price in <code>localStorage</code>. A user can open DevTools and set any price.
+        Production checkout must re-validate line items and totals on the server against <code>products.json</code>
+        (or a database) before creating a payment session.
+      </p>
+
+      <h3>Contact form is non-functional</h3>
+      <p>
+        <code>js/main.js</code> line 74 notes it is a placeholder. Submissions show a fake success message
+        but never send email. Customers cannot reach you through the form.
+      </p>
+    </section>
+
+    <!-- ── COMMERCE ── -->
+    <section id="commerce">
+      <h2>4. Payments &amp; Print Fulfillment</h2>
+
+      <h3>Payment integration — recommended approach</h3>
+      <p>For a static site selling physical prints, <strong>Stripe Checkout</strong> is the best fit:</p>
+      <ol>
+        <li>Add a serverless function (Vercel/Netlify/Cloudflare) that accepts cart items</li>
+        <li>Server looks up real prices from product data</li>
+        <li>Server creates a Stripe Checkout Session with line items + shipping</li>
+        <li>Redirect customer to Stripe-hosted checkout (PCI-compliant, handles cards/Apple Pay)</li>
+        <li>Stripe webhook confirms payment → trigger fulfillment</li>
+      </ol>
+      <p>Do <strong>not</strong> embed Stripe secret keys in frontend JS. Only publishable keys belong in the browser.</p>
+
+      <h3>Print fulfillment — choose a workflow</h3>
+      <p>Your product copy references ChromaLuxe metal and lustre paper — typical of pro labs like Bay Photo, WHCC, or similar. Options:</p>
+      <table>
+        <thead><tr><th>Approach</th><th>Effort</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Manual fulfillment</strong><br>Stripe webhook → email you order details → you submit to lab manually</td>
+            <td>Low</td>
+            <td>Soft launch, low volume</td>
+          </tr>
+          <tr>
+            <td><strong>Printful / Gelato API</strong><br>Automated order routing to print partner</td>
+            <td>Medium</td>
+            <td>Hands-off scaling; verify they offer your exact media (metal, lustre)</td>
+          </tr>
+          <tr>
+            <td><strong>WHCC / Bay Photo lab portal</strong><br>Upload high-res files, manual or API order entry</td>
+            <td>Medium–High</td>
+            <td>Maximum print quality control (likely your current lab)</td>
+          </tr>
+          <tr>
+            <td><strong>Shopify / Snipcart overlay</strong></td>
+            <td>Medium</td>
+            <td>If you want hosted commerce without building backend</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Shipping</h3>
+      <ul>
+        <li>Cart hardcodes <strong>"FREE"</strong> shipping — FAQ says free US + many countries but custom quotes elsewhere</li>
+        <li>No shipping address collection exists today</li>
+        <li>Stripe Checkout can collect shipping address; you'll need shipping rate rules or flat rates per region</li>
+        <li>International customs/duties not mentioned — add to FAQ if selling abroad</li>
+      </ul>
+
+      <h3>Order communications</h3>
+      <ul>
+        <li>Order confirmation email (to customer)</li>
+        <li>Order notification email (to you)</li>
+        <li>Shipping notification with tracking (from lab or manual)</li>
+        <li>FAQ promises confirmations within 24–48 hours — infrastructure must support this</li>
+      </ul>
+
+      <h3>Material naming inconsistency</h3>
+      <p>
+        <code>products.json</code> uses <code>"Chromaluxe Metal"</code> and <code>"Lustre Paper"</code>.
+        FAQ describes <em>"High Gloss Chromaluxe Aluminum"</em> and <em>"Mid Gloss Chromaluxe Aluminum"</em> (custom order).
+        Align customer-facing names across shop dropdowns, cart receipts, and FAQ to avoid confusion.
+      </p>
+    </section>
+
+    <!-- ── PERFORMANCE ── -->
+    <section id="performance">
+      <h2>5. Images &amp; Performance</h2>
+
+      <h3>Hero slideshow — heavy images</h3>
+      <p>
+        Homepage hero slides use <code>w_2560,q_100</code> (5 full-quality backgrounds, ~several MB total).
+        Gallery thumbnails correctly use <code>f_auto,q_auto</code>. Hero should match:
+        <code>f_auto,q_auto,w_1920</code> (or responsive <code>srcset</code> via Cloudinary).
+      </p>
+
+      <h3>About photo uses q_100</h3>
+      <p><code>index.html</code> profile image: <code>w_1600,q_100</code> — switch to <code>q_auto</code>.</p>
+
+      <h3>Product page loads entire catalog</h3>
+      <p>
+        Each product page fetches all of <code>products.json</code> (200 KB) to render one product + 4 suggestions.
+        Options:
+      </p>
+      <ul>
+        <li>Split JSON by category (<code>products/landscapes.json</code>, etc.)</li>
+        <li>Generate per-product static pages at build time</li>
+        <li>Cache JSON in <code>sessionStorage</code> after first fetch</li>
+        <li>Add <code>Cache-Control</code> headers on deploy (JSON rarely changes)</li>
+      </ul>
+
+      <h3>Missing Cloudinary preconnect</h3>
+      <p>Google Fonts have <code>preconnect</code> but Cloudinary does not. Add:</p>
+      <p><code>&lt;link rel="preconnect" href="https://res.cloudinary.com" crossorigin&gt;</code></p>
+
+      <h3>Font loading</h3>
+      <p>
+        Two Google Font families with multiple weights load on every page. Consider:
+        self-hosting WOFF2 subsets, reducing weight variants, or <code>font-display: swap</code> in the Google URL.
+      </p>
+
+      <h3>Good practices already in place</h3>
+      <ul>
+        <li><code>loading="lazy"</code> on gallery and below-fold images</li>
+        <li>Cloudinary <code>f_auto</code> serves WebP/AVIF where supported</li>
+        <li>Passive scroll listener in <code>main.js</code></li>
+        <li>Thumbnail preloading on product image switch</li>
+      </ul>
+    </section>
+
+    <!-- ── CODE ── -->
+    <section id="code">
+      <h2>6. Code Quality &amp; Organization</h2>
+
+      <h3>Major duplication</h3>
+      <ul>
+        <li><strong>Nav + footer</strong> copied across ~15 HTML files (~50 lines each). Any nav change requires editing every file.</li>
+        <li><strong>Three product templates</strong> (<code>product-standard</code>, <code>product-panorama</code>, <code>product-aerial</code>) share ~95% identical HTML, CSS, and JS (~800 lines each).</li>
+        <li><strong>Product page inline JS</strong> (~300 lines) duplicated 3× — should be <code>js/product.js</code>.</li>
+        <li><strong>FAQ accordion JS</strong> duplicates product accordion pattern.</li>
+      </ul>
+      <p>
+        <strong>Recommendation:</strong> Introduce a minimal build step (11ty, Vite, or simple Node script) for includes/templates,
+        OR migrate to a lightweight framework. Even a 20-line Node include script would cut maintenance dramatically.
+      </p>
+
+      <h3>Gallery pages should be generated</h3>
+      <p>
+        130 products × manual HTML links is fragile. You already have <code>scratch/check_missing_*.js</code> scripts —
+        promote these to a <code>npm run build:galleries</code> script that reads <code>products.json</code> and
+        regenerates gallery markup. This eliminates sync drift (2 products currently missing from galleries).
+      </p>
+
+      <h3>Redundant link paths</h3>
+      <p>
+        Gallery pages inside <code>pages/</code> link to <code>../pages/product-standard.html</code> instead of
+        <code>product-standard.html</code>. Works today but is confusing and error-prone.
+      </p>
+
+      <h3>Mixed JS style</h3>
+      <p><code>main.js</code> uses <code>const</code>/<code>let</code> and arrow functions; <code>cart.js</code> and inline scripts use <code>var</code> and <code>function</code>. Pick one style.</p>
+
+      <h3>Size/material dropdowns not linked</h3>
+      <p>
+        On product pages, size and material dropdowns are independent. Selecting a size that doesn't exist for
+        a material still shows in the dropdown, leading to "combination not available" alerts.
+        Filter available sizes when material changes (and vice versa).
+      </p>
+
+      <h3>Lightbox limitation</h3>
+      <p>
+        <code>initLightbox()</code> skips items that are <code>&lt;a&gt;</code> tags. All gallery items are links,
+        so the lightbox never activates on gallery pages. Either remove dead lightbox code or add a
+        "quick preview" mode separate from the product link.
+      </p>
+
+      <h3>Case-sensitive product IDs</h3>
+      <p>
+        <code>Japan-itsukushima-shrine-travel-photography</code> uses a capital J in the ID.
+        Works on case-sensitive servers but is inconsistent with all-lowercase kebab-case IDs elsewhere.
+      </p>
+
+      <h3>products.json size</h3>
+      <p>
+        At 200 KB the file is manageable but will grow. Consider stripping internal-only fields from the
+        public JSON and keeping high-res source URLs server-side only.
+      </p>
+    </section>
+
+    <!-- ── DESIGN ── -->
+    <section id="design">
+      <h2>7. Design &amp; UX</h2>
+
+      <h3>Strengths</h3>
+      <ul>
+        <li>Cohesive dark editorial aesthetic suits fine art photography</li>
+        <li>Clear category navigation and "View + Buy Print" CTAs on galleries</li>
+        <li>Product pages have mockup thumbnails, material accordions, and "You Might Also Like"</li>
+        <li>Sticky product info column on desktop</li>
+        <li>Cart page layout is clean with qty controls and summary panel</li>
+      </ul>
+
+      <h3>Issues to address</h3>
+      <ul>
+        <li><strong><code>alert()</code> for validation</strong> — replace with inline error messages near the Add to Cart button</li>
+        <li><strong>Instagram handle mismatch</strong> — links use <code>instagram.com/gliciouspics</code> but contact shows <code>@g.liciouspics</code></li>
+        <li><strong>Facebook link is a placeholder</strong> — <code>facebook.com</code> with no page path; remove or add real URL</li>
+        <li><strong>No favicon</strong> — browser tab shows generic icon</li>
+        <li><strong>No 404 page</strong> — broken URLs get host default</li>
+        <li><strong>Cart lacks "added to cart" toast</strong> on product pages (button text changes briefly — easy to miss)</li>
+        <li><strong>No breadcrumb navigation</strong> on product pages (Home → Landscapes → Print Title)</li>
+        <li><strong>Slideshow has no pause on hover</strong> or reduced-motion support</li>
+        <li><strong>External links</strong> missing <code>rel="noopener noreferrer"</code> on <code>target="_blank"</code> links</li>
+      </ul>
+
+      <h3>Accessibility gaps</h3>
+      <ul>
+        <li>No skip-to-content link</li>
+        <li>No <code>:focus-visible</code> styles for keyboard navigation</li>
+        <li>Dropdown trigger is a <code>&lt;span&gt;</code>, not a button — not keyboard/screen-reader friendly</li>
+        <li>Accordions update <code>aria-expanded</code> (good) but FAQ/product accordions close all others on open — consider allowing multiple open</li>
+        <li>Hero slideshow images are CSS backgrounds — no alt text for screen readers</li>
+        <li>Color contrast on <code>--muted</code> (#6a6a6a) text may fail WCAG AA on dark backgrounds</li>
+      </ul>
+    </section>
+
+    <!-- ── SEO ── -->
+    <section id="seo">
+      <h2>8. SEO &amp; Discoverability</h2>
+      <p>Basic <code>&lt;title&gt;</code> and <code>&lt;meta description&gt;</code> exist on most pages. Missing:</p>
+      <ul>
+        <li>Open Graph tags (<code>og:title</code>, <code>og:image</code>, <code>og:url</code>) for social sharing</li>
+        <li>Twitter/X card meta tags</li>
+        <li>Canonical URLs (important once live — avoid duplicate <code>index.html</code> vs <code>/</code>)</li>
+        <li><code>robots.txt</code></li>
+        <li><code>sitemap.xml</code> — should list all 130+ product URLs, galleries, FAQ, homepage</li>
+        <li>JSON-LD <code>Product</code> structured data on product pages (helps Google Shopping rich results)</li>
+        <li>Product pages have generic meta description ("Fine art photography print by G.Licious Pics") — should be dynamic per product</li>
+        <li>Clean URLs: consider <code>/prints/hidden-honu</code> instead of <code>product-standard.html?id=hidden-honu-...</code> via hosting rewrites</li>
+      </ul>
+    </section>
+
+    <!-- ── LEGAL ── -->
+    <section id="legal">
+      <h2>9. Legal &amp; Trust</h2>
+      <p>Required before selling online:</p>
+      <ul>
+        <li><strong>Privacy Policy</strong> — required if collecting emails, addresses, payment info (GDPR/CCPA)</li>
+        <li><strong>Terms of Service</strong> — sale terms, custom print policies</li>
+        <li><strong>Refund / Return Policy</strong> — FAQ mentions no returns + 6-hour cancel window; needs a dedicated page linked in footer/checkout</li>
+        <li><strong>Cookie notice</strong> — if adding analytics (Google Analytics, Meta Pixel)</li>
+        <li><strong>Business entity info</strong> — consider adding business name/location in footer for trust</li>
+        <li><strong>Sales tax</strong> — Stripe Tax can handle US sales tax collection if needed</li>
+      </ul>
+    </section>
+
+    <!-- ── SECURITY ── -->
+    <section id="security">
+      <h2>10. Security</h2>
+      <ul>
+        <li><strong>Cart price tampering</strong> — client-side prices are not trustworthy (see Blockers)</li>
+        <li><strong>No Content-Security-Policy</strong> — add via hosting headers to restrict script sources</li>
+        <li><strong>No security headers</strong> — configure <code>X-Frame-Options</code>, <code>X-Content-Type-Options</code>, <code>Referrer-Policy</code> on deploy</li>
+        <li><strong>Cloudinary cloud name is public</strong> — normal for delivery URLs; ensure upload API keys are never in frontend code</li>
+        <li><strong>Stripe webhooks</strong> — must verify webhook signatures server-side</li>
+        <li><strong>Rate limiting</strong> — on contact form and checkout session creation endpoints</li>
+      </ul>
+    </section>
+
+    <!-- ── DEPLOYMENT ── -->
+    <section id="deployment">
+      <h2>11. Deployment &amp; Operations</h2>
+
+      <h3>Missing project infrastructure</h3>
+      <ul>
+        <li>No <code>README.md</code> with setup/deploy instructions</li>
+        <li>No <code>.gitignore</code> (add <code>.DS_Store</code>, <code>.env</code>, editor files)</li>
+        <li>No <code>package.json</code> or dependency management</li>
+        <li>No CI/CD or deploy config (<code>vercel.json</code>, <code>netlify.toml</code>)</li>
+        <li>No environment variable documentation (<code>.env.example</code>)</li>
+      </ul>
+
+      <h3>Recommended hosting stack</h3>
+      <table>
+        <thead><tr><th>Component</th><th>Recommendation</th></tr></thead>
+        <tbody>
+          <tr><td>Static files</td><td>Vercel, Netlify, or Cloudflare Pages (free tier sufficient)</td></tr>
+          <tr><td>Checkout API</td><td>Serverless function on same platform</td></tr>
+          <tr><td>Contact form</td><td>Formspree, Netlify Forms, or Resend + serverless</td></tr>
+          <tr><td>Domain</td><td>Custom domain with HTTPS (auto on above platforms)</td></tr>
+          <tr><td>Email</td><td>Google Workspace or transactional email (Resend, Postmark)</td></tr>
+          <tr><td>Analytics</td><td>Plausible or Google Analytics 4</td></tr>
+          <tr><td>Error monitoring</td><td>Sentry (optional but valuable post-launch)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Pre-deploy checklist</h3>
+      <ul>
+        <li>Remove or hide mock checkout modal</li>
+        <li>Test all 130 product URLs resolve correctly</li>
+        <li>Run gallery sync validation scripts</li>
+        <li>Lighthouse audit on homepage, one gallery, one product page, cart</li>
+        <li>Test on mobile (iOS Safari, Android Chrome)</li>
+        <li>Test cart persistence across pages and browser refresh</li>
+        <li>Verify Stripe test mode → live mode cutover procedure</li>
+      </ul>
+    </section>
+
+    <!-- ── ROADMAP ── -->
+    <section id="roadmap">
+      <h2>12. Recommended Launch Roadmap</h2>
+
+      <h3>Phase 1 — Fix &amp; stabilize (Week 1)</h3>
+      <ol>
+        <li>Fix product not-found fallback bug</li>
+        <li>Add missing gallery products (2 items)</li>
+        <li>Optimize hero/profile images</li>
+        <li>Wire contact form (Formspree or similar — fastest path)</li>
+        <li>Add favicon, basic OG tags, <code>robots.txt</code>, <code>sitemap.xml</code></li>
+        <li>Fix Instagram/Facebook links, add <code>rel="noopener"</code></li>
+        <li>Add <code>.gitignore</code> and <code>README.md</code></li>
+      </ol>
+
+      <h3>Phase 2 — Commerce backend (Week 2)</h3>
+      <ol>
+        <li>Set up Stripe account + test mode</li>
+        <li>Build serverless checkout endpoint with server-side price validation</li>
+        <li>Replace mock checkout with Stripe Checkout redirect</li>
+        <li>Add order confirmation emails (Stripe + webhook handler)</li>
+        <li>Define shipping rules in Stripe or custom logic</li>
+        <li>Add Privacy Policy, Terms, Returns pages</li>
+      </ol>
+
+      <h3>Phase 3 — Fulfillment &amp; polish (Week 3)</h3>
+      <ol>
+        <li>Choose and configure print fulfillment workflow</li>
+        <li>Test end-to-end: browse → cart → pay → fulfill → ship</li>
+        <li>Extract shared JS (product page, galleries build script)</li>
+        <li>Improve accessibility (focus styles, dropdown button, reduced motion)</li>
+        <li>Deploy to production domain</li>
+      </ol>
+
+      <h3>Phase 4 — Post-launch (Ongoing)</h3>
+      <ol>
+        <li>Monitor analytics and checkout conversion</li>
+        <li>Generate galleries from JSON automatically</li>
+        <li>Consider single product template + clean URLs</li>
+        <li>Add JSON-LD product schema</li>
+        <li>Evaluate build tooling if catalog keeps growing</li>
+      </ol>
+    </section>
+
+    <!-- ── CHECKLIST ── -->
+    <section id="checklist">
+      <h2>13. Full Task Checklist</h2>
+      <p>Check items off as you complete them. Progress is saved in your browser (<code>localStorage</code>).</p>
+
+      <!-- CRITICAL -->
+      <div class="task-group" data-priority="critical">
+        <div class="task-group-title"><span class="badge badge-critical">Critical</span> Launch blockers</div>
+        <ul class="task-list">
+          <li class="task-item" data-id="crit-1">
+            <input type="checkbox" id="crit-1" />
+            <label class="task-text" for="crit-1">Integrate real payment processing (Stripe Checkout recommended)
+              <span class="detail">Replace mock modal in cart.html with server-created Checkout Session</span>
+            </label>
+          </li>
+          <li class="task-item" data-id="crit-2">
+            <input type="checkbox" id="crit-2" />
+            <label class="task-text" for="crit-2">Add serverless API for checkout with server-side price validation
+              <span class="detail">Never trust localStorage cart prices</span>
+            </label>
+          </li>
+          <li class="task-item" data-id="crit-3">
+            <input type="checkbox" id="crit-3" />
+            <label class="task-text" for="crit-3">Define and implement print fulfillment workflow
+              <span class="detail">Manual, Printful, WHCC, or Bay Photo — document the chosen path</span>
+            </label>
+          </li>
+          <li class="task-item" data-id="crit-4">
+            <input type="checkbox" id="crit-4" />
+            <label class="task-text" for="crit-4">Wire contact form to actually send messages
+              <span class="detail">Formspree, Netlify Forms, or Resend API</span>
+            </label>
+          </li>
+          <li class="task-item" data-id="crit-5">
+            <input type="checkbox" id="crit-5" />
+            <label class="task-text" for="crit-5">Fix product page not-found fallback (remove wrong-product fallback)
+              <span class="detail">product-standard.html, product-panorama.html, product-aerial.html ~line 788</span>
+            </label>
+          </li>
+          <li class="task-item" data-id="crit-6">
+            <input type="checkbox" id="crit-6" />
+            <label class="task-text" for="crit-6">Add Privacy Policy page
+              <span class="detail">Required for collecting customer data</span>
+            </label>
+          </li>
+          <li class="task-item" data-id="crit-7">
+            <input type="checkbox" id="crit-7" />
+            <label class="task-text" for="crit-7">Add Terms of Service page</label>
+          </li>
+          <li class="task-item" data-id="crit-8">
+            <input type="checkbox" id="crit-8" />
+            <label class="task-text" for="crit-8">Add Returns &amp; Refunds policy page (link from footer + checkout)
+              <span class="detail">Align with FAQ: no returns, 6-hour cancel window, damaged item replacement</span>
+            </label>
+          </li>
+          <li class="task-item" data-id="crit-9">
+            <input type="checkbox" id="crit-9" />
+            <label class="task-text" for="crit-9">Set up order confirmation emails (customer + owner)</label>
+          </li>
+          <li class="task-item" data-id="crit-10">
+            <input type="checkbox" id="crit-10" />
+            <label class="task-text" for="crit-10">Configure shipping address collection and shipping rates
+              <span class="detail">Replace hardcoded FREE shipping in cart</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <!-- HIGH -->
+      <div class="task-group" data-priority="high">
+        <div class="task-group-title"><span class="badge badge-high">High</span> Important improvements</div>
+        <ul class="task-list">
+          <li class="task-item" data-id="high-1">
+            <input type="checkbox" id="high-1" />
+            <label class="task-text" for="high-1">Optimize homepage hero images (q_100 → q_auto, consider w_1920)</label>
+          </li>
+          <li class="task-item" data-id="high-2">
+            <input type="checkbox" id="high-2" />
+            <label class="task-text" for="high-2">Optimize about section profile image (q_100 → q_auto)</label>
+          </li>
+          <li class="task-item" data-id="high-3">
+            <input type="checkbox" id="high-3" />
+            <label class="task-text" for="high-3">Add Cloudinary preconnect hint in all page heads</label>
+          </li>
+          <li class="task-item" data-id="high-4">
+            <input type="checkbox" id="high-4" />
+            <label class="task-text" for="high-4">Add favicon and apple-touch-icon</label>
+          </li>
+          <li class="task-item" data-id="high-5">
+            <input type="checkbox" id="high-5" />
+            <label class="task-text" for="high-5">Add Open Graph and Twitter Card meta tags to all pages</label>
+          </li>
+          <li class="task-item" data-id="high-6">
+            <input type="checkbox" id="high-6" />
+            <label class="task-text" for="high-6">Generate sitemap.xml with all product and gallery URLs</label>
+          </li>
+          <li class="task-item" data-id="high-7">
+            <input type="checkbox" id="high-7" />
+            <label class="task-text" for="high-7">Add robots.txt</label>
+          </li>
+          <li class="task-item" data-id="high-8">
+            <input type="checkbox" id="high-8" />
+            <label class="task-text" for="high-8">Add missing gallery items (oahu-koko-head-landscape-fine-art-02, japan-mount-fuji-honcho-street-photography)</label>
+          </li>
+          <li class="task-item" data-id="high-9">
+            <input type="checkbox" id="high-9" />
+            <label class="task-text" for="high-9">Build gallery pages from products.json automatically
+              <span class="detail">Promote scratch/ scripts to npm build:galleries</span>
+            </label>
+          </li>
+          <li class="task-item" data-id="high-10">
+            <input type="checkbox" id="high-10" />
+            <label class="task-text" for="high-10">Extract product page JS into shared js/product.js</label>
+          </li>
+          <li class="task-item" data-id="high-11">
+            <input type="checkbox" id="high-11" />
+            <label class="task-text" for="high-11">Consolidate 3 product templates into 1 (format-aware)</label>
+          </li>
+          <li class="task-item" data-id="high-12">
+            <input type="checkbox" id="high-12" />
+            <label class="task-text" for="high-12">Make product meta descriptions dynamic per product</label>
+          </li>
+          <li class="task-item" data-id="high-13">
+            <input type="checkbox" id="high-13" />
+            <label class="task-text" for="high-13">Link size/material dropdowns (filter invalid combinations)</label>
+          </li>
+          <li class="task-item" data-id="high-14">
+            <input type="checkbox" id="high-14" />
+            <label class="task-text" for="high-14">Replace alert() validation with inline UI errors on product pages</label>
+          </li>
+          <li class="task-item" data-id="high-15">
+            <input type="checkbox" id="high-15" />
+            <label class="task-text" for="high-15">Fix Instagram handle consistency (gliciouspics vs g.liciouspics)</label>
+          </li>
+          <li class="task-item" data-id="high-16">
+            <input type="checkbox" id="high-16" />
+            <label class="task-text" for="high-16">Fix or remove placeholder Facebook footer link</label>
+          </li>
+          <li class="task-item" data-id="high-17">
+            <input type="checkbox" id="high-17" />
+            <label class="task-text" for="high-17">Add rel="noopener noreferrer" to all target="_blank" links</label>
+          </li>
+          <li class="task-item" data-id="high-18">
+            <input type="checkbox" id="high-18" />
+            <label class="task-text" for="high-18">Align material naming between products.json, cart receipts, and FAQ</label>
+          </li>
+          <li class="task-item" data-id="high-19">
+            <input type="checkbox" id="high-19" />
+            <label class="task-text" for="high-19">Set up Stripe webhooks for payment confirmation → fulfillment trigger</label>
+          </li>
+          <li class="task-item" data-id="high-20">
+            <input type="checkbox" id="high-20" />
+            <label class="task-text" for="high-20">Add deployment config (vercel.json or netlify.toml) + .env.example</label>
+          </li>
+        </ul>
+      </div>
+
+      <!-- MEDIUM -->
+      <div class="task-group" data-priority="medium">
+        <div class="task-group-title"><span class="badge badge-medium">Medium</span> Quality &amp; maintainability</div>
+        <ul class="task-list">
+          <li class="task-item" data-id="med-1">
+            <input type="checkbox" id="med-1" />
+            <label class="task-text" for="med-1">Introduce build step for shared nav/footer includes</label>
+          </li>
+          <li class="task-item" data-id="med-2">
+            <input type="checkbox" id="med-2" />
+            <label class="task-text" for="med-2">Cache products.json in sessionStorage after first fetch</label>
+          </li>
+          <li class="task-item" data-id="med-3">
+            <input type="checkbox" id="med-3" />
+            <label class="task-text" for="med-3">Split products.json by category or add build-time splitting</label>
+          </li>
+          <li class="task-item" data-id="med-4">
+            <input type="checkbox" id="med-4" />
+            <label class="task-text" for="med-4">Fix gallery link paths (../pages/ → relative product-standard.html)</label>
+          </li>
+          <li class="task-item" data-id="med-5">
+            <input type="checkbox" id="med-5" />
+            <label class="task-text" for="med-5">Standardize JS style (const/let vs var across files)</label>
+          </li>
+          <li class="task-item" data-id="med-6">
+            <input type="checkbox" id="med-6" />
+            <label class="task-text" for="med-6">Add JSON-LD Product structured data on product pages</label>
+          </li>
+          <li class="task-item" data-id="med-7">
+            <input type="checkbox" id="med-7" />
+            <label class="task-text" for="med-7">Add canonical URL tags</label>
+          </li>
+          <li class="task-item" data-id="med-8">
+            <input type="checkbox" id="med-8" />
+            <label class="task-text" for="med-8">Create custom 404 page</label>
+          </li>
+          <li class="task-item" data-id="med-9">
+            <input type="checkbox" id="med-9" />
+            <label class="task-text" for="med-9">Add breadcrumb navigation on product pages</label>
+          </li>
+          <li class="task-item" data-id="med-10">
+            <input type="checkbox" id="med-10" />
+            <label class="task-text" for="med-10">Add skip-to-content link and :focus-visible styles</label>
+          </li>
+          <li class="task-item" data-id="med-11">
+            <input type="checkbox" id="med-11" />
+            <label class="task-text" for="med-11">Convert nav dropdown trigger from span to button</label>
+          </li>
+          <li class="task-item" data-id="med-12">
+            <input type="checkbox" id="med-12" />
+            <label class="task-text" for="med-12">Add prefers-reduced-motion support for hero slideshow</label>
+          </li>
+          <li class="task-item" data-id="med-13">
+            <input type="checkbox" id="med-13" />
+            <label class="task-text" for="med-13">Normalize product IDs to lowercase kebab-case</label>
+          </li>
+          <li class="task-item" data-id="med-14">
+            <input type="checkbox" id="med-14" />
+            <label class="task-text" for="med-14">Add README.md with local dev and deploy instructions</label>
+          </li>
+          <li class="task-item" data-id="med-15">
+            <input type="checkbox" id="med-15" />
+            <label class="task-text" for="med-15">Add .gitignore (.DS_Store, .env, node_modules)</label>
+          </li>
+          <li class="task-item" data-id="med-16">
+            <input type="checkbox" id="med-16" />
+            <label class="task-text" for="med-16">Configure security headers (CSP, X-Frame-Options, etc.)</label>
+          </li>
+          <li class="task-item" data-id="med-17">
+            <input type="checkbox" id="med-17" />
+            <label class="task-text" for="med-17">Add analytics (Plausible or GA4)</label>
+          </li>
+          <li class="task-item" data-id="med-18">
+            <input type="checkbox" id="med-18" />
+            <label class="task-text" for="med-18">Run Lighthouse audits and fix flagged issues</label>
+          </li>
+          <li class="task-item" data-id="med-19">
+            <input type="checkbox" id="med-19" />
+            <label class="task-text" for="med-19">Add cart "item added" toast notification</label>
+          </li>
+          <li class="task-item" data-id="med-20">
+            <input type="checkbox" id="med-20" />
+            <label class="task-text" for="med-20">Remove or repurpose unused lightbox code in main.js</label>
+          </li>
+        </ul>
+      </div>
+
+      <!-- LOW -->
+      <div class="task-group" data-priority="low">
+        <div class="task-group-title"><span class="badge badge-low">Low</span> Nice to have</div>
+        <ul class="task-list">
+          <li class="task-item" data-id="low-1">
+            <input type="checkbox" id="low-1" />
+            <label class="task-text" for="low-1">Self-host fonts instead of Google Fonts CDN</label>
+          </li>
+          <li class="task-item" data-id="low-2">
+            <input type="checkbox" id="low-2" />
+            <label class="task-text" for="low-2">Add clean URL rewrites (/prints/slug instead of ?id=)</label>
+          </li>
+          <li class="task-item" data-id="low-3">
+            <input type="checkbox" id="low-3" />
+            <label class="task-text" for="low-3">Pause hero slideshow on hover</label>
+          </li>
+          <li class="task-item" data-id="low-4">
+            <input type="checkbox" id="low-4" />
+            <label class="task-text" for="low-4">Add service worker for offline gallery browsing</label>
+          </li>
+          <li class="task-item" data-id="low-5">
+            <input type="checkbox" id="low-5" />
+            <label class="task-text" for="low-5">Set up Sentry or similar error monitoring</label>
+          </li>
+          <li class="task-item" data-id="low-6">
+            <input type="checkbox" id="low-6" />
+            <label class="task-text" for="low-6">Add Stripe Tax for automated sales tax</label>
+          </li>
+          <li class="task-item" data-id="low-7">
+            <input type="checkbox" id="low-7" />
+            <label class="task-text" for="low-7">Add cookie consent banner if using analytics</label>
+          </li>
+          <li class="task-item" data-id="low-8">
+            <input type="checkbox" id="low-8" />
+            <label class="task-text" for="low-8">Promote scratch validation scripts to CI check on every commit</label>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        This review covers the codebase as of June 15, 2026.
+        Re-run audits after major changes. Checkbox state is stored locally in
+        <code>localStorage</code> under key <code>glicious-production-review</code>.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var STORAGE_KEY = 'glicious-production-review';
+      var checkboxes = document.querySelectorAll('.task-item input[type="checkbox"]');
+
+      function loadState() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function saveState(state) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function updateProgress() {
+        var total = checkboxes.length;
+        var done = 0;
+        checkboxes.forEach(function (cb) {
+          if (cb.checked) done++;
+        });
+        var pct = total ? Math.round((done / total) * 100) : 0;
+        document.getElementById('progress-fill').style.width = pct + '%';
+        document.getElementById('progress-count').textContent = done + ' / ' + total + ' complete (' + pct + '%)';
+      }
+
+      function applyState(state) {
+        checkboxes.forEach(function (cb) {
+          var id = cb.id;
+          if (state[id]) {
+            cb.checked = true;
+            cb.closest('.task-item').classList.add('done');
+          }
+        });
+        updateProgress();
+      }
+
+      var state = loadState();
+      applyState(state);
+
+      checkboxes.forEach(function (cb) {
+        cb.addEventListener('change', function () {
+          var item = cb.closest('.task-item');
+          if (cb.checked) {
+            item.classList.add('done');
+            state[cb.id] = true;
+          } else {
+            item.classList.remove('done');
+            delete state[cb.id];
+          }
+          saveState(state);
+          updateProgress();
+        });
+      });
+
+      document.getElementById('reset-checks').addEventListener('click', function () {
+        if (!confirm('Reset all checkboxes? This cannot be undone.')) return;
+        localStorage.removeItem(STORAGE_KEY);
+        checkboxes.forEach(function (cb) {
+          cb.checked = false;
+          cb.closest('.task-item').classList.remove('done');
+        });
+        updateProgress();
+      });
+
+      document.getElementById('expand-all').addEventListener('click', function () {
+        document.querySelectorAll('section').forEach(function (s) {
+          s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
