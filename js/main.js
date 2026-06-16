@@ -65,20 +65,7 @@ if (navToggle && siteNav) {
   }
 }
 
-// ── CONTACT FORM ──
-const form    = document.getElementById('contact-form');
-const success = document.getElementById('form-success');
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // Placeholder — will connect to backend/Formspree/Netlify Forms when deployed
-    if (success) {
-      success.classList.add('show');
-      form.reset();
-      setTimeout(() => success.classList.remove('show'), 6000);
-    }
-  });
-}
+
 
 // ── SCROLL ANIMATIONS ──
 const fadeEls = document.querySelectorAll('.fade-up');

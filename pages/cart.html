@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 
@@ -43,7 +44,7 @@
           </svg>
           <span class="cart-count">0</span>
         </a>
-        <a href="https://instagram.com/gliciouspics" target="_blank" aria-label="Instagram">
+        <a href="https://instagram.com/g.liciouspics" target="_blank" aria-label="Instagram">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="2" width="20" height="20" rx="5" />
             <circle cx="12" cy="12" r="4" />
@@ -213,21 +214,75 @@
       document.getElementById('cart-summary-total').textContent = '$' + total.toFixed(2);
     }
 
-    // Checkout modal event listeners
+    // Checkout event handler using Stripe
     document.getElementById('checkout-btn').addEventListener('click', function() {
-      document.getElementById('checkout-modal').classList.add('open');
+      var cart = getCart();
+      if (!cart || cart.length === 0) return;
+
+      var btn = document.getElementById('checkout-btn');
+      var originalText = btn.textContent;
+      btn.textContent = 'Processing...';
+      btn.disabled = true;
+
+      fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: cart })
+      })
+      .then(function(res) {
+        return res.json().then(function(data) {
+          if (!res.ok) throw new Error(data.error || 'Server error');
+          return data;
+        });
+      })
+      .then(function(data) {
+        var stripe = Stripe(data.publishableKey);
+        return stripe.redirectToCheckout({ sessionId: data.id });
+      })
+      .catch(function(err) {
+        console.error('Checkout error:', err);
+        alert(err.message || 'An error occurred during checkout.');
+        
+        // Fallback to mock checkout if Stripe is not configured (e.g. placeholder keys)
+        if (err.message && err.message.indexOf('Stripe is not configured') !== -1) {
+          document.getElementById('checkout-modal').classList.add('open');
+        }
+        
+        btn.textContent = originalText;
+        btn.disabled = false;
+      });
     });
 
     document.getElementById('close-modal-btn').addEventListener('click', function() {
       document.getElementById('checkout-modal').classList.remove('open');
-      // Clear cart on successful mock checkout
       localStorage.removeItem('glicious_cart');
       window.dispatchEvent(new CustomEvent('cart-updated'));
       window.location.href = '../index.html';
     });
 
-    // Initial render
-    document.addEventListener('DOMContentLoaded', renderCartPage);
+    // Initial render and checkout check
+    function initCartPage() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('checkout') === 'success') {
+        // Clear cart immediately
+        localStorage.removeItem('glicious_cart');
+        window.dispatchEvent(new CustomEvent('cart-updated'));
+        
+        // Customize the success modal content
+        var title = document.querySelector('.cart-success-title');
+        var text = document.querySelector('.cart-success-text');
+        if (title) title.textContent = 'Order Placed!';
+        if (text) text.textContent = 'Thank you for your order! Your payment was successfully processed via Stripe. We will begin preparing your fine art prints.';
+        
+        document.getElementById('checkout-modal').classList.add('open');
+      } else if (params.get('checkout') === 'cancelled') {
+        // Remove query parameters from URL without reloading
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+      renderCartPage();
+    }
+
+    document.addEventListener('DOMContentLoaded', initCartPage);
   </script>
 </body>
 </html>

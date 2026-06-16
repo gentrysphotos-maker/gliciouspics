@@ -364,15 +364,15 @@
         </div>
         <div class="status-card">
           <div class="label">Payment integration</div>
-          <div class="value" style="color:var(--critical)">None</div>
+          <div class="value" style="color:var(--done)">Stripe</div>
         </div>
         <div class="status-card">
           <div class="label">Print fulfillment API</div>
           <div class="value" style="color:var(--critical)">None</div>
         </div>
         <div class="status-card">
-          <div class="label">Contact form</div>
-          <div class="value" style="color:var(--high)">Placeholder</div>
+          <div class="label">Contact link</div>
+          <div class="value" style="color:var(--done)">Email link</div>
         </div>
         <div class="status-card">
           <div class="label">Deployment config</div>
@@ -392,11 +392,11 @@
           <tr><td>Frontend</td><td>Static HTML, CSS, vanilla JS</td><td><span class="badge badge-done">Working</span></td></tr>
           <tr><td>Product data</td><td><code>products.json</code> (~200 KB, 4,868 lines)</td><td><span class="badge badge-done">Working</span></td></tr>
           <tr><td>Images</td><td>Cloudinary CDN with transforms</td><td><span class="badge badge-done">Working</span></td></tr>
-          <tr><td>Cart</td><td><code>localStorage</code> via <code>js/cart.js</code></td><td><span class="badge badge-mock">Client-only</span></td></tr>
-          <tr><td>Checkout</td><td>Mock modal in <code>pages/cart.html</code></td><td><span class="badge badge-mock">Not real</span></td></tr>
-          <tr><td>Contact</td><td>Form with <code>preventDefault</code> only</td><td><span class="badge badge-mock">Not wired</span></td></tr>
-          <tr><td>Backend / API</td><td>None</td><td><span class="badge badge-critical">Missing</span></td></tr>
-          <tr><td>Build tooling</td><td>None (no package.json)</td><td><span class="badge badge-medium">Manual</span></td></tr>
+          <tr><td>Cart</td><td><code>localStorage</code> via <code>js/cart.js</code></td><td><span class="badge badge-done">Working</span></td></tr>
+          <tr><td>Checkout</td><td>Stripe Checkout integration</td><td><span class="badge badge-done">Working</span></td></tr>
+          <tr><td>Contact</td><td>Direct mailto email link</td><td><span class="badge badge-done">Working</span></td></tr>
+          <tr><td>Backend / API</td><td>Express server with <code>/api/checkout</code></td><td><span class="badge badge-done">Working</span></td></tr>
+          <tr><td>Build tooling</td><td>npm package manager</td><td><span class="badge badge-done">Working</span></td></tr>
         </tbody>
       </table>
 
@@ -417,11 +417,11 @@
         <thead><tr><th>Category</th><th>In JSON</th><th>In Gallery HTML</th><th>Gap</th></tr></thead>
         <tbody>
           <tr><td>Underwater</td><td>19</td><td>19</td><td>—</td></tr>
-          <tr><td>Landscapes</td><td>36</td><td>35</td><td>1 missing: <code>oahu-koko-head-landscape-fine-art-02</code></td></tr>
+          <tr><td>Landscapes</td><td>36</td><td>36</td><td>—</td></tr>
           <tr><td>Plants &amp; Animals</td><td>29</td><td>29</td><td>—</td></tr>
           <tr><td>Nightscapes</td><td>3</td><td>3</td><td>—</td></tr>
           <tr><td>Aerial</td><td>7</td><td>7</td><td>—</td></tr>
-          <tr><td>Travel</td><td>23</td><td>22</td><td>1 missing: <code>japan-mount-fuji-honcho-street-photography</code></td></tr>
+          <tr><td>Travel</td><td>23</td><td>23</td><td>—</td></tr>
           <tr><td>Panoramas</td><td>13</td><td>13</td><td>—</td></tr>
         </tbody>
       </table>
@@ -661,7 +661,7 @@
       <h3>Issues to address</h3>
       <ul>
         <li><strong><code>alert()</code> for validation</strong> — replace with inline error messages near the Add to Cart button</li>
-        <li><strong>Instagram handle mismatch</strong> — links use <code>instagram.com/gliciouspics</code> but contact shows <code>@g.liciouspics</code></li>
+        <li><strong>Instagram handle mismatch</strong> — links use <code>instagram.com/g.liciouspics</code> but contact shows <code>@g.liciouspics</code></li>
         <li><strong>Facebook link is a placeholder</strong> — <code>facebook.com</code> with no page path; remove or add real URL</li>
         <li><strong>No favicon</strong> — browser tab shows generic icon</li>
         <li><strong>No 404 page</strong> — broken URLs get host default</li>
@@ -817,14 +817,14 @@
       <div class="task-group" data-priority="critical">
         <div class="task-group-title"><span class="badge badge-critical">Critical</span> Launch blockers</div>
         <ul class="task-list">
-          <li class="task-item" data-id="crit-1">
-            <input type="checkbox" id="crit-1" />
+          <li class="task-item done" data-id="crit-1">
+            <input type="checkbox" id="crit-1" checked />
             <label class="task-text" for="crit-1">Integrate real payment processing (Stripe Checkout recommended)
               <span class="detail">Replace mock modal in cart.html with server-created Checkout Session</span>
             </label>
           </li>
-          <li class="task-item" data-id="crit-2">
-            <input type="checkbox" id="crit-2" />
+          <li class="task-item done" data-id="crit-2">
+            <input type="checkbox" id="crit-2" checked />
             <label class="task-text" for="crit-2">Add serverless API for checkout with server-side price validation
               <span class="detail">Never trust localStorage cart prices</span>
             </label>
@@ -835,14 +835,14 @@
               <span class="detail">Manual, Printful, WHCC, or Bay Photo — document the chosen path</span>
             </label>
           </li>
-          <li class="task-item" data-id="crit-4">
-            <input type="checkbox" id="crit-4" />
-            <label class="task-text" for="crit-4">Wire contact form to actually send messages
-              <span class="detail">Formspree, Netlify Forms, or Resend API</span>
+          <li class="task-item done" data-id="crit-4">
+            <input type="checkbox" id="crit-4" checked />
+            <label class="task-text" for="crit-4">Wire contact email functionality
+              <span class="detail">Replaced form with direct mailto email button</span>
             </label>
           </li>
-          <li class="task-item" data-id="crit-5">
-            <input type="checkbox" id="crit-5" />
+          <li class="task-item done" data-id="crit-5">
+            <input type="checkbox" id="crit-5" checked />
             <label class="task-text" for="crit-5">Fix product page not-found fallback (remove wrong-product fallback)
               <span class="detail">product-standard.html, product-panorama.html, product-aerial.html ~line 788</span>
             </label>
@@ -908,8 +908,8 @@
             <input type="checkbox" id="high-7" />
             <label class="task-text" for="high-7">Add robots.txt</label>
           </li>
-          <li class="task-item" data-id="high-8">
-            <input type="checkbox" id="high-8" />
+          <li class="task-item done" data-id="high-8">
+            <input type="checkbox" id="high-8" checked />
             <label class="task-text" for="high-8">Add missing gallery items (oahu-koko-head-landscape-fine-art-02, japan-mount-fuji-honcho-street-photography)</label>
           </li>
           <li class="task-item" data-id="high-9">
@@ -938,8 +938,8 @@
             <input type="checkbox" id="high-14" />
             <label class="task-text" for="high-14">Replace alert() validation with inline UI errors on product pages</label>
           </li>
-          <li class="task-item" data-id="high-15">
-            <input type="checkbox" id="high-15" />
+          <li class="task-item done" data-id="high-15">
+            <input type="checkbox" id="high-15" checked />
             <label class="task-text" for="high-15">Fix Instagram handle consistency (gliciouspics vs g.liciouspics)</label>
           </li>
           <li class="task-item" data-id="high-16">
