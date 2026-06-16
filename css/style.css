@@ -747,9 +747,11 @@ a { color: inherit; text-decoration: none; }
 }
 .cart-item-img {
   width: 100px;
-  height: 75px;
-  object-fit: cover;
-  background: var(--dark);
+  height: auto;
+  max-height: 100px;
+  object-fit: contain;
+  background: var(--black);
+  border: none;
 }
 .cart-item-details {
   flex-grow: 1;
