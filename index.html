@@ -13,6 +13,7 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="js/cart.js"></script>
 </head>
 
 <body>
@@ -40,18 +41,20 @@
       <a href="#about" class="nav-link">About</a>
       <a href="#contact" class="nav-link">Contact</a>
       <div class="nav-socials">
+        <a href="pages/cart.html" class="nav-cart" aria-label="View Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </a>
         <a href="https://instagram.com/gliciouspics" target="_blank" aria-label="Instagram">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
             stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="2" width="20" height="20" rx="5" />
             <circle cx="12" cy="12" r="4" />
             <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
-          </svg>
-        </a>
-        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
           </svg>
         </a>
       </div>
@@ -102,43 +105,43 @@
       <h2 class="section-title">Explore &amp; Shop</h2>
     </div>
     <div class="gallery-grid">
-      <a href="pages/underwater.html" class="gallery-card">
-        <img src="https://res.cloudinary.com/dbqfibadw/image/upload/gliciouspics/underwater/hidden-honu-hawaii-green-sea-turtle-underwater.jpg" alt="Underwater" loading="lazy" />
+      <a href="pages/underwater.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/gliciouspics/underwater/hidden-honu-hawaii-green-sea-turtle-underwater.jpg')">
         <div class="gallery-card__inner">
           <span class="gallery-card__label">Underwater</span>
           <span class="gallery-card__cta">Shop Prints →</span>
         </div>
       </a>
-      <a href="pages/landscapes.html" class="gallery-card">
-        <img src="https://res.cloudinary.com/dbqfibadw/image/upload/gliciouspics/landscapes/seal-beach-hawaii-coastal-landscape-sunset-01.jpg" alt="Landscapes" loading="lazy" />
+      <a href="pages/landscapes.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/gliciouspics/landscapes/seal-beach-hawaii-coastal-landscape-sunset-01.jpg')">
         <div class="gallery-card__inner">
           <span class="gallery-card__label">Landscapes</span>
           <span class="gallery-card__cta">Shop Prints →</span>
         </div>
       </a>
-      <a href="pages/nightscapes.html" class="gallery-card">
-        <img src="https://res.cloudinary.com/dbqfibadw/image/upload/gliciouspics/nightscapes/oahu-makapuu-beach-night-sky-milky-way-photography.jpg" alt="Nightscapes" loading="lazy" />
+      <a href="pages/nightscapes.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/gliciouspics/nightscapes/oahu-makapuu-beach-night-sky-milky-way-photography.jpg')">
         <div class="gallery-card__inner">
           <span class="gallery-card__label">Nightscapes</span>
           <span class="gallery-card__cta">Shop Prints →</span>
         </div>
       </a>
-      <a href="pages/aerial.html" class="gallery-card">
-        <img src="https://res.cloudinary.com/dbqfibadw/image/upload/gliciouspics/aerial/hawaii-aerial-scenic-coastline-from-above-02.jpg" alt="Aerial" loading="lazy" />
+      <a href="pages/aerial.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/gliciouspics/aerial/hawaii-aerial-scenic-coastline-from-above-02.jpg')">
         <div class="gallery-card__inner">
           <span class="gallery-card__label">Aerial</span>
           <span class="gallery-card__cta">Shop Prints →</span>
         </div>
       </a>
-      <a href="pages/flora-fauna.html" class="gallery-card">
-        <img src="https://res.cloudinary.com/dbqfibadw/image/upload/gliciouspics/flora-fauna/oahu-gecko-tropical-heliconia-flower-wildlife-print-01.jpg" alt="Plants &amp; Animals" loading="lazy" />
+      <a href="pages/flora-fauna.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/gliciouspics/flora-fauna/oahu-gecko-tropical-heliconia-flower-wildlife-print-01.jpg')">
         <div class="gallery-card__inner">
           <span class="gallery-card__label">Plants &amp; Animals</span>
           <span class="gallery-card__cta">Shop Prints →</span>
         </div>
       </a>
-      <a href="pages/travel.html" class="gallery-card">
-        <img src="https://res.cloudinary.com/dbqfibadw/image/upload/gliciouspics/travel/fuji-love-mount-fuji-japan-travel-photography-01.jpg" alt="Travel" loading="lazy" />
+      <a href="pages/travel.html" class="gallery-card"
+        style="--img:url('https://res.cloudinary.com/dbqfibadw/image/upload/w_800,h_600,c_fill,q_auto,f_auto/gliciouspics/travel/fuji-love-mount-fuji-japan-travel-photography-01.jpg')">
         <div class="gallery-card__inner">
           <span class="gallery-card__label">Travel</span>
           <span class="gallery-card__cta">Shop Prints →</span>
