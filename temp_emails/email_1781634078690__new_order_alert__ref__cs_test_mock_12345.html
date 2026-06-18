@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #e8e4dc;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrapper {
+      background-color: #0f0f0f;
+      width: 100%;
+      padding: 40px 0;
+    }
+    .container {
+      background-color: #1a1a1a;
+      border: 1px solid #333333;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .logo {
+      color: #c8a96e;
+      font-family: 'Georgia', serif;
+      font-size: 24px;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #333333;
+      padding-bottom: 20px;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 400;
+      color: #c8a96e;
+      letter-spacing: -0.01em;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    p, td {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #e8e4dc;
+    }
+    .muted {
+      color: #9a9a9a;
+      font-size: 13px;
+    }
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+    }
+    .order-table th {
+      border-bottom: 1px solid #333333;
+      text-align: left;
+      padding: 10px 5px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9a9a9a;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .order-table td {
+      padding: 15px 5px;
+      border-bottom: 1px solid #222222;
+      vertical-align: top;
+    }
+    .order-item-title {
+      font-weight: 600;
+      color: #e8e4dc;
+      margin-bottom: 4px;
+    }
+    .order-item-desc {
+      font-size: 12px;
+      color: #9a9a9a;
+    }
+    .order-summary {
+      margin-top: 20px;
+      border-top: 1px solid #333333;
+      padding-top: 15px;
+      width: 100%;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .summary-label {
+      color: #9a9a9a;
+      font-size: 13px;
+    }
+    .summary-value {
+      font-weight: bold;
+      color: #e8e4dc;
+    }
+    .summary-row.total {
+      border-top: 1px solid #222222;
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+    .summary-row.total .summary-value {
+      color: #c8a96e;
+      font-size: 16px;
+    }
+    .address-box {
+      background-color: #242424;
+      border: 1px solid #333333;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .address-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #c8a96e;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .footer {
+      border-top: 1px solid #333333;
+      padding-top: 20px;
+      margin-top: 30px;
+      font-size: 12px;
+      text-align: center;
+      color: #9a9a9a;
+    }
+    .footer a {
+      color: #c8a96e;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #c8a96e;
+      color: #0f0f0f !important;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 12px 24px;
+      margin: 15px 0;
+      border-radius: 2px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="logo">G.Licious Pics</div>
+      
+    <h1>New Order Received!</h1>
+    <p>An order has been completed via Stripe. Here are the order details for print fulfillment.</p>
+    
+    <p class="muted">Order ID: <strong>cs_test_mock_12345</strong></p>
+    
+    <div class="address-box">
+      <div class="address-title">Customer Details</div>
+      <p style="margin: 0; line-height: 1.5;">
+        <strong>Name:</strong> Jane Doe<br>
+        <strong>Email:</strong> customer@example.com<br>
+        <strong>Phone:</strong> +18085550199
+      </p>
+    </div>
+
+    
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th style="width: 55%;">Print Title</th>
+          <th style="width: 15%; text-align: center;">Qty</th>
+          <th style="width: 15%; text-align: right;">Price</th>
+          <th style="width: 15%; text-align: right;">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      <tr>
+        <td>
+          <div class="order-item-title">Koko Head Sunrise</div>
+          <div class="order-item-desc">12x18 / Lustre Paper</div>
+        </td>
+        <td style="text-align: center;">1</td>
+        <td style="text-align: right;">$150.00</td>
+        <td style="text-align: right;">$150.00</td>
+      </tr>
+    
+      <tr>
+        <td>
+          <div class="order-item-title">Mount Fuji from Honcho Street</div>
+          <div class="order-item-desc">16x24 / Chromaluxe Metal</div>
+        </td>
+        <td style="text-align: center;">1</td>
+        <td style="text-align: right;">$350.00</td>
+        <td style="text-align: right;">$350.00</td>
+      </tr>
+    
+      </tbody>
+    </table>
+  
+    
+    <div class="order-summary">
+      <div class="summary-row total">
+        <span class="summary-label">Amount Collected</span>
+        <span class="summary-value">$500.00</span>
+      </div>
+    </div>
+    
+    <div class="address-box">
+      <div class="address-title">Shipping Address</div>
+      <p style="margin: 0; font-family: monospace; font-size: 13px; color: #d4b84a;">
+        Jane Doe<br>
+        1234 Makai Place<br>Apt B<br>
+        Honolulu, HI 96815<br>
+        US
+      </p>
+    </div>
+
+    <div style="background-color: #2c2519; border: 1px dashed #c8a96e; padding: 15px; border-radius: 4px; margin-top: 20px;">
+      <h3 style="margin-top:0; color: #c8a96e; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;">Fulfillment Checklist</h3>
+      <ul style="margin: 0; padding-left: 15px; font-size: 13px; line-height: 1.6;">
+        <li><strong>Koko Head Sunrise</strong>: size 12x18, material Lustre Paper &times; 1 (ID: oahu-koko-head-landscape-fine-art-02)</li><li><strong>Mount Fuji from Honcho Street</strong>: size 16x24, material Chromaluxe Metal &times; 1 (ID: japan-mount-fuji-honcho-street-photography)</li>
+      </ul>
+      <p style="margin: 10px 0 0; font-size: 12px; color: #9a9a9a; font-style: italic;">
+        Instructions: Check your high-res files catalog for matching IDs and proceed with order placement at your preferred professional lab.
+      </p>
+    </div>
+  
+      <div class="footer">
+        <p>&copy; 2026 G.Licious Pics. All rights reserved.</p>
+        <p>Representing the natural wonders of Hawaiʻi and beyond.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+  

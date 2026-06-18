@@ -1,0 +1,37 @@
+{
+  "orderId": "cs_test_mock_12345",
+  "paymentIntentId": "pi_mock_12345",
+  "customerName": "Jane Doe",
+  "customerEmail": "customer@example.com",
+  "customerPhone": "+18085550199",
+  "totalAmount": 50000,
+  "currency": "usd",
+  "shippingAddress": {
+    "line1": "1234 Makai Place",
+    "line2": "Apt B",
+    "city": "Honolulu",
+    "state": "HI",
+    "postal_code": "96815",
+    "country": "US"
+  },
+  "shippingName": "Jane Doe",
+  "items": [
+    {
+      "id": "oahu-koko-head-landscape-fine-art-02",
+      "title": "Koko Head Sunrise",
+      "size": "12x18",
+      "material": "Lustre Paper",
+      "quantity": 1,
+      "price": 15000
+    },
+    {
+      "id": "japan-mount-fuji-honcho-street-photography",
+      "title": "Mount Fuji from Honcho Street",
+      "size": "16x24",
+      "material": "Chromaluxe Metal",
+      "quantity": 1,
+      "price": 35000
+    }
+  ],
+  "createdAt": "2026-06-16T18:21:18.684Z"
+}

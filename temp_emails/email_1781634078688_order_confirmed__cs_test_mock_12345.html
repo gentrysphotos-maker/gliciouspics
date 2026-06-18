@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #e8e4dc;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrapper {
+      background-color: #0f0f0f;
+      width: 100%;
+      padding: 40px 0;
+    }
+    .container {
+      background-color: #1a1a1a;
+      border: 1px solid #333333;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .logo {
+      color: #c8a96e;
+      font-family: 'Georgia', serif;
+      font-size: 24px;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #333333;
+      padding-bottom: 20px;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 400;
+      color: #c8a96e;
+      letter-spacing: -0.01em;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    p, td {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #e8e4dc;
+    }
+    .muted {
+      color: #9a9a9a;
+      font-size: 13px;
+    }
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+    }
+    .order-table th {
+      border-bottom: 1px solid #333333;
+      text-align: left;
+      padding: 10px 5px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9a9a9a;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .order-table td {
+      padding: 15px 5px;
+      border-bottom: 1px solid #222222;
+      vertical-align: top;
+    }
+    .order-item-title {
+      font-weight: 600;
+      color: #e8e4dc;
+      margin-bottom: 4px;
+    }
+    .order-item-desc {
+      font-size: 12px;
+      color: #9a9a9a;
+    }
+    .order-summary {
+      margin-top: 20px;
+      border-top: 1px solid #333333;
+      padding-top: 15px;
+      width: 100%;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .summary-label {
+      color: #9a9a9a;
+      font-size: 13px;
+    }
+    .summary-value {
+      font-weight: bold;
+      color: #e8e4dc;
+    }
+    .summary-row.total {
+      border-top: 1px solid #222222;
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+    .summary-row.total .summary-value {
+      color: #c8a96e;
+      font-size: 16px;
+    }
+    .address-box {
+      background-color: #242424;
+      border: 1px solid #333333;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .address-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #c8a96e;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .footer {
+      border-top: 1px solid #333333;
+      padding-top: 20px;
+      margin-top: 30px;
+      font-size: 12px;
+      text-align: center;
+      color: #9a9a9a;
+    }
+    .footer a {
+      color: #c8a96e;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #c8a96e;
+      color: #0f0f0f !important;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 12px 24px;
+      margin: 15px 0;
+      border-radius: 2px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="logo">G.Licious Pics</div>
+      
+    <h1>Thank you for your order, Jane Doe</h1>
+    <p>We have successfully received your payment. Gentry is preparing your fine art prints. Each order is individually checked for exact color and print quality before shipping.</p>
+    
+    <p class="muted">Order Ref: <strong>cs_test_mock_12345</strong></p>
+    
+    
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th style="width: 55%;">Print Title</th>
+          <th style="width: 15%; text-align: center;">Qty</th>
+          <th style="width: 15%; text-align: right;">Price</th>
+          <th style="width: 15%; text-align: right;">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      <tr>
+        <td>
+          <div class="order-item-title">Koko Head Sunrise</div>
+          <div class="order-item-desc">12x18 / Lustre Paper</div>
+        </td>
+        <td style="text-align: center;">1</td>
+        <td style="text-align: right;">$150.00</td>
+        <td style="text-align: right;">$150.00</td>
+      </tr>
+    
+      <tr>
+        <td>
+          <div class="order-item-title">Mount Fuji from Honcho Street</div>
+          <div class="order-item-desc">16x24 / Chromaluxe Metal</div>
+        </td>
+        <td style="text-align: center;">1</td>
+        <td style="text-align: right;">$350.00</td>
+        <td style="text-align: right;">$350.00</td>
+      </tr>
+    
+      </tbody>
+    </table>
+  
+    
+    <div class="order-summary">
+      <div class="summary-row">
+        <span class="summary-label">Subtotal</span>
+        <span class="summary-value">$500.00</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Shipping</span>
+        <span class="summary-value" style="color: #6aab8a;">FREE</span>
+      </div>
+      <div class="summary-row total">
+        <span class="summary-label">Total Paid</span>
+        <span class="summary-value">$500.00</span>
+      </div>
+    </div>
+    
+    <div class="address-box">
+      <div class="address-title">Delivery Address</div>
+      <p style="margin: 0; font-family: monospace; font-size: 13px; color: #d4b84a;">
+        Jane Doe<br>
+        1234 Makai Place<br>Apt B<br>
+        Honolulu, HI 96815<br>
+        US
+      </p>
+    </div>
+    
+    <p><strong>Timeline & Fulfillment:</strong> Standard production time is 2-4 days for Lustre Paper prints and 5-7 days for ChromaLuxe Metal prints. You will receive an email containing tracking details as soon as your artwork ships.</p>
+    
+    <p class="muted">Note: If you need to make corrections or request changes, please reply to this email within 6 hours of purchase.</p>
+  
+      <div class="footer">
+        <p>&copy; 2026 G.Licious Pics. All rights reserved.</p>
+        <p>Representing the natural wonders of Hawaiʻi and beyond.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+  
