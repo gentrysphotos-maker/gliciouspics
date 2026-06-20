@@ -24,6 +24,35 @@
  * }
  */
 
+const fs = require('fs');
+const path = require('path');
+
+// Load products database
+let productsDatabase = null;
+try {
+  let dataPath = path.join(__dirname, '../../products.json');
+  if (!fs.existsSync(dataPath)) {
+    dataPath = path.join(process.cwd(), 'products.json');
+  }
+  productsDatabase = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  console.log('Successfully loaded products database.');
+} catch (error) {
+  console.error('Failed to load products.json in Netlify function:', error);
+}
+
+// Helper to find a product in any of the categories
+function findProduct(productId) {
+  if (!productsDatabase) return null;
+  const categories = ['standard', 'panoramas', 'aerial'];
+  for (const cat of categories) {
+    if (productsDatabase[cat]) {
+      const product = productsDatabase[cat].find(p => p.id === productId);
+      if (product) return product;
+    }
+  }
+  return null;
+}
+
 exports.handler = async (event, context) => {
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
@@ -77,10 +106,22 @@ exports.handler = async (event, context) => {
 
     // Map ordered items
     const prodigiItems = body.items.map(item => {
-      const assetUrl = item.imageUrl || item.url || item.image_url;
-      if (!assetUrl) {
-        throw new Error(`Item with SKU "${item.sku}" is missing an image asset URL.`);
+      // Find the product by its id or productId
+      const productId = item.id || item.productId;
+      if (!productId) {
+        throw new Error(`Item with SKU "${item.sku}" is missing a product ID ("id" or "productId").`);
       }
+
+      const product = findProduct(productId);
+      if (!product) {
+        throw new Error(`Product with ID "${productId}" not found in products.json.`);
+      }
+
+      if (!product.images || !product.images.printImageUrl) {
+        throw new Error(`Product "${productId}" is missing images.printImageUrl in products.json.`);
+      }
+
+      const assetUrl = product.images.printImageUrl;
 
       return {
         sku: item.sku,
