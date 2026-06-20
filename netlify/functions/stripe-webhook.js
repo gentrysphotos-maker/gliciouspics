@@ -54,47 +54,125 @@ function getProdigiSku(material, size) {
   return `${prefix}-${formattedSize}`;
 }
 
-exports.handler = async (event, context) => {
-  // Only allow POST requests
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      headers: { 'Content-Type': 'application/json', 'Allow': 'POST' },
-      body: JSON.stringify({ error: 'Method Not Allowed' })
-    };
+// Helper to notify photographer (Gentry) if automatic print fulfillment fails
+async function sendManualFulfillmentAlert(session, payload, errorMsg) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = 'gentrysphotos@gmail.com';
+  const subject = 'Order Fulfillment Failed - Action Needed';
+  const fromEmail = 'onboarding@resend.dev';
+  
+  const itemsListHtml = payload.items.map(item => `
+    <li><strong>SKU:</strong> ${item.sku} (Product ID: ${item.id}) &times; ${item.quantity}</li>
+  `).join('');
+
+  const htmlBody = `
+    <h2>Automatic Print Fulfillment Failed</h2>
+    <p>We received payment for Stripe Session <strong>${session.id}</strong>, but automatic submission to the Prodigi Print API failed.</p>
+    
+    <div style="background-color: #f8d7da; color: #721c24; padding: 15px; border: 1px solid #f5c6cb; border-radius: 4px; margin-bottom: 20px;">
+      <strong>Error details:</strong><br>
+      <code>${errorMsg}</code>
+    </div>
+
+    <h3>Action Required:</h3>
+    <p>Please place this order manually through the print lab / Prodigi dashboard.</p>
+
+    <h3>Customer Details:</h3>
+    <ul>
+      <li><strong>Name:</strong> ${payload.recipientName}</li>
+      <li><strong>Email:</strong> ${payload.customerEmail}</li>
+    </ul>
+
+    <h3>Shipping Address:</h3>
+    <p style="font-family: monospace;">
+      ${payload.recipientName}<br>
+      ${payload.shippingAddress.line1}<br>
+      ${payload.shippingAddress.line2 ? payload.shippingAddress.line2 + '<br>' : ''}
+      ${payload.shippingAddress.townOrCity}, ${payload.shippingAddress.stateOrCounty} ${payload.shippingAddress.postalOrZipCode}<br>
+      ${payload.shippingAddress.countryCode}
+    </p>
+
+    <h3>Order Items:</h3>
+    <ul>
+      ${itemsListHtml}
+    </ul>
+  `;
+
+  if (!apiKey) {
+    console.warn('[EMAIL NOTIFICATION] RESEND_API_KEY is not defined. Email simulated to:', to);
+    console.log('From:', fromEmail);
+    console.log('Subject:', subject);
+    console.log('Body:', htmlBody);
+    return;
   }
 
-  const sig = event.headers['stripe-signature'] || event.headers['Stripe-Signature'];
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-
-  if (!webhookSecret) {
-    console.error('Webhook Error: STRIPE_WEBHOOK_SECRET is not set.');
-    return {
-      statusCode: 500,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Webhook Secret is not configured.' })
-    };
-  }
-
-  let stripeEvent;
   try {
-    // Local development bypass support for easy testing
-    if (process.env.NODE_ENV !== 'production' && webhookSecret === 'whsec_placeholder' && (!sig || sig === 'mock')) {
-      console.log('Bypassing webhook signature verification for local testing with whsec_placeholder');
-      stripeEvent = JSON.parse(event.body);
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: fromEmail,
+        to: to,
+        subject: subject,
+        html: htmlBody
+      })
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      console.error('Resend API returned an error:', data);
     } else {
-      stripeEvent = stripe.webhooks.constructEvent(event.body, sig, webhookSecret);
+      console.log(`Manual fulfillment notification email sent to ${to}. Resend ID: ${data.id}`);
     }
-  } catch (err) {
-    console.error(`Stripe Webhook Signature Verification Failed: ${err.message}`);
-    return {
-      statusCode: 400,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: `Webhook Error: ${err.message}` })
-    };
+  } catch (error) {
+    console.error('Error calling Resend API:', error);
   }
+}
 
+exports.handler = async (event, context) => {
   try {
+    // Only allow POST requests
+    if (event.httpMethod !== 'POST') {
+      return {
+        statusCode: 405,
+        headers: { 'Content-Type': 'application/json', 'Allow': 'POST' },
+        body: JSON.stringify({ error: 'Method Not Allowed' })
+      };
+    }
+
+    const sig = event.headers['stripe-signature'] || event.headers['Stripe-Signature'];
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+    if (!webhookSecret) {
+      console.error('Webhook Error: STRIPE_WEBHOOK_SECRET is not set.');
+      return {
+        statusCode: 500,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: 'Webhook Secret is not configured.' })
+      };
+    }
+
+    let stripeEvent;
+    try {
+      // Local development bypass support for easy testing
+      if (process.env.NODE_ENV !== 'production' && webhookSecret === 'whsec_placeholder' && (!sig || sig === 'mock')) {
+        console.log('Bypassing webhook signature verification for local testing with whsec_placeholder');
+        stripeEvent = JSON.parse(event.body);
+      } else {
+        stripeEvent = stripe.webhooks.constructEvent(event.body, sig, webhookSecret);
+      }
+    } catch (err) {
+      console.error(`Stripe Webhook Signature Verification Failed: ${err.message}`);
+      return {
+        statusCode: 400,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: `Webhook Error: ${err.message}` })
+      };
+    }
+
     // Process only checkout.session.completed
     if (stripeEvent.type === 'checkout.session.completed') {
       const session = stripeEvent.data.object;
@@ -129,19 +207,20 @@ exports.handler = async (event, context) => {
       });
 
       // Extract customer shipping details
-      const shipping = session.shipping_details || {};
-      const address = shipping.address || {};
+      const shippingDetails = session.shipping_details || (session.collected_information && session.collected_information.shipping_details) || {};
+      const address = shippingDetails.address || {};
+      const customerDetails = session.customer_details || {};
 
       const prodigiOrderPayload = {
-        customerEmail: session.customer_details ? session.customer_details.email : 'unknown@example.com',
-        recipientName: shipping.name || (session.customer_details ? session.customer_details.name : 'Valued Customer'),
+        customerEmail: customerDetails.email || 'unknown@example.com',
+        recipientName: shippingDetails.name || customerDetails.name || 'Valued Customer',
         shippingAddress: {
           line1: address.line1 || '',
           line2: address.line2 || '',
-          city: address.city || '',
-          state: address.state || '',
-          postal_code: address.postal_code || '',
-          country: address.country || ''
+          postalOrZipCode: address.postal_code || '',
+          countryCode: address.country || '',
+          townOrCity: address.city || '',
+          stateOrCounty: address.state || ''
         },
         items: items
       };
@@ -149,32 +228,59 @@ exports.handler = async (event, context) => {
       console.log('Sending internal request to create-prodigi-order handler...');
       console.log('Prodigi Order Payload:', JSON.stringify(prodigiOrderPayload, null, 2));
 
-      // Import the create-prodigi-order handler function
-      const createProdigiOrder = require('./create-prodigi-order').handler;
+      let prodigiSuccess = false;
+      let prodigiResponseData = null;
+      let prodigiError = null;
 
-      const mockEvent = {
-        httpMethod: 'POST',
-        body: JSON.stringify(prodigiOrderPayload)
-      };
+      try {
+        const createProdigiOrder = require('./create-prodigi-order').handler;
+        const mockEvent = {
+          httpMethod: 'POST',
+          body: JSON.stringify(prodigiOrderPayload)
+        };
 
-      const prodigiResponse = await createProdigiOrder(mockEvent, {});
-      console.log(`Internal create-prodigi-order response status: ${prodigiResponse.statusCode}`);
-      console.log(`Internal create-prodigi-order response body: ${prodigiResponse.body}`);
+        const prodigiResponse = await createProdigiOrder(mockEvent, {});
+        console.log(`Internal create-prodigi-order response status: ${prodigiResponse.statusCode}`);
+        
+        prodigiResponseData = JSON.parse(prodigiResponse.body || '{}');
 
-      const parsedResponse = JSON.parse(prodigiResponse.body);
-      if (prodigiResponse.statusCode !== 201) {
-        console.error('Prodigi order creation failed via webhook processing:', parsedResponse.error);
+        if (prodigiResponse.statusCode === 201) {
+          prodigiSuccess = true;
+          console.log(`Prodigi order created successfully. Prodigi Order ID: ${prodigiResponseData.order?.id}`);
+        } else {
+          prodigiError = new Error(prodigiResponseData.error || 'Unknown error');
+        }
+      } catch (err) {
+        prodigiError = err;
+      }
+
+      if (!prodigiSuccess) {
+        const errorMsg = prodigiError ? prodigiError.message : 'Unknown error';
+        console.error(`\n==================================================`);
+        console.error(`[PRODIGI ORDER FAILED]`);
+        console.error(`Stripe Session ID: ${session.id}`);
+        console.error(`Customer Email: ${prodigiOrderPayload.customerEmail}`);
+        console.error(`Error details:`, prodigiError);
+        console.error(`Attempted Payload:`, JSON.stringify(prodigiOrderPayload, null, 2));
+        console.error(`==================================================\n`);
+
+        // Send alert email for manual fulfillment
+        try {
+          await sendManualFulfillmentAlert(session, prodigiOrderPayload, errorMsg);
+        } catch (emailErr) {
+          console.error('Failed to send manual fulfillment email alert:', emailErr);
+        }
+
+        // Return a 200 status so Stripe doesn't keep retrying the webhook
         return {
-          statusCode: 500,
+          statusCode: 200,
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            error: 'Stripe webhook processed but Prodigi order creation failed',
-            details: parsedResponse
+            received: true,
+            warning: 'Prodigi order creation failed, manual fulfillment notification triggered.'
           })
         };
       }
-
-      console.log('Prodigi order successfully created!');
     }
 
     return {
