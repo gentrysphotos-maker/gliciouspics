@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build:galleries": "node scripts/build-galleries.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

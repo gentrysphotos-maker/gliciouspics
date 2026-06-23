@@ -11,3 +11,18 @@
   from = "/api/webhooks/stripe"
   to = "/.netlify/functions/stripe-webhook"
   status = 200
+
+[[redirects]]
+  from = "/pages/product-standard.html"
+  to = "/pages/product.html"
+  status = 301
+
+[[redirects]]
+  from = "/pages/product-panorama.html"
+  to = "/pages/product.html"
+  status = 301
+
+[[redirects]]
+  from = "/pages/product-aerial.html"
+  to = "/pages/product.html"
+  status = 301
