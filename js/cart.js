@@ -3,7 +3,7 @@
 // Retrieve cart from localStorage
 function getCart() {
   try {
-    var cart = localStorage.getItem('glicious_cart');
+    const cart = localStorage.getItem('glicious_cart');
     return cart ? JSON.parse(cart) : [];
   } catch (e) {
     console.error('Error parsing cart from localStorage', e);
@@ -26,14 +26,14 @@ function saveCart(cart) {
 // Add item to cart
 function addToCart(product) {
   // Expected product properties: id, title, size, material, price, quantity, thumbnail
-  var cart = getCart();
+  const cart = getCart();
   
   // Check if item with same id, size, and material already exists
-  var existingIndex = cart.findIndex(function(item) {
-    return item.id === product.id && 
-           item.size === product.size && 
-           item.material === product.material;
-  });
+  const existingIndex = cart.findIndex(item => 
+    item.id === product.id && 
+    item.size === product.size && 
+    item.material === product.material
+  );
 
   if (existingIndex > -1) {
     cart[existingIndex].quantity = Number(cart[existingIndex].quantity) + Number(product.quantity || 1);
@@ -54,7 +54,7 @@ function addToCart(product) {
 
 // Remove item by index
 function removeFromCart(index) {
-  var cart = getCart();
+  const cart = getCart();
   if (index >= 0 && index < cart.length) {
     cart.splice(index, 1);
     saveCart(cart);
@@ -63,7 +63,7 @@ function removeFromCart(index) {
 
 // Update quantity by index
 function updateQuantity(index, newQuantity) {
-  var cart = getCart();
+  const cart = getCart();
   if (index >= 0 && index < cart.length && newQuantity > 0) {
     cart[index].quantity = Number(newQuantity);
     saveCart(cart);
@@ -72,25 +72,21 @@ function updateQuantity(index, newQuantity) {
 
 // Get total price
 function getCartTotal() {
-  var cart = getCart();
-  return cart.reduce(function(total, item) {
-    return total + (Number(item.price) * Number(item.quantity));
-  }, 0);
+  const cart = getCart();
+  return cart.reduce((total, item) => total + (Number(item.price) * Number(item.quantity)), 0);
 }
 
 // Get total number of items
 function getCartCount() {
-  var cart = getCart();
-  return cart.reduce(function(count, item) {
-    return count + Number(item.quantity);
-  }, 0);
+  const cart = getCart();
+  return cart.reduce((count, item) => count + Number(item.quantity), 0);
 }
 
 // Update navigation UI badge
 function updateCartNavUI() {
-  var badge = document.querySelector('.cart-count');
+  const badge = document.querySelector('.cart-count');
   if (badge) {
-    var count = getCartCount();
+    const count = getCartCount();
     badge.textContent = count;
     badge.style.display = count > 0 ? 'flex' : 'none';
   }

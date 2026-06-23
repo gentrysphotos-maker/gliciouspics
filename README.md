@@ -55,7 +55,7 @@ The server will start at **[http://localhost:8080](http://localhost:8080)**.
 - `index.html` — Homepage (hero slideshow, category cards, about, contact)
 - `pages/`
   - `underwater.html`, `landscapes.html`, `travel.html`, etc. — Gallery masonry pages
-  - `product-standard.html`, `product-panorama.html`, `product-aerial.html` — Dynamic product templates
+  - `product.html` — Dynamic format-aware product details template page
   - `cart.html` — Cart summary and checkout redirect
   - `faq.html` — Frequently Asked Questions
 - `js/`

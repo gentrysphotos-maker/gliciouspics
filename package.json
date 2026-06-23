@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "build:galleries": "node scripts/build-galleries.js"
+    "build:galleries": "node scripts/build-galleries.js",
+    "build:layouts": "node scripts/build-layouts.js",
+    "build:sitemap": "node scripts/generate-sitemap.js",
+    "build": "npm run build:galleries && npm run build:layouts && npm run build:sitemap"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
