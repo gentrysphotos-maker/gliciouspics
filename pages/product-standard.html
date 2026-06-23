@@ -363,6 +363,23 @@
         grid-template-columns: 1fr;
       }
     }
+    .field-error-msg {
+      color: #e05c5c;
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: none;
+      line-height: 1.4;
+      border-left: 2px solid #e05c5c;
+      padding-left: 0.75rem;
+      animation: fadeInError 0.3s ease forwards;
+    }
+    @keyframes fadeInError {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 
   <!-- Open Graph / Facebook -->
@@ -464,6 +481,7 @@
 
         <!-- Actions -->
         <div class="product-actions">
+          <div class="field-error-msg" id="validation-error"></div>
           <button class="btn-primary btn-add-to-cart" id="add-to-cart-btn">Add to Cart</button>
           <a href="../index.html#contact" class="custom-size-link">Request a Custom Size</a>
         </div>
@@ -707,19 +725,56 @@
       });
       var sizes = Array.from(sizeSet);
 
-      sizeEl.innerHTML = '<option value="">Select</option>';
-      sizes.forEach(function(s) {
-        var opt = document.createElement('option');
-        opt.value = s; opt.textContent = s;
-        sizeEl.appendChild(opt);
-      });
+      function showValidationError(msg) {
+        var errEl = document.getElementById('validation-error');
+        errEl.textContent = msg;
+        errEl.style.display = 'block';
+      }
 
-      matEl.innerHTML = '<option value="">Select</option>';
-      materials.forEach(function(m) {
-        var opt = document.createElement('option');
-        opt.value = m; opt.textContent = m;
-        matEl.appendChild(opt);
-      });
+      function clearValidationError() {
+        var errEl = document.getElementById('validation-error');
+        errEl.style.display = 'none';
+        errEl.textContent = '';
+      }
+
+      function populateSizes(selectedMat) {
+        var currentSize = sizeEl.value;
+        sizeEl.innerHTML = '<option value="">Select</option>';
+        sizes.forEach(function(s) {
+          var isAvailable = !selectedMat || (product.pricing[selectedMat] && product.pricing[selectedMat][s] != null);
+          if (isAvailable) {
+            var opt = document.createElement('option');
+            opt.value = s; opt.textContent = s;
+            sizeEl.appendChild(opt);
+          }
+        });
+        if (currentSize && Array.from(sizeEl.options).some(function(o) { return o.value === currentSize; })) {
+          sizeEl.value = currentSize;
+        } else {
+          sizeEl.value = '';
+        }
+      }
+
+      function populateMaterials(selectedSize) {
+        var currentMat = matEl.value;
+        matEl.innerHTML = '<option value="">Select</option>';
+        materials.forEach(function(m) {
+          var isAvailable = !selectedSize || (product.pricing[m] && product.pricing[m][selectedSize] != null);
+          if (isAvailable) {
+            var opt = document.createElement('option');
+            opt.value = m; opt.textContent = m;
+            matEl.appendChild(opt);
+          }
+        });
+        if (currentMat && Array.from(matEl.options).some(function(o) { return o.value === currentMat; })) {
+          matEl.value = currentMat;
+        } else {
+          matEl.value = '';
+        }
+      }
+
+      populateSizes('');
+      populateMaterials('');
 
       function updatePrice() {
         var size = sizeEl.value;
@@ -730,8 +785,20 @@
           priceEl.textContent = 'Starting at $' + Number(product.startingPrice).toFixed(2);
         }
       }
-      sizeEl.addEventListener('change', updatePrice);
-      matEl.addEventListener('change',  updatePrice);
+
+      sizeEl.addEventListener('change', function() {
+        populateMaterials(sizeEl.value);
+        populateSizes(matEl.value);
+        updatePrice();
+        clearValidationError();
+      });
+
+      matEl.addEventListener('change', function() {
+        populateSizes(matEl.value);
+        populateMaterials(sizeEl.value);
+        updatePrice();
+        clearValidationError();
+      });
 
       // Add to Cart handler
       var addToCartBtn = document.getElementById('add-to-cart-btn');
@@ -741,15 +808,17 @@
         var qty  = parseInt(document.getElementById('qty').value) || 1;
         
         if (!size || !mat) {
-          alert('Please select both a print size and material.');
+          showValidationError('Please select both a print size and material.');
           return;
         }
 
         var price = product.pricing[mat] && product.pricing[mat][size];
         if (price == null) {
-          alert('This combination is not available.');
+          showValidationError('This combination is not available.');
           return;
         }
+
+        clearValidationError();
 
         addToCart({
           id: product.id,
