@@ -54,12 +54,16 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
         items = lineItemsResponse.data.map(lineItem => {
           const product = lineItem.price && lineItem.price.product;
           const metadata = product && product.metadata ? product.metadata : {};
+          const size = metadata.size || '12x18';
+          const material = metadata.material || 'Lustre Paper';
+          const sku = getProdigiSku(material, size);
           
           return {
             id: metadata.productId || 'unknown',
+            sku: sku,
             title: lineItem.description || 'Unknown Print',
-            size: metadata.size || 'Standard',
-            material: metadata.material || 'Lustre Paper',
+            size: size,
+            material: material,
             quantity: lineItem.quantity,
             price: lineItem.amount_total / lineItem.quantity // in cents
           };
@@ -71,6 +75,7 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
           items = [
             {
               id: 'oahu-koko-head-landscape-fine-art-02',
+              sku: getProdigiSku('Lustre Paper', '12x18'),
               title: 'Koko Head Sunrise',
               size: '12x18',
               material: 'Lustre Paper',
@@ -79,6 +84,7 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
             },
             {
               id: 'japan-mount-fuji-honcho-street-photography',
+              sku: getProdigiSku('Chromaluxe Metal', '16x24'),
               title: 'Mount Fuji from Honcho Street',
               size: '16x24',
               material: 'Chromaluxe Metal',
@@ -89,6 +95,51 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
         } else {
           throw stripeError;
         }
+      }
+
+      // Prepare Prodigi order payload
+      const shippingDetails = session.shipping_details || {};
+      const address = shippingDetails.address || {};
+      const customerDetails = session.customer_details || {};
+
+      const prodigiOrderPayload = {
+        customerEmail: customerDetails.email || 'unknown@example.com',
+        recipientName: shippingDetails.name || customerDetails.name || 'Valued Customer',
+        shippingAddress: {
+          line1: address.line1 || '',
+          line2: address.line2 || '',
+          postalOrZipCode: address.postal_code || '',
+          countryCode: address.country || '',
+          townOrCity: address.city || '',
+          stateOrCounty: address.state || ''
+        },
+        items: items
+      };
+
+      console.log('Submitting order to Prodigi Sandbox...');
+      let prodigiSuccess = false;
+      let prodigiResponseData = null;
+      let prodigiError = null;
+
+      try {
+        const createProdigiOrder = require('./netlify/functions/create-prodigi-order').handler;
+        const mockEvent = {
+          httpMethod: 'POST',
+          body: JSON.stringify(prodigiOrderPayload)
+        };
+
+        const prodigiResponse = await createProdigiOrder(mockEvent, {});
+        console.log(`Prodigi response status: ${prodigiResponse.statusCode}`);
+        prodigiResponseData = JSON.parse(prodigiResponse.body || '{}');
+
+        if (prodigiResponse.statusCode === 201) {
+          prodigiSuccess = true;
+          console.log(`Prodigi order created successfully. Prodigi Order ID: ${prodigiResponseData.order?.id}`);
+        } else {
+          prodigiError = new Error(prodigiResponseData.error || 'Unknown error');
+        }
+      } catch (err) {
+        prodigiError = err;
       }
 
       // Prepare order details
@@ -103,6 +154,9 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
         shippingAddress: session.shipping_details ? session.shipping_details.address : {},
         shippingName: session.shipping_details ? session.shipping_details.name : '',
         items: items,
+        prodigiSuccess: prodigiSuccess,
+        prodigiOrderId: prodigiSuccess ? (prodigiResponseData.order?.id || null) : null,
+        prodigiError: prodigiSuccess ? null : (prodigiError ? prodigiError.message : 'Unknown error'),
         createdAt: new Date().toISOString()
       };
 
@@ -152,6 +206,26 @@ try {
   console.log('Successfully loaded products database.');
 } catch (error) {
   console.error('Failed to load products.json:', error);
+}
+
+// Helper to map material & size to standard Prodigi SKUs
+function getProdigiSku(material, size) {
+  let prefix = 'GLOBAL-PAP'; // Default fallback
+  
+  if (material) {
+    const mat = material.toLowerCase();
+    if (mat.includes('metal') || mat.includes('chromaluxe')) {
+      prefix = 'GLOBAL-MET';
+    } else if (mat.includes('matte')) {
+      prefix = 'GLOBAL-FAP';
+    } else if (mat.includes('lustre') || mat.includes('paper')) {
+      prefix = 'GLOBAL-PAP';
+    }
+  }
+
+  // Format size: uppercase, no spaces, replace lowercase 'x' with 'X'
+  const formattedSize = (size || '12x18').toUpperCase().replace(/\s+/g, '');
+  return `${prefix}-${formattedSize}`;
 }
 
 // Helper to find a product in any of the categories

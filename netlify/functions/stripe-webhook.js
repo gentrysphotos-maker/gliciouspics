@@ -7,6 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const notifications = require('../../utils/notifications');
 
 // Load products database
 let productsDatabase = null;
@@ -202,7 +203,11 @@ exports.handler = async (event, context) => {
         return {
           id: productId,
           sku: sku,
-          quantity: lineItem.quantity
+          quantity: lineItem.quantity,
+          title: lineItem.description || (localProduct ? localProduct.title : 'Unknown Print'),
+          size: size,
+          material: material,
+          price: lineItem.amount_total / lineItem.quantity // in cents
         };
       });
 
@@ -280,6 +285,42 @@ exports.handler = async (event, context) => {
             warning: 'Prodigi order creation failed, manual fulfillment notification triggered.'
           })
         };
+      }
+
+      // If we reach here, Prodigi order creation succeeded
+      const orderDetails = {
+        orderId: session.id,
+        paymentIntentId: session.payment_intent,
+        customerName: shippingDetails.name || customerDetails.name || 'Valued Customer',
+        customerEmail: customerDetails.email || 'unknown@example.com',
+        customerPhone: customerDetails.phone || null,
+        totalAmount: session.amount_total, // in cents
+        currency: session.currency,
+        shippingAddress: {
+          line1: address.line1 || '',
+          line2: address.line2 || '',
+          city: address.city || '',
+          state: address.state || '',
+          postal_code: address.postal_code || '',
+          country: address.country || ''
+        },
+        shippingName: shippingDetails.name || '',
+        items: items,
+        createdAt: new Date().toISOString()
+      };
+
+      try {
+        console.log('Sending success email notifications...');
+        await Promise.all([
+          notifications.sendCustomerConfirmation(orderDetails).catch(err => {
+            console.error(`Error sending customer email: ${err.message}`);
+          }),
+          notifications.sendAdminNotification(orderDetails).catch(err => {
+            console.error(`Error sending admin email: ${err.message}`);
+          })
+        ]);
+      } catch (emailErr) {
+        console.error('Failed to send success notifications:', emailErr);
       }
     }
 

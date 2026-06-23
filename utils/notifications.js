@@ -402,6 +402,24 @@ async function sendAdminNotification(orderDetails) {
       </p>
     </div>
 
+    ${orderDetails.prodigiSuccess
+      ? `
+      <div style="background-color: #1b2e21; border: 1px solid #5a9e6f; padding: 15px; border-radius: 4px; margin-top: 20px; font-size: 13px; color: #e8e4dc;">
+        <strong style="color: #5a9e6f;">Automated Print Fulfillment: SUCCESS</strong><br>
+        The order has been automatically submitted to Prodigi.<br>
+        <strong>Prodigi Order ID:</strong> <code>${orderDetails.prodigiOrderId}</code>
+      </div>
+      `
+      : `
+      <div style="background-color: #2e1b1b; border: 1px solid #e05c5c; padding: 15px; border-radius: 4px; margin-top: 20px; font-size: 13px; color: #e8e4dc;">
+        <strong style="color: #e05c5c;">Automated Print Fulfillment: FAILED / ACTION REQUIRED</strong><br>
+        The order could not be automatically submitted to Prodigi.<br>
+        <strong>Error details:</strong> <code>${orderDetails.prodigiError || 'Not attempted'}</code><br><br>
+        <em>Please place this order manually through the print lab or Prodigi dashboard.</em>
+      </div>
+      `
+    }
+
     <div style="background-color: #2c2519; border: 1px dashed #c8a96e; padding: 15px; border-radius: 4px; margin-top: 20px;">
       <h3 style="margin-top:0; color: #c8a96e; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em;">Fulfillment Checklist</h3>
       <ul style="margin: 0; padding-left: 15px; font-size: 13px; line-height: 1.6;">

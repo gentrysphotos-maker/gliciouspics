@@ -18,6 +18,7 @@
   "items": [
     {
       "id": "oahu-koko-head-landscape-fine-art-02",
+      "sku": "GLOBAL-PAP-12X18",
       "title": "Koko Head Sunrise",
       "size": "12x18",
       "material": "Lustre Paper",
@@ -26,6 +27,7 @@
     },
     {
       "id": "japan-mount-fuji-honcho-street-photography",
+      "sku": "GLOBAL-MET-16X24",
       "title": "Mount Fuji from Honcho Street",
       "size": "16x24",
       "material": "Chromaluxe Metal",
@@ -33,5 +35,8 @@
       "price": 35000
     }
   ],
-  "createdAt": "2026-06-16T18:21:18.684Z"
+  "prodigiSuccess": false,
+  "prodigiOrderId": null,
+  "prodigiError": "Prodigi print API is not configured on the server.",
+  "createdAt": "2026-06-23T17:45:16.596Z"
 }

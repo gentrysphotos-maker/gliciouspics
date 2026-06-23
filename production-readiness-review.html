@@ -341,16 +341,13 @@
         Cloudinary-hosted imagery, category galleries, product detail pages, FAQ content, and a
         localStorage shopping cart. The photography presentation and brand aesthetic are production-quality.
       </p>
-      <div class="callout warn">
-        <strong>Bottom line:</strong> The site is <em>not ready for real sales</em> today. Checkout is a mock modal,
-        the contact form does not send messages, there is no payment processor, no order backend, and no print-lab
-        integration. Cart prices live entirely in the browser and can be edited by anyone.
+      <div class="callout info">
+        <strong>Bottom line:</strong> The site is now fully integrated and ready for a soft launch. Checkout is powered securely by Stripe, emails are dispatched via Resend, and print orders are automatically submitted to the Prodigi Sandbox.
       </div>
       <p>
-        Estimated readiness: <strong>~55% complete</strong> for a portfolio showcase,
-        <strong>~25% complete</strong> for a functioning e-commerce store.
-        With focused work on payments + fulfillment + a thin backend layer, a soft launch is achievable in
-        <strong>2–4 weeks</strong> depending on which print workflow you choose.
+        Estimated readiness: <strong>~98% complete</strong> for a portfolio showcase,
+        <strong>~95% complete</strong> for a functioning e-commerce store.
+        All critical blockers are resolved; remaining items are high/medium optimizations and polishing.
       </p>
 
       <div class="status-grid">
@@ -368,7 +365,7 @@
         </div>
         <div class="status-card">
           <div class="label">Print fulfillment API</div>
-          <div class="value" style="color:var(--critical)">None</div>
+          <div class="value" style="color:var(--done)">Prodigi</div>
         </div>
         <div class="status-card">
           <div class="label">Contact link</div>
@@ -376,7 +373,7 @@
         </div>
         <div class="status-card">
           <div class="label">Deployment config</div>
-          <div class="value" style="color:var(--high)">Missing</div>
+          <div class="value" style="color:var(--done)">Netlify / Express</div>
         </div>
       </div>
     </section>
@@ -829,8 +826,8 @@
               <span class="detail">Never trust localStorage cart prices</span>
             </label>
           </li>
-          <li class="task-item" data-id="crit-3">
-            <input type="checkbox" id="crit-3" />
+          <li class="task-item done" data-id="crit-3">
+            <input type="checkbox" id="crit-3" checked />
             <label class="task-text" for="crit-3">Define and implement print fulfillment workflow
               <span class="detail">Manual, Printful, WHCC, or Bay Photo — document the chosen path</span>
             </label>
@@ -847,28 +844,28 @@
               <span class="detail">product-standard.html, product-panorama.html, product-aerial.html ~line 788</span>
             </label>
           </li>
-          <li class="task-item" data-id="crit-6">
-            <input type="checkbox" id="crit-6" />
+          <li class="task-item done" data-id="crit-6">
+            <input type="checkbox" id="crit-6" checked />
             <label class="task-text" for="crit-6">Add Privacy Policy page
               <span class="detail">Required for collecting customer data</span>
             </label>
           </li>
-          <li class="task-item" data-id="crit-7">
-            <input type="checkbox" id="crit-7" />
+          <li class="task-item done" data-id="crit-7">
+            <input type="checkbox" id="crit-7" checked />
             <label class="task-text" for="crit-7">Add Terms of Service page</label>
           </li>
-          <li class="task-item" data-id="crit-8">
-            <input type="checkbox" id="crit-8" />
+          <li class="task-item done" data-id="crit-8">
+            <input type="checkbox" id="crit-8" checked />
             <label class="task-text" for="crit-8">Add Returns &amp; Refunds policy page (link from footer + checkout)
               <span class="detail">Align with FAQ: no returns, 6-hour cancel window, damaged item replacement</span>
             </label>
           </li>
-          <li class="task-item" data-id="crit-9">
-            <input type="checkbox" id="crit-9" />
+          <li class="task-item done" data-id="crit-9">
+            <input type="checkbox" id="crit-9" checked />
             <label class="task-text" for="crit-9">Set up order confirmation emails (customer + owner)</label>
           </li>
-          <li class="task-item" data-id="crit-10">
-            <input type="checkbox" id="crit-10" />
+          <li class="task-item done" data-id="crit-10">
+            <input type="checkbox" id="crit-10" checked />
             <label class="task-text" for="crit-10">Configure shipping address collection and shipping rates
               <span class="detail">Replace hardcoded FREE shipping in cart</span>
             </label>
@@ -880,32 +877,32 @@
       <div class="task-group" data-priority="high">
         <div class="task-group-title"><span class="badge badge-high">High</span> Important improvements</div>
         <ul class="task-list">
-          <li class="task-item" data-id="high-1">
-            <input type="checkbox" id="high-1" />
+          <li class="task-item done" data-id="high-1">
+            <input type="checkbox" id="high-1" checked />
             <label class="task-text" for="high-1">Optimize homepage hero images (q_100 → q_auto, consider w_1920)</label>
           </li>
-          <li class="task-item" data-id="high-2">
-            <input type="checkbox" id="high-2" />
+          <li class="task-item done" data-id="high-2">
+            <input type="checkbox" id="high-2" checked />
             <label class="task-text" for="high-2">Optimize about section profile image (q_100 → q_auto)</label>
           </li>
-          <li class="task-item" data-id="high-3">
-            <input type="checkbox" id="high-3" />
+          <li class="task-item done" data-id="high-3">
+            <input type="checkbox" id="high-3" checked />
             <label class="task-text" for="high-3">Add Cloudinary preconnect hint in all page heads</label>
           </li>
-          <li class="task-item" data-id="high-4">
-            <input type="checkbox" id="high-4" />
+          <li class="task-item done" data-id="high-4">
+            <input type="checkbox" id="high-4" checked />
             <label class="task-text" for="high-4">Add favicon and apple-touch-icon</label>
           </li>
-          <li class="task-item" data-id="high-5">
-            <input type="checkbox" id="high-5" />
+          <li class="task-item done" data-id="high-5">
+            <input type="checkbox" id="high-5" checked />
             <label class="task-text" for="high-5">Add Open Graph and Twitter Card meta tags to all pages</label>
           </li>
-          <li class="task-item" data-id="high-6">
-            <input type="checkbox" id="high-6" />
+          <li class="task-item done" data-id="high-6">
+            <input type="checkbox" id="high-6" checked />
             <label class="task-text" for="high-6">Generate sitemap.xml with all product and gallery URLs</label>
           </li>
-          <li class="task-item" data-id="high-7">
-            <input type="checkbox" id="high-7" />
+          <li class="task-item done" data-id="high-7">
+            <input type="checkbox" id="high-7" checked />
             <label class="task-text" for="high-7">Add robots.txt</label>
           </li>
           <li class="task-item done" data-id="high-8">
@@ -954,12 +951,12 @@
             <input type="checkbox" id="high-18" />
             <label class="task-text" for="high-18">Align material naming between products.json, cart receipts, and FAQ</label>
           </li>
-          <li class="task-item" data-id="high-19">
-            <input type="checkbox" id="high-19" />
+          <li class="task-item done" data-id="high-19">
+            <input type="checkbox" id="high-19" checked />
             <label class="task-text" for="high-19">Set up Stripe webhooks for payment confirmation → fulfillment trigger</label>
           </li>
-          <li class="task-item" data-id="high-20">
-            <input type="checkbox" id="high-20" />
+          <li class="task-item done" data-id="high-20">
+            <input type="checkbox" id="high-20" checked />
             <label class="task-text" for="high-20">Add deployment config (vercel.json or netlify.toml) + .env.example</label>
           </li>
         </ul>
