@@ -8,6 +8,8 @@ const fs = require('fs');
 const path = require('path');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const notifications = require('../../utils/notifications');
+const { getProdigiSku } = require('../../utils/prodigi-sku');
+const { findProduct } = require('../../utils/checkout-validation');
 
 // Load products database
 let productsDatabase = null;
@@ -20,39 +22,6 @@ try {
   console.log('Successfully loaded products database.');
 } catch (error) {
   console.error('Failed to load products.json in Stripe webhook function:', error);
-}
-
-// Helper to find a product in any of the categories
-function findProduct(productId) {
-  if (!productsDatabase) return null;
-  const categories = ['standard', 'panoramas', 'aerial'];
-  for (const cat of categories) {
-    if (productsDatabase[cat]) {
-      const product = productsDatabase[cat].find(p => p.id === productId);
-      if (product) return product;
-    }
-  }
-  return null;
-}
-
-// Helper to map material & size to standard Prodigi SKUs
-function getProdigiSku(material, size) {
-  let prefix = 'GLOBAL-PAP'; // Default fallback
-  
-  if (material) {
-    const mat = material.toLowerCase();
-    if (mat.includes('metal') || mat.includes('chromaluxe')) {
-      prefix = 'GLOBAL-MET';
-    } else if (mat.includes('matte')) {
-      prefix = 'GLOBAL-FAP';
-    } else if (mat.includes('lustre') || mat.includes('paper')) {
-      prefix = 'GLOBAL-PAP';
-    }
-  }
-
-  // Format size: uppercase, no spaces, replace lowercase 'x' with 'X'
-  const formattedSize = (size || '12x18').toUpperCase().replace(/\s+/g, '');
-  return `${prefix}-${formattedSize}`;
 }
 
 // Helper to notify photographer (Gentry) if automatic print fulfillment fails
@@ -193,7 +162,7 @@ exports.handler = async (event, context) => {
         const material = metadata.material || 'Lustre Paper';
 
         // Retrieve product from products.json to verify it exists
-        const localProduct = findProduct(productId);
+        const localProduct = findProduct(productsDatabase, productId);
         if (!localProduct) {
           console.warn(`Product with ID "${productId}" not found in products.json.`);
         }

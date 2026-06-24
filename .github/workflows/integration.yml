@@ -1,0 +1,51 @@
+name: Integration (live connections)
+
+# Verifies that the Stripe (test mode), Prodigi (sandbox), and Resend API
+# keys configured in GitHub repo secrets are still valid and the upstream
+# services are reachable. Catches rotated keys, suspended accounts, and
+# API breakages before they bite us in production.
+#
+# Runs:
+#   - on push to main (post-merge)
+#   - nightly at 08:00 UTC
+#   - manually via the Actions tab
+#
+# Does NOT run on pull_request — fork PRs cannot read repo secrets, and we
+# don't want to leak keys to untrusted code.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: integration-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  connections:
+    name: Stripe / Prodigi / Resend connection checks
+    runs-on: ubuntu-latest
+
+    # Pull from GitHub repo secrets. Each individual test skips cleanly
+    # if its env var is missing, so partial configuration is fine.
+    env:
+      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY_TEST }}
+      PRODIGI_API_KEY: ${{ secrets.PRODIGI_API_KEY_SANDBOX }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run integration tests
+        run: npm run test:integration
