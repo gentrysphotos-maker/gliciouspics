@@ -1,0 +1,77 @@
+{
+  "runAt": "2026-06-16T03:35:34.422Z",
+  "preset": "mobile",
+  "baseUrl": "http://localhost:4173",
+  "results": [
+    {
+      "name": "home",
+      "path": "/index.html",
+      "url": "http://localhost:4173/index.html",
+      "performance": 98,
+      "fcp": 1753.7050500000003,
+      "lcp": 1753.7050500000003,
+      "tbt": 0,
+      "cls": 0.002719517121664656,
+      "speedIndex": 2988.825820000667,
+      "ttfb": 3.959,
+      "totalBytes": 1542713,
+      "imageBytes": 0
+    },
+    {
+      "name": "landscapes",
+      "path": "/pages/landscapes.html",
+      "url": "http://localhost:4173/pages/landscapes.html",
+      "performance": 66,
+      "fcp": 1546.1786,
+      "lcp": 7969.264800000001,
+      "tbt": 0,
+      "cls": 0.19508084794145797,
+      "speedIndex": 1546.1786,
+      "ttfb": 4.566,
+      "totalBytes": 4588267,
+      "imageBytes": 0
+    },
+    {
+      "name": "underwater",
+      "path": "/pages/underwater.html",
+      "url": "http://localhost:4173/pages/underwater.html",
+      "performance": 61,
+      "fcp": 1544.1739999999995,
+      "lcp": 9906.3858,
+      "tbt": 0,
+      "cls": 0.2749502817361046,
+      "speedIndex": 1544.1739999999995,
+      "ttfb": 1.7469999999999999,
+      "totalBytes": 1927365,
+      "imageBytes": 0
+    },
+    {
+      "name": "travel",
+      "path": "/pages/travel.html",
+      "url": "http://localhost:4173/pages/travel.html",
+      "performance": 79,
+      "fcp": 1551.0314499999997,
+      "lcp": 2936.9422999999997,
+      "tbt": 0,
+      "cls": 0.3121895976123347,
+      "speedIndex": 1551.0314499999997,
+      "ttfb": 2.568,
+      "totalBytes": 2535835,
+      "imageBytes": 0
+    },
+    {
+      "name": "product",
+      "path": "/pages/product-standard.html?id=kahala-oahu-beach-palm-tree-sunrise-purple-sky",
+      "url": "http://localhost:4173/pages/product-standard.html?id=kahala-oahu-beach-palm-tree-sunrise-purple-sky",
+      "performance": 57,
+      "fcp": 1539.5016500000002,
+      "lcp": 6622.291450000001,
+      "tbt": 0,
+      "cls": 0.433447367880421,
+      "speedIndex": 1539.5016500000002,
+      "ttfb": 1.8499999999999999,
+      "totalBytes": 1222940,
+      "imageBytes": 0
+    }
+  ]
+}

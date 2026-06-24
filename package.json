@@ -9,7 +9,16 @@
     "build:galleries": "node scripts/build-galleries.js",
     "build:layouts": "node scripts/build-layouts.js",
     "build:sitemap": "node scripts/generate-sitemap.js",
-    "build": "npm run build:galleries && npm run build:layouts && npm run build:sitemap"
+    "build": "npm run build:galleries && npm run build:layouts && npm run build:sitemap",
+    "validate": "node scripts/validate-catalog.js",
+    "test": "node --test tests/*.test.js",
+    "test:catalog": "node --test tests/catalog.test.js",
+    "test:checkout": "node --test tests/checkout-validation.test.js",
+    "test:prodigi": "node --test tests/prodigi-sku.test.js",
+    "test:integration": "node --test tests/integration/*.test.js",
+    "test:smoke": "node scripts/smoke-preview.js",
+    "test:all": "npm test && npm run test:integration",
+    "pretest": "npm run validate"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const { getProdigiSku } = require('./utils/prodigi-sku');
+const { buildLineItems } = require('./utils/checkout-validation');
 
 // Initialize Stripe (will fail gracefully if placeholder keys are still set)
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY || '';
@@ -208,39 +210,6 @@ try {
   console.error('Failed to load products.json:', error);
 }
 
-// Helper to map material & size to standard Prodigi SKUs
-function getProdigiSku(material, size) {
-  let prefix = 'GLOBAL-PAP'; // Default fallback
-  
-  if (material) {
-    const mat = material.toLowerCase();
-    if (mat.includes('metal') || mat.includes('chromaluxe')) {
-      prefix = 'GLOBAL-MET';
-    } else if (mat.includes('matte')) {
-      prefix = 'GLOBAL-FAP';
-    } else if (mat.includes('lustre') || mat.includes('paper')) {
-      prefix = 'GLOBAL-PAP';
-    }
-  }
-
-  // Format size: uppercase, no spaces, replace lowercase 'x' with 'X'
-  const formattedSize = (size || '12x18').toUpperCase().replace(/\s+/g, '');
-  return `${prefix}-${formattedSize}`;
-}
-
-// Helper to find a product in any of the categories
-function findProduct(productId) {
-  if (!productsDatabase) return null;
-  const categories = ['standard', 'panoramas', 'aerial'];
-  for (const cat of categories) {
-    if (productsDatabase[cat]) {
-      const product = productsDatabase[cat].find(p => p.id === productId);
-      if (product) return product;
-    }
-  }
-  return null;
-}
-
 // POST /api/checkout - Create a Stripe Checkout Session
 app.post('/api/checkout', async (req, res) => {
   if (!stripe) {
@@ -250,55 +219,13 @@ app.post('/api/checkout', async (req, res) => {
   }
 
   const { items } = req.body;
-
-  if (!items || !Array.isArray(items) || items.length === 0) {
-    return res.status(400).json({ error: 'Cart is empty or invalid.' });
+  const validation = buildLineItems(productsDatabase, items);
+  if (!validation.ok) {
+    return res.status(validation.status).json({ error: validation.error });
   }
+  const lineItems = validation.lineItems;
 
   try {
-    const lineItems = [];
-
-    // Validate each cart item against products.json
-    for (const item of items) {
-      const product = findProduct(item.id);
-      if (!product) {
-        return res.status(400).json({ error: `Product not found: ${item.title}` });
-      }
-
-      // Check if the material and size combination exists in products.json pricing
-      const materialPricing = product.pricing[item.material];
-      if (!materialPricing) {
-        return res.status(400).json({ error: `Invalid material: ${item.material} for ${product.title}` });
-      }
-
-      const verifiedPrice = materialPricing[item.size];
-      if (verifiedPrice === undefined || verifiedPrice === null) {
-        return res.status(400).json({ error: `Invalid size: ${item.size} for material ${item.material} of ${product.title}` });
-      }
-
-      // Stripe unit amount is in cents
-      const unitAmountInCents = Math.round(verifiedPrice * 100);
-
-      lineItems.push({
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: `${product.title} (${item.size} / ${item.material})`,
-            images: product.images && product.images.hero ? [product.images.hero] : [],
-            description: product.description || '',
-            metadata: {
-              productId: product.id,
-              size: item.size,
-              material: item.material
-            }
-          },
-          unit_amount: unitAmountInCents,
-        },
-        quantity: item.quantity,
-      });
-    }
-
-    // Determine the origin from the request headers
     const origin = req.headers.referer || req.headers.origin || `http://localhost:${PORT}`;
 
     // Create a Checkout Session

@@ -1,0 +1,43 @@
+name: Preview smoke
+
+# On-demand HTTP smoke test against a deployed URL (Netlify deploy preview,
+# branch deploy, or production). Confirms the deployed environment is fully
+# wired up — env vars are set on Netlify, /api/checkout reaches Stripe in
+# test mode, and a Stripe Checkout Session can actually be created.
+#
+# This is the final gate before promoting a preview to production.
+#
+# Trigger from the Actions tab → "Preview smoke" → Run workflow,
+# pasting in the preview URL from Netlify.
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Base URL to smoke test (no trailing slash)'
+        required: true
+        default: 'https://gliciouspics.netlify.app'
+
+concurrency:
+  group: smoke-${{ github.event.inputs.url }}
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    name: HTTP smoke against deployed URL
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Smoke test ${{ github.event.inputs.url }}
+        env:
+          BASE_URL: ${{ github.event.inputs.url }}
+        run: npm run test:smoke

@@ -26,6 +26,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { findProduct } = require('../../utils/checkout-validation');
 
 // Load products database
 let productsDatabase = null;
@@ -38,19 +39,6 @@ try {
   console.log('Successfully loaded products database.');
 } catch (error) {
   console.error('Failed to load products.json in Netlify function:', error);
-}
-
-// Helper to find a product in any of the categories
-function findProduct(productId) {
-  if (!productsDatabase) return null;
-  const categories = ['standard', 'panoramas', 'aerial'];
-  for (const cat of categories) {
-    if (productsDatabase[cat]) {
-      const product = productsDatabase[cat].find(p => p.id === productId);
-      if (product) return product;
-    }
-  }
-  return null;
 }
 
 exports.handler = async (event, context) => {
@@ -112,7 +100,7 @@ exports.handler = async (event, context) => {
         throw new Error(`Item with SKU "${item.sku}" is missing a product ID ("id" or "productId").`);
       }
 
-      const product = findProduct(productId);
+      const product = findProduct(productsDatabase, productId);
       if (!product) {
         throw new Error(`Product with ID "${productId}" not found in products.json.`);
       }
