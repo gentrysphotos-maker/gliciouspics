@@ -3,8 +3,13 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const { getProdigiSku } = require('./utils/prodigi-sku');
-const { buildLineItems } = require('./utils/checkout-validation');
+const { buildLineItems, findProduct } = require('./utils/checkout-validation');
 const { createProdigiOrder } = require('./utils/prodigi');
+const {
+  extractShippingDetails,
+  extractCustomerDetails,
+  formatOrderRef
+} = require('./utils/stripe-session');
 
 // Initialize Stripe (will fail gracefully if placeholder keys are still set)
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY || '';
@@ -59,16 +64,18 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
           const metadata = product && product.metadata ? product.metadata : {};
           const size = metadata.size || '12x18';
           const material = metadata.material || 'Lustre Paper';
-          const sku = getProdigiSku(material, size);
-          
+          const productId = metadata.productId || 'unknown';
+          const localProduct = findProduct(productsDatabase, productId);
+
           return {
-            id: metadata.productId || 'unknown',
-            sku: sku,
-            title: lineItem.description || 'Unknown Print',
-            size: size,
-            material: material,
+            id: productId,
+            sku: getProdigiSku(material, size),
+            title: lineItem.description || (localProduct ? localProduct.title : 'Unknown Print'),
+            size,
+            material,
             quantity: lineItem.quantity,
-            price: lineItem.amount_total / lineItem.quantity // in cents
+            price: lineItem.amount_total / lineItem.quantity, // in cents
+            thumbnailUrl: localProduct?.images?.hero || null
           };
         });
       } catch (stripeError) {
@@ -83,7 +90,8 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
               size: '12x18',
               material: 'Lustre Paper',
               quantity: 1,
-              price: 15000 // $150.00
+              price: 15000, // $150.00
+              thumbnailUrl: null
             },
             {
               id: 'japan-mount-fuji-honcho-street-photography',
@@ -92,7 +100,8 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
               size: '16x24',
               material: 'Chromaluxe Metal',
               quantity: 1,
-              price: 35000 // $350.00
+              price: 35000, // $350.00
+              thumbnailUrl: null
             }
           ];
         } else {
@@ -100,53 +109,48 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
         }
       }
 
-      // Prepare Prodigi order payload
-      const shippingDetails = session.shipping_details || {};
-      const address = shippingDetails.address || {};
-      const customerDetails = session.customer_details || {};
+      const shipping = extractShippingDetails(session);
+      const customer = extractCustomerDetails(session);
+      const recipientName = shipping.name || customer.name || 'Valued Customer';
 
       const prodigiOrderPayload = {
-        customerEmail: customerDetails.email || 'unknown@example.com',
-        recipientName: shippingDetails.name || customerDetails.name || 'Valued Customer',
+        customerEmail: customer.email || 'unknown@example.com',
+        recipientName,
         shippingAddress: {
-          line1: address.line1 || '',
-          line2: address.line2 || '',
-          postalOrZipCode: address.postal_code || '',
-          countryCode: address.country || '',
-          townOrCity: address.city || '',
-          stateOrCounty: address.state || ''
+          line1: shipping.address.line1,
+          line2: shipping.address.line2,
+          postalOrZipCode: shipping.address.postal_code,
+          countryCode: shipping.address.country,
+          townOrCity: shipping.address.city,
+          stateOrCounty: shipping.address.state
         },
-        items: items
+        items
       };
 
-      let prodigiSuccess = false;
-      let prodigiResponseData = null;
-      let prodigiError = null;
-
       const prodigiResult = await createProdigiOrder(prodigiOrderPayload, productsDatabase);
-      if (prodigiResult.ok) {
-        prodigiSuccess = true;
-        prodigiResponseData = prodigiResult.data;
+      const prodigiSuccess = prodigiResult.ok;
+      const prodigiResponseData = prodigiSuccess ? prodigiResult.data : null;
+      const prodigiErrorMessage = prodigiSuccess ? null : (prodigiResult.error || 'Unknown error');
+
+      if (prodigiSuccess) {
         console.log(`Prodigi order created successfully. Prodigi Order ID: ${prodigiResponseData.order?.id}`);
-      } else {
-        prodigiError = new Error(prodigiResult.error || 'Unknown error');
       }
 
-      // Prepare order details
       const orderDetails = {
         orderId: session.id,
+        orderRef: formatOrderRef(session.id),
         paymentIntentId: session.payment_intent,
-        customerName: session.shipping_details ? session.shipping_details.name : (session.customer_details ? session.customer_details.name : 'Unknown Customer'),
-        customerEmail: session.customer_details ? session.customer_details.email : 'unknown@example.com',
-        customerPhone: session.customer_details ? session.customer_details.phone : null,
+        customerName: recipientName,
+        customerEmail: customer.email || 'unknown@example.com',
+        customerPhone: customer.phone,
         totalAmount: session.amount_total, // in cents
         currency: session.currency,
-        shippingAddress: session.shipping_details ? session.shipping_details.address : {},
-        shippingName: session.shipping_details ? session.shipping_details.name : '',
-        items: items,
-        prodigiSuccess: prodigiSuccess,
+        shippingAddress: shipping.address,
+        shippingName: shipping.name,
+        items,
+        prodigiSuccess,
         prodigiOrderId: prodigiSuccess ? (prodigiResponseData.order?.id || null) : null,
-        prodigiError: prodigiSuccess ? null : (prodigiError ? prodigiError.message : 'Unknown error'),
+        prodigiError: prodigiErrorMessage,
         createdAt: new Date().toISOString()
       };
 
