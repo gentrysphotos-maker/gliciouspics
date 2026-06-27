@@ -13,13 +13,19 @@ async function createProdigiOrder(payload, productsDatabase) {
   }
 
   const shipping = payload.shippingAddress || payload.address || {};
+  const trim = (v) => (v == null ? '' : String(v).trim());
+  const line2 = trim(shipping.line2);
+  // Prodigi's API rejects empty strings on optional fields like line2 — they
+  // want the key omitted entirely when there's no value. Required fields are
+  // always sent (empty string flags them as missing in Prodigi's validation,
+  // which is what we want — better a clear validation error than silent drop).
   const prodigiAddress = {
-    line1: shipping.line1 || '',
-    line2: shipping.line2 || '',
-    townOrCity: shipping.city || shipping.townOrCity || '',
-    stateOrCounty: shipping.state || shipping.stateOrCounty || '',
-    postalOrZipCode: shipping.postal_code || shipping.postalOrZipCode || '',
-    countryCode: shipping.country || shipping.countryCode || ''
+    line1: trim(shipping.line1),
+    townOrCity: trim(shipping.city || shipping.townOrCity),
+    stateOrCounty: trim(shipping.state || shipping.stateOrCounty),
+    postalOrZipCode: trim(shipping.postal_code || shipping.postalOrZipCode),
+    countryCode: trim(shipping.country || shipping.countryCode),
+    ...(line2 && { line2 })
   };
 
   const recipient = {
