@@ -4,6 +4,10 @@
 # Dependencies
 node_modules/
 
+# Local-only runtime artifacts
+orders/
+temp_emails/
+
 # OS files
 .DS_Store
 Thumbs.db

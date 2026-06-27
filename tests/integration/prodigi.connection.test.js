@@ -14,8 +14,18 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 
 const KEY = process.env.PRODIGI_API_KEY || '';
-const HAS_KEY = KEY.length > 0;
-const skipMsg = HAS_KEY ? null : 'PRODIGI_API_KEY not set — skipping Prodigi connection tests';
+
+// Catch the common mistake of pasting a documentation placeholder.
+// Prodigi sandbox keys don't have a fixed prefix — they're just opaque
+// strings — so we only filter out obvious placeholder shapes.
+const LOOKS_LIKE_PLACEHOLDER = /[^\x20-\x7E]/.test(KEY) || /\.{3}|…/.test(KEY);
+const HAS_KEY = KEY.length > 0 && !LOOKS_LIKE_PLACEHOLDER;
+
+const skipMsg = !KEY
+  ? 'PRODIGI_API_KEY not set — skipping Prodigi connection tests'
+  : LOOKS_LIKE_PLACEHOLDER
+  ? 'PRODIGI_API_KEY looks like a placeholder (contains "…" or "..."). Paste the real sandbox key from sandbox-beta-dashboard.pwinty.com.'
+  : null;
 
 const SANDBOX_BASE = 'https://api.sandbox.prodigi.com/v4.0';
 

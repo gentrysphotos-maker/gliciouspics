@@ -23,11 +23,17 @@ const path = require('node:path');
 const { buildLineItems } = require('../../utils/checkout-validation');
 
 const KEY = process.env.STRIPE_SECRET_KEY || '';
-const HAS_TEST_KEY = KEY.startsWith('sk_test_');
+
+// Catch the common mistake of pasting a documentation placeholder (e.g.
+// "sk_test_51..." or "sk_test_51…") instead of a real key.
+const LOOKS_LIKE_PLACEHOLDER = /[^\x20-\x7E]/.test(KEY) || /\.{3}|…/.test(KEY);
+const HAS_TEST_KEY = KEY.startsWith('sk_test_') && !LOOKS_LIKE_PLACEHOLDER;
 const HAS_LIVE_KEY = KEY.startsWith('sk_live_');
 
 const skipMsg = !KEY
   ? 'STRIPE_SECRET_KEY not set — skipping Stripe connection tests'
+  : LOOKS_LIKE_PLACEHOLDER
+  ? 'STRIPE_SECRET_KEY looks like a placeholder (contains "…" or "..."). Paste the real key from dashboard.stripe.com/test/apikeys.'
   : !HAS_TEST_KEY
   ? 'STRIPE_SECRET_KEY is not a test-mode key — skipping (refuse to use live keys in tests)'
   : null;

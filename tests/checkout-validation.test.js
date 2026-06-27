@@ -1,10 +1,9 @@
 /**
  * Checkout validation tests.
  *
- * Targets the pure helpers used by both /api/checkout (Express) and the
- * Netlify create-checkout function. These exercise the server-side price
- * lookup that prevents client-side price tampering — no Stripe key,
- * no network, no environment setup required.
+ * Targets the pure helpers used by /api/checkout. These exercise the
+ * server-side price lookup that prevents client-side price tampering —
+ * no Stripe key, no network, no environment setup required.
  *
  * Run: npm test (or: node --test tests/checkout-validation.test.js)
  */
