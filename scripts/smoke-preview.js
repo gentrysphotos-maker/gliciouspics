@@ -2,8 +2,8 @@
 /**
  * Preview / production smoke test.
  *
- * Hits a deployed URL (Netlify deploy preview, branch deploy, or production)
- * and confirms the site is wired up end-to-end:
+ * Hits a deployed URL (Railway preview, production, or local) and confirms
+ * the site is wired up end-to-end:
  *
  *   1. Homepage and key static pages return 200
  *   2. robots.txt and sitemap.xml are present
@@ -12,10 +12,10 @@
  *      session id — proves the deployed env has Stripe configured correctly
  *
  * Requires nothing client-side; Stripe test keys must be configured on the
- * deployed environment (Netlify env vars), not in this process.
+ * deployed environment (Railway service variables), not in this process.
  *
  * Usage:
- *   BASE_URL=https://deploy-preview-12--site.netlify.app node scripts/smoke-preview.js
+ *   BASE_URL=https://your-app.up.railway.app node scripts/smoke-preview.js
  *   node scripts/smoke-preview.js https://gliciouspics.com
  *
  * Exit codes:
@@ -30,7 +30,7 @@ const path = require('node:path');
 const RAW_URL = process.env.BASE_URL || process.argv[2];
 if (!RAW_URL) {
   console.error('FATAL: BASE_URL is required.');
-  console.error('  BASE_URL=https://<preview>.netlify.app node scripts/smoke-preview.js');
+  console.error('  BASE_URL=https://<your-app>.up.railway.app node scripts/smoke-preview.js');
   process.exit(2);
 }
 const BASE_URL = RAW_URL.replace(/\/+$/, '');

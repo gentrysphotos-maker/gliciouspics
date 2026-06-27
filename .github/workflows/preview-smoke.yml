@@ -1,14 +1,14 @@
 name: Preview smoke
 
-# On-demand HTTP smoke test against a deployed URL (Netlify deploy preview,
-# branch deploy, or production). Confirms the deployed environment is fully
-# wired up — env vars are set on Netlify, /api/checkout reaches Stripe in
-# test mode, and a Stripe Checkout Session can actually be created.
+# On-demand HTTP smoke test against a deployed URL (Railway preview or
+# production). Confirms the deployed environment is fully wired up —
+# env vars are set, /api/checkout reaches Stripe in test mode, and a
+# Stripe Checkout Session can actually be created.
 #
 # This is the final gate before promoting a preview to production.
 #
 # Trigger from the Actions tab → "Preview smoke" → Run workflow,
-# pasting in the preview URL from Netlify.
+# pasting in the preview URL from Railway.
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ on:
       url:
         description: 'Base URL to smoke test (no trailing slash)'
         required: true
-        default: 'https://gliciouspics.netlify.app'
+        default: 'https://gliciouspics.up.railway.app'
 
 concurrency:
   group: smoke-${{ github.event.inputs.url }}

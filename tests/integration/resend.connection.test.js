@@ -12,9 +12,15 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 
 const KEY = process.env.RESEND_API_KEY || '';
-const HAS_KEY = KEY.startsWith('re_');
+
+// Catch the common mistake of pasting a documentation placeholder.
+const LOOKS_LIKE_PLACEHOLDER = /[^\x20-\x7E]/.test(KEY) || /\.{3}|…/.test(KEY);
+const HAS_KEY = KEY.startsWith('re_') && !LOOKS_LIKE_PLACEHOLDER;
+
 const skipMsg = !KEY
   ? 'RESEND_API_KEY not set — skipping Resend connection tests'
+  : LOOKS_LIKE_PLACEHOLDER
+  ? 'RESEND_API_KEY looks like a placeholder (contains "…" or "..."). Paste the real key from resend.com/api-keys.'
   : !HAS_KEY
   ? 'RESEND_API_KEY does not look like a Resend key (expected re_*) — skipping'
   : null;

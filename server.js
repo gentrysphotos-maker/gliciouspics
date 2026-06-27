@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const { getProdigiSku } = require('./utils/prodigi-sku');
 const { buildLineItems } = require('./utils/checkout-validation');
+const { createProdigiOrder } = require('./utils/prodigi');
 
 // Initialize Stripe (will fail gracefully if placeholder keys are still set)
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY || '';
@@ -118,30 +119,17 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
         items: items
       };
 
-      console.log('Submitting order to Prodigi Sandbox...');
       let prodigiSuccess = false;
       let prodigiResponseData = null;
       let prodigiError = null;
 
-      try {
-        const createProdigiOrder = require('./netlify/functions/create-prodigi-order').handler;
-        const mockEvent = {
-          httpMethod: 'POST',
-          body: JSON.stringify(prodigiOrderPayload)
-        };
-
-        const prodigiResponse = await createProdigiOrder(mockEvent, {});
-        console.log(`Prodigi response status: ${prodigiResponse.statusCode}`);
-        prodigiResponseData = JSON.parse(prodigiResponse.body || '{}');
-
-        if (prodigiResponse.statusCode === 201) {
-          prodigiSuccess = true;
-          console.log(`Prodigi order created successfully. Prodigi Order ID: ${prodigiResponseData.order?.id}`);
-        } else {
-          prodigiError = new Error(prodigiResponseData.error || 'Unknown error');
-        }
-      } catch (err) {
-        prodigiError = err;
+      const prodigiResult = await createProdigiOrder(prodigiOrderPayload, productsDatabase);
+      if (prodigiResult.ok) {
+        prodigiSuccess = true;
+        prodigiResponseData = prodigiResult.data;
+        console.log(`Prodigi order created successfully. Prodigi Order ID: ${prodigiResponseData.order?.id}`);
+      } else {
+        prodigiError = new Error(prodigiResult.error || 'Unknown error');
       }
 
       // Prepare order details
@@ -162,15 +150,16 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
         createdAt: new Date().toISOString()
       };
 
-      // Save order to a local JSON file
-      const ordersDir = path.join(__dirname, 'orders');
-      if (!fs.existsSync(ordersDir)) {
-        fs.mkdirSync(ordersDir, { recursive: true });
+      // Save order to a local JSON file (dev only — production filesystem is ephemeral on Railway)
+      if (process.env.NODE_ENV !== 'production') {
+        const ordersDir = path.join(__dirname, 'orders');
+        if (!fs.existsSync(ordersDir)) {
+          fs.mkdirSync(ordersDir, { recursive: true });
+        }
+        const orderFilePath = path.join(ordersDir, `order_${session.id}.json`);
+        fs.writeFileSync(orderFilePath, JSON.stringify(orderDetails, null, 2), 'utf8');
+        console.log(`Saved order record to: ${orderFilePath}`);
       }
-
-      const orderFilePath = path.join(ordersDir, `order_${session.id}.json`);
-      fs.writeFileSync(orderFilePath, JSON.stringify(orderDetails, null, 2), 'utf8');
-      console.log(`Saved order record to: ${orderFilePath}`);
 
       // Send notifications
       const notifications = require('./utils/notifications');
@@ -196,6 +185,11 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
 
 // Parse JSON request bodies
 app.use(express.json());
+
+// 301 redirects for legacy product page URLs (previously handled by netlify.toml)
+app.get('/pages/product-standard.html', (req, res) => res.redirect(301, '/pages/product.html'));
+app.get('/pages/product-panorama.html', (req, res) => res.redirect(301, '/pages/product.html'));
+app.get('/pages/product-aerial.html', (req, res) => res.redirect(301, '/pages/product.html'));
 
 // Serve static files from the root of the project
 app.use(express.static(path.join(__dirname)));
@@ -259,6 +253,6 @@ app.get('*', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
