@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
+const SITE_URL = (process.env.SITE_URL || 'https://gliciouspics.com').replace(/\/+$/, '');
+
 // Helper to send email via Resend API
 async function sendViaResend(to, subject, htmlBody) {
   const apiKey = process.env.RESEND_API_KEY;
@@ -242,7 +244,7 @@ function getEmailWrapper(contentHtml) {
 <body>
   <div class="wrapper">
     <div class="container">
-      <div class="logo">G.Licious Pics</div>
+      <div class="logo"><a href="${SITE_URL}" style="color: #c8a96e; text-decoration: none;">G.Licious Pics</a></div>
       ${contentHtml}
       <div class="footer">
         <p>&copy; 2026 G.Licious Pics. All rights reserved.</p>
@@ -377,6 +379,11 @@ async function sendCustomerConfirmation(orderDetails) {
     <p><strong>Timeline & Fulfillment:</strong> Standard production time is 2-4 days for Lustre Paper prints and 5-7 days for ChromaLuxe Metal prints. You will receive an email containing tracking details as soon as your artwork ships.</p>
 
     <p class="muted">Note: If you need to make corrections or request changes, please reply to this email within 6 hours of purchase.</p>
+
+    <div style="text-align: center; margin: 35px 0 10px;">
+      <a href="${SITE_URL}" class="btn">Keep Shopping</a>
+      <p class="muted" style="margin-top: 12px;">Browse more fine art prints at <a href="${SITE_URL}" style="color: #c8a96e;">gliciouspics.com</a></p>
+    </div>
   `;
 
   return dispatchEmail(

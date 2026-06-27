@@ -177,7 +177,7 @@ ${customPanoStyles}
     <nav class="site-nav" id="site-nav">
       <a href="../index.html" class="nav-link">Home</a>
       <div class="nav-dropdown">
-        <span class="nav-link dropdown-trigger active">Shop ▾</span>
+        <span class="nav-link dropdown-trigger active">Shop <span class="dropdown-chevron" aria-hidden="true">▾</span></span>
         <div class="dropdown-menu">
           <a href="underwater.html">Underwater</a>
           <a href="landscapes.html">Landscapes</a>

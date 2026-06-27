@@ -37,6 +37,31 @@
       overflow: hidden;
       margin-bottom: 0.5rem;
       transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s;
+      position: relative;
+      cursor: zoom-in;
+    }
+
+    .main-image-wrap::after {
+      content: 'Click to enlarge';
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      padding: 0.35rem 0.65rem;
+      background: rgba(10, 10, 10, 0.72);
+      border: 1px solid var(--mid);
+      color: var(--silver);
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .main-image-wrap:hover::after,
+    .main-image-wrap:focus-visible::after {
+      opacity: 1;
     }
 
     .main-image-wrap img {
@@ -420,6 +445,110 @@
     .product-layout.format-panorama .main-image-wrap img {
       max-height: 50vh;
     }
+
+    /* ── IMAGE LIGHTBOX ── */
+    .product-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      background: rgba(0, 0, 0, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem 3rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .product-lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .product-lightbox-inner {
+      max-width: min(96vw, 1400px);
+      max-height: calc(100vh - 6rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-lightbox-zoom {
+      overflow: hidden;
+      line-height: 0;
+      max-width: min(96vw, 1400px);
+      max-height: calc(100vh - 6rem);
+      cursor: zoom-in;
+    }
+    .product-lightbox-zoom.is-zoomed {
+      cursor: crosshair;
+    }
+    .product-lightbox-zoom img {
+      max-width: min(96vw, 1400px);
+      max-height: calc(100vh - 6rem);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+      transform: scale(1);
+      transform-origin: center center;
+      transition: transform 0.2s ease;
+      will-change: transform;
+    }
+    .product-lightbox-zoom.is-zoomed img {
+      transform: scale(2.25);
+    }
+    .product-lightbox-close,
+    .product-lightbox-nav {
+      position: absolute;
+      background: rgba(20, 20, 20, 0.85);
+      border: 1px solid var(--mid);
+      color: var(--white);
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .product-lightbox-close:hover,
+    .product-lightbox-nav:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .product-lightbox-close {
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.5rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-lightbox-nav {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.75rem;
+      height: 2.75rem;
+      font-size: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-lightbox-prev { left: 1rem; }
+    .product-lightbox-next { right: 1rem; }
+    .product-lightbox-nav[disabled] {
+      opacity: 0.35;
+      cursor: default;
+      pointer-events: none;
+    }
+    .product-lightbox-counter {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
   </style>
 
   <!-- Open Graph / Facebook -->
@@ -440,6 +569,7 @@
   <a href="#main-content" class="skip-to-content">Skip to content</a>
   
   
+  
 
   <header class="site-header" id="site-header">
   <a href="../index.html" class="logo">G.Licious</a>
@@ -449,7 +579,7 @@
   <nav class="site-nav" id="site-nav">
     <a href="../index.html" class="nav-link ">Home</a>
     <div class="nav-dropdown">
-      <button class="nav-link dropdown-trigger active" type="button" aria-haspopup="true" aria-expanded="false">Shop ▾</button>
+      <button class="nav-link dropdown-trigger active" type="button" aria-haspopup="true" aria-expanded="false">Shop <span class="dropdown-chevron" aria-hidden="true">▾</span></button>
       <div class="dropdown-menu">
         <a href="underwater.html">Underwater</a>
         <a href="landscapes.html">Landscapes</a>
@@ -464,7 +594,7 @@
     <a href="../index.html#contact" class="nav-link">Contact</a>
     <div class="nav-socials">
       <a href="cart.html" class="nav-cart " aria-label="View Cart">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <path d="M16 10a4 4 0 0 1-8 0"></path>
@@ -478,7 +608,8 @@
 
 
 
-  <main id="main-content"     class="product-page">
+
+  <main id="main-content"       class="product-page">
     <div class="product-layout">
 
       <!-- LEFT: Image Column -->
@@ -536,8 +667,8 @@
         <div class="product-accordions">
 
           <!-- Material Options -->
-          <div class="accordion-item" id="acc-materials">
-            <button class="accordion-trigger" aria-expanded="false">
+          <div class="accordion-item open" id="acc-materials">
+            <button class="accordion-trigger" aria-expanded="true">
               Material Options
               <span class="accordion-icon" aria-hidden="true"></span>
             </button>
@@ -582,6 +713,18 @@
     </div>
   </main>
 
+  <div class="product-lightbox" id="product-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button type="button" class="product-lightbox-close" id="product-lightbox-close" aria-label="Close preview">&times;</button>
+    <button type="button" class="product-lightbox-nav product-lightbox-prev" id="product-lightbox-prev" aria-label="Previous image">&#8249;</button>
+    <button type="button" class="product-lightbox-nav product-lightbox-next" id="product-lightbox-next" aria-label="Next image">&#8250;</button>
+    <div class="product-lightbox-inner">
+      <div class="product-lightbox-zoom" id="product-lightbox-zoom">
+        <img id="product-lightbox-img" src="" alt="">
+      </div>
+    </div>
+    <p class="product-lightbox-counter" id="product-lightbox-counter"></p>
+  </div>
+
   <footer class="site-footer">
   <div class="footer-inner">
     <a href="../index.html" class="footer-logo">G.Licious</a>
@@ -607,6 +750,7 @@
     <p class="footer-copy">© 2026 G.Licious Pics by Gentry. All rights reserved.</p>
   </div>
 </footer>
+
 
 
 

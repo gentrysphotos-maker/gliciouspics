@@ -1,5 +1,57 @@
 /* G.Licious Pics — cart.js */
 
+function getPagesPath(filename) {
+  const path = window.location.pathname;
+  return path.includes('/pages/') ? filename : 'pages/' + filename;
+}
+
+function getProductPageUrl(productId) {
+  return getPagesPath('product.html') + '?id=' + encodeURIComponent(productId);
+}
+
+function getCartPageUrl() {
+  return getPagesPath('cart.html');
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function showAddedToCartToast(product) {
+  let container = document.getElementById('cart-toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'cart-toast-container';
+    container.className = 'cart-toast-container';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = 'cart-toast';
+  toast.innerHTML =
+    '<p class="cart-toast-message"><strong>' + escapeHtml(product.title) + '</strong> added to cart</p>' +
+    '<a href="' + getCartPageUrl() + '" class="cart-toast-link">View Cart</a>' +
+    '<button type="button" class="cart-toast-dismiss" aria-label="Dismiss">&times;</button>';
+
+  container.appendChild(toast);
+
+  requestAnimationFrame(function() {
+    toast.classList.add('visible');
+  });
+
+  function dismiss() {
+    toast.classList.remove('visible');
+    setTimeout(function() {
+      toast.remove();
+    }, 300);
+  }
+
+  toast.querySelector('.cart-toast-dismiss').addEventListener('click', dismiss);
+  setTimeout(dismiss, 6000);
+}
+
 // Retrieve cart from localStorage
 function getCart() {
   try {
@@ -50,6 +102,7 @@ function addToCart(product) {
   }
 
   saveCart(cart);
+  showAddedToCartToast(product);
 }
 
 // Remove item by index
