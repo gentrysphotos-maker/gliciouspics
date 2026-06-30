@@ -18,6 +18,33 @@ function addTransform(url, transform) {
   return decodedUrl;
 }
 
+// Simple seedable pseudo-random generator (LCG)
+function createRandom(seed) {
+  let s = seed;
+  return function() {
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  };
+}
+
+// Deterministic shuffle using category name as seed
+function deterministicShuffle(array, seedString) {
+  let seed = 0;
+  for (let i = 0; i < seedString.length; i++) {
+    seed = (seed << 5) - seed + seedString.charCodeAt(i);
+    seed |= 0; // Convert to 32-bit integer
+  }
+  seed = Math.abs(seed);
+  
+  const rand = createRandom(seed);
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 // Map categories and details
 const categories = {
   underwater: {
@@ -234,7 +261,10 @@ function buildFooter() {
 // Generate each category page
 Object.keys(categories).forEach(catKey => {
   const cat = categories[catKey];
-  const items = cat.getProducts();
+  let items = cat.getProducts();
+
+  // Shuffle items deterministically based on the category name
+  items = deterministicShuffle(items, catKey);
 
   console.log(`Generating ${catKey}.html with ${items.length} products...`);
 
