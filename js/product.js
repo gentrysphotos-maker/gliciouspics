@@ -186,8 +186,8 @@
 
   // ── RENDER SUGGESTIONS ───────────────────────────────────────────────────
   function renderSuggestions(allProducts, currentProduct) {
-    // 1. Filter out the current product
-    const pool = allProducts.filter(p => p.id !== currentProduct.id);
+    // 1. Filter out the current product and panorama images
+    const pool = allProducts.filter(p => p.id !== currentProduct.id && p.category !== 'panoramas');
 
     // 2. Shuffle the pool to ensure random selection
     pool.sort(() => 0.5 - Math.random());
