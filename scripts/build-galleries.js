@@ -275,7 +275,6 @@ Object.keys(categories).forEach(catKey => {
         <span class="section-eyebrow">${cat.eyebrow}</span>
         <h1 class="section-title" style="margin-bottom:0">${cat.titleDisplay}</h1>
       </div>
-      <a href="../index.html#contact" class="btn-outline">Order a Custom Print</a>
     </div>`;
 
   if (cat.introText) {
