@@ -515,6 +515,15 @@
       } else {
         priceEl.textContent = 'Starting at $' + Number(product.startingPrice).toFixed(2);
       }
+
+      const metalNotice = document.getElementById('metal-notice');
+      if (metalNotice) {
+        if (mat === 'Chromaluxe Metal') {
+          metalNotice.style.display = 'block';
+        } else {
+          metalNotice.style.display = 'none';
+        }
+      }
     }
 
     sizeEl.addEventListener('change', () => {
