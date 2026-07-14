@@ -27,20 +27,100 @@ function createRandom(seed) {
   };
 }
 
-// Deterministic shuffle using category name as seed
-function deterministicShuffle(array, seedString) {
+function getSignificantWords(str) {
+  const stopWords = new Set(['the', 'a', 'of', 'and', 'in', 'under', 'on', 'at', 'to', 'for', 'with', 'by', 'an', 'is', 'this', 'that']);
+  return str.toLowerCase()
+    .replace(/[()ʻ,]/g, '')
+    .split(/\s+/)
+    .filter(w => w.length > 2 && !stopWords.has(w));
+}
+
+function areSimilar(prodA, prodB) {
+  // Check ID prefix (first 3 words of hyphenated ID)
+  const idPartA = prodA.id.split('-').slice(0, 3).join('-');
+  const idPartB = prodB.id.split('-').slice(0, 3).join('-');
+  if (idPartA === idPartB) return true;
+
+  // Check title word overlap
+  const wordsA = getSignificantWords(prodA.title);
+  const wordsB = getSignificantWords(prodB.title);
+  for (const w of wordsA) {
+    if (wordsB.includes(w)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function shuffleAndResolveConflicts(arr, seedString) {
   let seed = 0;
   for (let i = 0; i < seedString.length; i++) {
     seed = (seed << 5) - seed + seedString.charCodeAt(i);
-    seed |= 0; // Convert to 32-bit integer
+    seed |= 0;
   }
   seed = Math.abs(seed);
-  
   const rand = createRandom(seed);
-  const result = [...array];
+
+  const result = [...arr];
+  // Seeded Fisher-Yates shuffle
   for (let i = result.length - 1; i > 0; i--) {
     const j = Math.floor(rand() * (i + 1));
     [result[i], result[j]] = [result[j], result[i]];
+  }
+
+  function hasConflict(idx) {
+    // Distance 1 (horizontal adjacent in 3 columns row layout)
+    if (idx > 0 && areSimilar(result[idx], result[idx - 1])) return true;
+    if (idx < result.length - 1 && areSimilar(result[idx], result[idx + 1])) return true;
+    
+    // Distance 3 (vertical adjacent in 3 columns layout)
+    if (idx > 2 && areSimilar(result[idx], result[idx - 3])) return true;
+    if (idx < result.length - 3 && areSimilar(result[idx], result[idx + 3])) return true;
+    
+    return false;
+  }
+
+  let attempts = 0;
+  let hasConflicts = true;
+  while (hasConflicts && attempts < 20) {
+    hasConflicts = false;
+    attempts++;
+    for (let i = 0; i < result.length; i++) {
+      if (hasConflict(i)) {
+        let swapped = false;
+        for (let j = 0; j < result.length; j++) {
+          if (j === i) continue;
+          
+          [result[i], result[j]] = [result[j], result[i]];
+          
+          if (!hasConflict(i) && !hasConflict(j)) {
+            swapped = true;
+            break;
+          } else {
+            [result[i], result[j]] = [result[j], result[i]]; // swap back
+          }
+        }
+        if (!swapped) {
+          hasConflicts = true;
+        }
+      }
+    }
+  }
+  return result;
+}
+
+function arrangeLeftToRight3Cols(arr) {
+  const result = [];
+  const colCount = 3;
+  const rowCount = Math.ceil(arr.length / colCount);
+  
+  for (let c = 0; c < colCount; c++) {
+    for (let r = 0; r < rowCount; r++) {
+      const idx = r * colCount + c;
+      if (idx < arr.length) {
+        result.push(arr[idx]);
+      }
+    }
   }
   return result;
 }
@@ -263,8 +343,13 @@ Object.keys(categories).forEach(catKey => {
   const cat = categories[catKey];
   let items = cat.getProducts();
 
-  // Order items: newest first (reverse chronological order based on JSON position)
-  items = [...items].reverse();
+  // Shuffles and resolves adjacent similarity conflicts (horizontal and vertical)
+  items = shuffleAndResolveConflicts(items, catKey);
+
+  // For masonry column layout, rearrange elements to layout left-to-right
+  if (cat.layout === 'masonry') {
+    items = arrangeLeftToRight3Cols(items);
+  }
 
   console.log(`Generating ${catKey}.html with ${items.length} products...`);
 

@@ -76,7 +76,9 @@ Keep your tracking spreadsheet updated with a new row. Use these columns:
 The website includes an automatic compilation script that reads `products.json` and updates the gallery web pages. 
 
 > [!NOTE]
-> The build script automatically orders photos by **newest first** (reverse chronological order based on their position in `products.json`). This means any new prints you append to the end of `products.json` will automatically appear at the top of their respective gallery pages.
+> The build script automatically **randomizes/shuffles** the order of the photos within each gallery using a deterministic seed (stable between runs). It performs two advanced operations:
+> 1. **Resolves Adjacency Conflicts:** Prevents similar photos (e.g. horizontal and vertical versions of the same spot, or items sharing key words in titles/IDs) from appearing next to each other horizontally or vertically.
+> 2. **Flows Left-to-Right:** Rearranges the items in the DOM so they display from left-to-right across columns on desktop screens, rather than top-to-bottom.
 
 1. Open the Command Prompt, navigate to the folder, and run:
    `node scripts/build-galleries.js`
