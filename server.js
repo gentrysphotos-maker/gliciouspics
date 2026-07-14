@@ -226,6 +226,15 @@ app.post('/api/checkout', async (req, res) => {
   try {
     const origin = req.headers.referer || req.headers.origin || `http://localhost:${PORT}`;
 
+    const hasMetal = Array.isArray(items) && items.some(item => item.material === 'Chromaluxe Metal');
+    const allowedCountries = hasMetal
+      ? ['US']
+      : [
+          'US', 'MX',
+          'GB', 'DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'CH', 'SE', 'NO', 'DK', 'FI', 'PT', 'IE', 'PL', 'CZ', 'HU', 'RO', 'GR',
+          'CA', 'AU', 'JP'
+        ];
+
     // Create a Checkout Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -233,7 +242,7 @@ app.post('/api/checkout', async (req, res) => {
       mode: 'payment',
       allow_promotion_codes: true,
       shipping_address_collection: {
-        allowed_countries: ['US', 'CA', 'GB', 'AU', 'NZ', 'IE', 'FR', 'DE', 'IT', 'ES', 'JP'], // Expand as needed
+        allowed_countries: allowedCountries,
       },
       phone_number_collection: {
         enabled: true
