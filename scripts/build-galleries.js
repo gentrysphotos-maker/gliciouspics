@@ -263,8 +263,8 @@ Object.keys(categories).forEach(catKey => {
   const cat = categories[catKey];
   let items = cat.getProducts();
 
-  // Shuffle items deterministically based on the category name
-  items = deterministicShuffle(items, catKey);
+  // Order items: newest first (reverse chronological order based on JSON position)
+  items = [...items].reverse();
 
   console.log(`Generating ${catKey}.html with ${items.length} products...`);
 

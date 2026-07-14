@@ -74,6 +74,10 @@ Keep your tracking spreadsheet updated with a new row. Use these columns:
 
 ### 6. Update the Gallery HTML Pages
 The website includes an automatic compilation script that reads `products.json` and updates the gallery web pages. 
+
+> [!NOTE]
+> The build script automatically orders photos by **newest first** (reverse chronological order based on their position in `products.json`). This means any new prints you append to the end of `products.json` will automatically appear at the top of their respective gallery pages.
+
 1. Open the Command Prompt, navigate to the folder, and run:
    `node scripts/build-galleries.js`
    This automatically rebuilds the category HTML files (like `underwater.html`, `landscapes.html`, etc.) to include your new prints.
