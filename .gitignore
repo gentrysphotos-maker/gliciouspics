@@ -21,3 +21,6 @@ Thumbs.db
 *.sln
 *.swp
 node_modules
+
+# Scratch files
+scratch/

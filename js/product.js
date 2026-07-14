@@ -591,8 +591,11 @@
         const data = JSON.parse(cached);
         const all = [].concat(data.panoramas || [], data.standard || [], data.aerial || []);
         const product = all.find(p => p.id === id);
-        product ? renderProduct(product, all) : renderNotFound();
-        return;
+        if (product) {
+          renderProduct(product, all);
+          return;
+        }
+        // If not found in cache, fall through to fetch a fresh version of the catalog
       } catch (e) {
         console.warn('Error parsing cached products.json, fetching fresh:', e);
       }
