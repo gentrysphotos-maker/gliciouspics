@@ -29,6 +29,16 @@ function getProdigiSku(material, size) {
   }
 
   const formattedSize = String(size || '12x18').toUpperCase().replace(/\s+/g, '');
+
+  if (prefix === 'GLOBAL-PAP') {
+    if (formattedSize === '8X24') {
+      return 'P-PHO-LPP-203X610';
+    }
+    if (formattedSize === '12X36') {
+      return 'P-PHO-LPP-305X914';
+    }
+  }
+
   return `${prefix}-${formattedSize}`;
 }
 

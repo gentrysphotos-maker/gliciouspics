@@ -6,7 +6,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "Lush and green, this view is super accessible and leads to the closest waterfall to Waikīkī, Mānoa Falls. The hike is easy and the scenery is amazing. Tucked back into a dense, green jungle that looks like something out of a Jurassic Park movie, its an adventure you won't want to miss.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877681/gliciouspics/panoramas/oahu-manoa-jungle-landscape-panorama-fine-art-print.jpg",
         "thumbnails": [
@@ -17,12 +17,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -32,7 +32,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "A bright green Day Gecko hiding in some orange foliage. A beautiful day in Mānoa Valley,  off and on showers and some dense foliage, create the ideal hiding place for this colorful creature.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877683/gliciouspics/panoramas/oahu-gecko-tropical-wildlife-panorama-print.jpg",
         "thumbnails": [
@@ -43,12 +43,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -58,7 +58,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "The view from the top of Diamond Head Crater is incredible. Sweeping views of the city of  Honolulu and the famous Waikīkī coastline with its iconic Pink Hotel and world-renowned surf breaks.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877687/gliciouspics/panoramas/oahu-waikiki-diamond-head-hike-panorama.jpg",
         "thumbnails": [
@@ -69,12 +69,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -84,7 +84,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "Mauna Loa is the world's largest active volcano, located on the Big Island of Hawaiʻi, the name means long mountain. It has erupted only once in the last 40 years. This is the perfect view seen from Mauna Kea at sunset.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877652/gliciouspics/panoramas/hawaii-volcano-mauna-loa-sunset-photography.jpg",
         "thumbnails": [
@@ -95,12 +95,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -110,7 +110,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "A sunrise from a tidepool near Makapu'u beach with Mānana Island, aka Rabbit Island, in the distance.  The Island once had rabbits but is now a protected bird sanctuary.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877675/gliciouspics/panoramas/oahu-makapuu-tidepool-sunrise-fine-art.jpg",
         "thumbnails": [
@@ -121,12 +121,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -136,7 +136,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "A sunset, Waimea Bay, and plam trees. After a long day swimming in the warm, calm waters of the bay, sit back and relax while the sun sets over the water and palm trees sway in the breeze.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877679/gliciouspics/panoramas/oahu-sunset-panoramic-print.jpg",
         "thumbnails": [
@@ -147,12 +147,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -162,7 +162,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "Mt Fuji under a blanket of stars. Yamanakako lake reflecting a perfect Fujisan, with a bright moon and a sky full of stars. The nights are calm and so peaceful, enjoying this scene on a winter night in Japan.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877666/gliciouspics/panoramas/japan-mt-fuji-night-sky-milky-way-panorama-print.jpg",
         "thumbnails": [
@@ -173,12 +173,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -188,7 +188,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "The sealife in Japan is incredible and completely different form what you see in Hawaiʻi. One of the most popular fish, the clownfish, is abundant in Japanese waters. There are so many types and they are all different sizes, but one thing is consistent, you wonʻt find them far from an anemone.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877677/gliciouspics/panoramas/japan-underwater-clownfish-nature-panorama.jpg",
         "thumbnails": [
@@ -199,12 +199,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -214,7 +214,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "On a perfect day, one of the most unmistakable views of the majestic Koʻolau Mountains, can be seen from across the Kāneʻohe Bay on Oʻahu. Home to Jurassic park and some incredible views, it was once one of the most sacred places on island. You can also see the small island nicknamed Chinamanʻs Hat, just off the coast.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877649/gliciouspics/panoramas/hawaii-kualoa-mountain-reflection-coastal-panorama-fine-art.jpg",
         "thumbnails": [
@@ -225,12 +225,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -240,7 +240,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "Japan is gorgeous during the fall season. Crisp air, snow capped volcanoes and red and golden leaves a plenty. Mount Fuji is amazing from almost any angle and especially nestled between some perfect fall foliage.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877648/gliciouspics/panoramas/japan-fall-fuji-maple-leaves-panorama.jpg",
         "thumbnails": [
@@ -251,12 +251,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -266,7 +266,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "The Blue Tropical Water Lily. Beautiful, detailed, colorful and sparkling with rain drops while surrpunded by sparkling, green lily pads. Caught it opening up just as the sun peeked out from behind the clouds!",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877654/gliciouspics/panoramas/hawaii-water-lily-flower-nature-panorama.jpg",
         "thumbnails": [
@@ -277,12 +277,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -292,7 +292,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "I am not sure if there is such a thing as too many geckos. One of my favorite critters in Hawaiʻi has to be the colorful Day Gecko. They are found hiding in dense foliage, colorful flowers and even on random buildings in town. You never know when or where you will encounter one.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877627/gliciouspics/panoramas/hawaii-hidden-gecko-nature-panorama.jpg",
         "thumbnails": [
@@ -303,12 +303,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     },
@@ -318,7 +318,7 @@
       "category": "panoramas",
       "format": "panorama",
       "description": "The lush, dense forests on Oʻahu are full of tropical flora and fauna. One of my favorite plants is the Heliconia. This is perfection with the light shining down, through the canopy, hitting this flower in just the right spot to make it glow.",
-      "startingPrice": 150,
+      "startingPrice": 90,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877660/gliciouspics/panoramas/hawaii-nature-heliconia-flower-panorama-print.jpg",
         "thumbnails": [
@@ -329,12 +329,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x24": 150,
-          "12x36": 250
+          "8x24": 90,
+          "12x36": 130
         },
         "Chromaluxe Metal": {
           "8x24": 200,
-          "12x36": 400
+          "12x36": 350
         }
       }
     }

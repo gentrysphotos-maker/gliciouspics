@@ -38,7 +38,8 @@ test('size formatting: uppercases the X and strips whitespace', () => {
 });
 
 test('panorama sizes (e.g. 8x24, 12x36) round-trip correctly', () => {
-  assert.equal(getProdigiSku('Lustre Paper', '8x24'), 'GLOBAL-PAP-8X24');
+  assert.equal(getProdigiSku('Lustre Paper', '8x24'), 'P-PHO-LPP-203X610');
+  assert.equal(getProdigiSku('Lustre Paper', '12x36'), 'P-PHO-LPP-305X914');
   assert.equal(getProdigiSku('Chromaluxe Metal', '12x36'), 'GLOBAL-MET-12X36');
 });
 
@@ -71,7 +72,7 @@ test('every (material, size) combo in products.json produces a non-empty SKU', (
         const sku = getProdigiSku(material, size);
         assert.match(
           sku,
-          /^GLOBAL-(MET|PAP|FAP)-[A-Z0-9]+X[A-Z0-9]+$/,
+          /^(GLOBAL-(MET|PAP|FAP)-[A-Z0-9]+X[A-Z0-9]+|P-PHO-LPP-(203X610|305X914))$/,
           `${product.id} ${material}/${size} produced unexpected SKU "${sku}"`
         );
       }
