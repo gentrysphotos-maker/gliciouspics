@@ -1,6 +1,6 @@
 const { findProduct } = require('./checkout-validation');
 
-const DEFAULT_PRODIGI_API_URL = 'https://api.sandbox.prodigi.com/v4.0';
+const DEFAULT_PRODIGI_API_URL = 'https://api.prodigi.com/v4.0';
 
 async function createProdigiOrder(payload, productsDatabase) {
   const apiKey = process.env.PRODIGI_API_KEY;
@@ -63,7 +63,7 @@ async function createProdigiOrder(payload, productsDatabase) {
   }
 
   const requestBody = {
-    shippingMethod: payload.shippingMethod || 'Budget',
+    shippingMethod: payload.shippingMethod || 'Standard',
     recipient,
     items: prodigiItems
   };
