@@ -146,21 +146,7 @@
       if (e.key === 'ArrowRight') stepLightbox(1);
     });
 
-    const zoomWrap = document.getElementById('product-lightbox-zoom');
-    const zoomImg = document.getElementById('product-lightbox-img');
-    if (zoomWrap && zoomImg) {
-      zoomWrap.addEventListener('mouseenter', () => {
-        zoomWrap.classList.add('is-zoomed');
-      });
-      zoomWrap.addEventListener('mouseleave', resetLightboxZoom);
-      zoomWrap.addEventListener('mousemove', (e) => {
-        if (!zoomWrap.classList.contains('is-zoomed')) return;
-        const rect = zoomWrap.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        zoomImg.style.transformOrigin = x + '% ' + y + '%';
-      });
-    }
+    // Zoom event listeners removed as requested to disable zoom-on-hover effect
   }
 
   function setupProductGallery(urls, alt) {
