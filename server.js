@@ -241,6 +241,9 @@ app.post('/api/checkout', async (req, res) => {
       line_items: lineItems,
       mode: 'payment',
       allow_promotion_codes: true,
+      automatic_tax: {
+        enabled: true
+      },
       shipping_address_collection: {
         allowed_countries: allowedCountries,
       },
