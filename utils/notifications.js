@@ -15,7 +15,7 @@ async function sendViaResend(to, subject, htmlBody) {
   const fromEmail = apiKey.startsWith('re_') ? 'G.Licious Pics <onboarding@resend.dev>' : 'orders@gliciouspics.com';
   // Note: Resend onboarding API keys can only send to the email linked to the account.
   // In production, user will verify a domain.
-  
+
   const postData = JSON.stringify({
     from: fromEmail,
     to: [to],
@@ -348,7 +348,7 @@ async function sendCustomerConfirmation(orderDetails) {
 
   const contentHtml = `
     <h1>Thank you for your order, ${customerName}</h1>
-    <p>We have successfully received your payment. Gentry is preparing your fine art prints. Each order is individually checked for exact color and print quality before shipping.</p>
+    <p>We have successfully received your payment. Your fine art prints are being prepared. Each order is checked for accuracy before printing and shipping.</p>
 
     <p class="muted">Order Ref: <strong>${orderRef}</strong></p>
 
