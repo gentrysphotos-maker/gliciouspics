@@ -112,9 +112,10 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
       const shipping = extractShippingDetails(session);
       const customer = extractCustomerDetails(session);
       const recipientName = shipping.name || customer.name || 'Valued Customer';
+      const customerEmail = session.customer_details?.email || 'unknown@example.com';
 
       const prodigiOrderPayload = {
-        customerEmail: customer.email || 'unknown@example.com',
+        customerEmail: customerEmail,
         recipientName,
         shippingAddress: {
           line1: shipping.address.line1,
@@ -141,7 +142,7 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
         orderRef: formatOrderRef(session.id),
         paymentIntentId: session.payment_intent,
         customerName: recipientName,
-        customerEmail: customer.email || 'unknown@example.com',
+        customerEmail: customerEmail,
         customerPhone: customer.phone,
         totalAmount: session.amount_total, // in cents
         currency: session.currency,
