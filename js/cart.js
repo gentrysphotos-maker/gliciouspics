@@ -103,6 +103,14 @@ function addToCart(product) {
 
   saveCart(cart);
   showAddedToCartToast(product);
+
+  if (typeof window.gliciousTrack === 'function') {
+    window.gliciousTrack('add_to_cart', {
+      product: product.id,
+      size: product.size,
+      material: product.material
+    });
+  }
 }
 
 // Remove item by index
