@@ -26,9 +26,13 @@
   <meta property="twitter:title" content="Your Shopping Cart — G.Licious Pics" />
   <meta property="twitter:description" content="Review your fine art photography prints before checkout." />
   <meta property="twitter:image" content="https://res.cloudinary.com/dbqfibadw/image/upload/w_1200,h_630,c_fill,q_auto,f_auto/gliciouspics/homepage/hidden-honu-hawaii-green-sea-turtle-underwater.jpg" />
+  <!-- Microsoft Clarity -->
+  <script src="../js/clarity.js"></script>
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Skip to content</a>
+  
+  
   
   
   
@@ -90,8 +94,10 @@
 
 
 
+
+
   <!-- CART CONTENT -->
-  <main id="main-content"                         class="cart-page">
+  <main id="main-content"                             class="cart-page">
     <div class="cart-header">
       <span class="section-eyebrow">Checkout Process</span>
       <h1 class="section-title">Shopping Cart</h1>
@@ -168,6 +174,8 @@
     <p class="footer-copy">© 2026 G.Licious Pics by Gentry. All rights reserved.</p>
   </div>
 </footer>
+
+
 
 
 
@@ -343,6 +351,10 @@
       var originalText = btn.textContent;
       btn.textContent = 'Processing...';
       btn.disabled = true;
+
+      if (typeof window.gliciousTrack === 'function') {
+        window.gliciousTrack('begin_checkout');
+      }
 
       fetch('/api/checkout', {
         method: 'POST',

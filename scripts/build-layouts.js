@@ -80,7 +80,18 @@ function compileLayout(filePath, isRoot) {
     content = content.replace('</body>', `\n  ${footerHtml}\n</body>`);
   }
 
-  // 3. Accessibility: Add skip to content link if not already present
+  // 3. Microsoft Clarity — inject once in <head> on every page
+  const claritySrc = isRoot ? 'js/clarity.js' : '../js/clarity.js';
+  content = content.replace(/\s*<!-- Microsoft Clarity -->\s*<script src="[^"]*js\/clarity\.js"><\/script>/g, '');
+  content = content.replace(/\s*<script src="[^"]*js\/clarity\.js"><\/script>/g, '');
+  if (/<\/head>/i.test(content)) {
+    content = content.replace(
+      /<\/head>/i,
+      `  <!-- Microsoft Clarity -->\n  <script src="${claritySrc}"></script>\n</head>`
+    );
+  }
+
+  // 4. Accessibility: Add skip to content link if not already present
   // Clean any old skip-to-content links first to avoid duplicates
   content = content.replace(/<a href="#main-content" class="skip-to-content">[\s\S]*?<\/a>/gi, '');
   
@@ -91,7 +102,7 @@ function compileLayout(filePath, isRoot) {
     content = content.replace(bodyOpenTag, `${bodyOpenTag}\n${skipLink}`);
   }
 
-  // 4. Accessibility: Ensure <main> has id="main-content"
+  // 5. Accessibility: Ensure <main> has id="main-content"
   // First, normalize any existing main id
   content = content.replace(/<main\s+([^>]*?)id="main-content"([^>]*?)>/gi, '<main $1 $2>');
   content = content.replace(/<main\s+id="main-content"\s*>/gi, '<main>');
