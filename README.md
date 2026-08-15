@@ -345,7 +345,7 @@ Follow this checklist when you are ready to launch and accept real payments.
 - [ ] **3. Connect Bank Account:** In Stripe, go to **Settings** -> **External Bank Accounts** to configure your bank deposit details.
 - [ ] **4. Switch Prodigi URL:** In Railway environment variables, switch `PRODIGI_API_URL` to `https://api.prodigi.com/v4.0` and paste your live Prodigi API key into `PRODIGI_API_KEY`.
 - [ ] **5. Verify Resend Domain:** Log into [resend.com](https://resend.com) -> **Domains**, click **Add Domain**, and input `gliciouspics.com`. Add the DNS records provided by Resend to your Spaceship account settings.
-- [ ] **6. Update Email Addresses:** Confirm your Domain Verification in Resend is active. The system will automatically switch from sending emails via `onboarding@resend.dev` to `orders@gliciouspics.com` once your live API key is configured.
+- [ ] **6. Update Email Addresses:** Confirm your Domain Verification in Resend is active. Order emails send from `orders@gliciouspics.com` (override with `RESEND_FROM_EMAIL` if needed). Set `OWNER_EMAIL` on Railway for admin order alerts.
 - [ ] **7. Domain Name Transfer:** Log into Wix, unlock `gliciouspics.com`, and get your transfer code. Go to Spaceship (spaceship.com), click **Transfer Domain**, paste the code, and complete the check out. Point the domain's DNS settings (A/CNAME records) to Railway.
 - [ ] **8. Run a Real Live Test:** Go to your live site, purchase a print using a real credit card, verify that you receive payment in Stripe and the order shows up in live Prodigi, and then refund yourself from the Stripe dashboard.
 - [ ] **9. Cancel Wix Subscription:** Cancel Wix billing only after confirming your new site is active and your domain name has transferred successfully to Spaceship.

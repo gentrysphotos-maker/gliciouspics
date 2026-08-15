@@ -11,11 +11,11 @@ async function sendViaResend(to, subject, htmlBody) {
     throw new Error('RESEND_API_KEY is missing');
   }
 
-  // Use a verified Resend domain or onboarding email if it's test mode
-  const fromEmail = apiKey.startsWith('re_') ? 'G.Licious Pics <onboarding@resend.dev>' : 'orders@gliciouspics.com';
-  // Note: Resend onboarding API keys can only send to the email linked to the account.
-  // In production, user will verify a domain.
-  
+  // Prefer RESEND_FROM_EMAIL; default to the verified domain sender.
+  // onboarding@resend.dev only works for the Resend account owner's inbox.
+  const fromEmail =
+    process.env.RESEND_FROM_EMAIL || 'G.Licious Pics <orders@gliciouspics.com>';
+
   const postData = JSON.stringify({
     from: fromEmail,
     to: [to],
