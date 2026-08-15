@@ -347,8 +347,8 @@ async function sendCustomerConfirmation(orderDetails) {
   const deliveryHtml = formatShippingAddressHtml(shippingName || customerName, shippingAddress);
 
   const contentHtml = `
-    <h1>Thank you for your order, ${customerName}</h1>
-    <p>We have successfully received your payment. Gentry is preparing your fine art prints. Each order is individually checked for exact color and print quality before shipping.</p>
+    <h1>Mahalo Nui Loa for your order, ${customerName}</h1>
+    <p>We have successfully received your payment. Your fine art prints are being prepared. Each order is checked for accuracy before printing and shipping. Aloha!</p>
 
     <p class="muted">Order Ref: <strong>${orderRef}</strong></p>
 
