@@ -1,6 +1,8 @@
 const { findProduct } = require('./checkout-validation');
 
 const DEFAULT_PRODIGI_API_URL = 'https://api.prodigi.com/v4.0';
+const SANDBOX_PRODIGI_API_URL = 'https://api.sandbox.prodigi.com/v4.0';
+const PRODIGI_TIMEOUT_MS = Number(process.env.PRODIGI_TIMEOUT_MS || 15000);
 
 async function createProdigiOrder(payload, productsDatabase) {
   const apiKey = process.env.PRODIGI_API_KEY;
@@ -65,31 +67,72 @@ async function createProdigiOrder(payload, productsDatabase) {
   const requestBody = {
     shippingMethod: payload.shippingMethod || 'Standard',
     recipient,
-    items: prodigiItems
+    items: prodigiItems,
+    // Our order reference, echoed back on Prodigi's side. Gives support a
+    // shared key when reconciling, and makes an accidental duplicate obvious
+    // instead of anonymous.
+    ...(payload.merchantReference && { merchantReference: payload.merchantReference })
   };
 
   const baseUrl = process.env.PRODIGI_API_URL || DEFAULT_PRODIGI_API_URL;
-  console.log(`Sending order request to Prodigi (${baseUrl})...`);
+  const isSandbox = baseUrl.includes('sandbox');
 
+  // A live order silently landing in the sandbox is invisible in the live
+  // dashboard and never prints. Say which environment we are talking to on
+  // every single order rather than leaving it to be inferred.
+  if (isSandbox && process.env.NODE_ENV === 'production') {
+    console.warn(
+      '[PRODIGI] WARNING: NODE_ENV=production but PRODIGI_API_URL points at the ' +
+        'SANDBOX. This order will not be printed or shipped. Set PRODIGI_API_URL=' +
+        `${DEFAULT_PRODIGI_API_URL} and use your live key.`
+    );
+  }
+  console.log(`Sending order request to Prodigi (${isSandbox ? 'SANDBOX' : 'LIVE'}: ${baseUrl})...`);
+
+  let response;
   try {
-    const response = await fetch(`${baseUrl}/Orders`, {
+    response = await fetch(`${baseUrl}/Orders`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-API-Key': apiKey },
-      body: JSON.stringify(requestBody)
+      body: JSON.stringify(requestBody),
+      // Node's fetch waits forever by default. An untimed call here used to
+      // block the customer's confirmation email and run out Stripe's 30s
+      // webhook budget, turning a slow print API into a failed delivery.
+      signal: AbortSignal.timeout(PRODIGI_TIMEOUT_MS)
     });
-
-    const data = await response.json();
-    if (!response.ok) {
-      console.error('Prodigi API returned an error:', data);
-      return { ok: false, statusCode: response.status, error: 'Prodigi order creation failed', data };
-    }
-
-    console.log('Prodigi order created successfully:', data.order?.id);
-    return { ok: true, statusCode: 201, data };
   } catch (err) {
-    console.error('Error calling Prodigi API:', err);
-    return { ok: false, statusCode: 500, error: err.message || 'Internal Server Error' };
+    const reason = err.name === 'TimeoutError'
+      ? `Prodigi did not respond within ${PRODIGI_TIMEOUT_MS}ms`
+      : err.message || 'Internal Server Error';
+    console.error('Error calling Prodigi API:', reason);
+    // No statusCode: the caller treats a transport failure as retryable.
+    return { ok: false, error: reason, environment: isSandbox ? 'sandbox' : 'live' };
   }
+
+  let data;
+  try {
+    data = await response.json();
+  } catch {
+    data = null;
+  }
+
+  if (!response.ok) {
+    console.error('Prodigi API returned an error:', data);
+    return {
+      ok: false,
+      statusCode: response.status,
+      error: `Prodigi order creation failed (HTTP ${response.status}): ${JSON.stringify(data)}`,
+      data,
+      environment: isSandbox ? 'sandbox' : 'live'
+    };
+  }
+
+  console.log(`Prodigi order created successfully (${isSandbox ? 'SANDBOX' : 'LIVE'}):`, data?.order?.id);
+  return { ok: true, statusCode: 201, data, environment: isSandbox ? 'sandbox' : 'live' };
 }
 
-module.exports = { createProdigiOrder };
+module.exports = {
+  createProdigiOrder,
+  DEFAULT_PRODIGI_API_URL,
+  SANDBOX_PRODIGI_API_URL
+};
