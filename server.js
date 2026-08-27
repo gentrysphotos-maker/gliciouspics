@@ -2,9 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
 const { buildLineItems } = require('./utils/checkout-validation');
 const { buildOrderRecord, persistOrderRecord } = require('./utils/order-record');
 const { fulfillOrder } = require('./utils/fulfillment');
+const { getProdigiOrder } = require('./utils/prodigi');
+const { notifyShippedShipments } = require('./utils/shipping-notification');
 
 // Initialize Stripe (will fail gracefully if placeholder keys are still set)
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY || '';
@@ -63,6 +66,12 @@ function checkConfiguration() {
   }
   if (liveKey && !process.env.PRODIGI_API_URL) {
     warnings.push('PRODIGI_API_URL is unset — defaulting to LIVE Prodigi. Confirm PRODIGI_API_KEY is your live key.');
+  }
+  if (!process.env.PRODIGI_CALLBACK_SECRET) {
+    warnings.push(
+      'PRODIGI_CALLBACK_SECRET is not set — customers will not be emailed when their ' +
+        'order ships. Orders are still placed and fulfilled normally.'
+    );
   }
   if (!IS_PRODUCTION) {
     warnings.push('NODE_ENV is not "production". Railway does not always set this — confirm it if this is the live service.');
@@ -206,6 +215,89 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
   } catch (error) {
     console.error(`Error processing webhook event ${event.id}: ${error.message}`);
     return res.status(500).send(`Internal Server Error: ${error.message}`);
+  }
+});
+
+// ─────────────────────────────────────────────────────────────────────────
+// Prodigi callback — order status and shipment updates.
+//
+// Prodigi callbacks carry NO signature and NO auth header, so this endpoint is
+// defended two ways:
+//
+//   1. A shared secret in the path. Anyone without it gets a 403.
+//   2. The posted body is never trusted. It is read only for the order id;
+//      every fact acted on is re-fetched from Prodigi with our own API key.
+//      A forged callback therefore cannot invent a shipment, fabricate
+//      tracking, or redirect a customer email to an attacker's address.
+// ─────────────────────────────────────────────────────────────────────────
+function callbackTokenValid(provided) {
+  const expected = process.env.PRODIGI_CALLBACK_SECRET || '';
+  if (!expected || typeof provided !== 'string') return false;
+  const a = Buffer.from(provided);
+  const b = Buffer.from(expected);
+  // timingSafeEqual throws on length mismatch, so compare lengths first.
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
+}
+
+app.post('/api/webhooks/prodigi/:token', express.json({ limit: '1mb' }), async (req, res) => {
+  if (!process.env.PRODIGI_CALLBACK_SECRET) {
+    console.error('Prodigi callback received but PRODIGI_CALLBACK_SECRET is not set — rejecting.');
+    return res.status(503).json({ error: 'Callback endpoint is not configured.' });
+  }
+
+  if (!callbackTokenValid(req.params.token)) {
+    console.warn('Prodigi callback rejected: bad token.');
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+
+  // CloudEvents puts the order id in `subject`; fall back to the embedded
+  // order. Either way it is only an id — the order itself is re-fetched.
+  const body = req.body || {};
+  const orderId = body.subject || body.data?.order?.id || null;
+
+  if (!orderId || typeof orderId !== 'string') {
+    console.warn('Prodigi callback carried no order id — ignoring.');
+    return res.status(400).json({ error: 'No order id in callback payload.' });
+  }
+
+  console.log(`[SHIPPING] Prodigi callback for order ${orderId} (type: ${body.type || 'unknown'}).`);
+
+  try {
+    const fetched = await getProdigiOrder(orderId);
+    if (!fetched.ok) {
+      console.error(`[SHIPPING] Could not verify order ${orderId}: ${fetched.error}`);
+      // 5xx and transport errors are worth a retry; a 404 from Prodigi is not.
+      const permanent = fetched.statusCode && fetched.statusCode >= 400 && fetched.statusCode < 500;
+      return res.status(permanent ? 200 : 500).json({ received: true, error: fetched.error });
+    }
+
+    const result = await notifyShippedShipments({
+      stripe,
+      order: fetched.order,
+      productsDatabase
+    });
+
+    if (result.failures.length) {
+      const retryable = result.failures.some(
+        (f) => !f.statusCode || f.statusCode === 429 || f.statusCode >= 500
+      );
+      console.error(
+        `[SHIPPING] ${result.failures.length} shipment notification(s) failed for ${orderId}.`
+      );
+      if (retryable) {
+        return res.status(500).json({ received: true, sent: result.sent, failures: result.failures });
+      }
+    }
+
+    return res.json({
+      received: true,
+      sent: result.sent,
+      skipped: result.skipped,
+      failures: result.failures
+    });
+  } catch (error) {
+    console.error(`[SHIPPING] Error handling Prodigi callback for ${orderId}: ${error.message}`);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

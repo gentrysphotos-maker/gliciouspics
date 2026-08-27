@@ -57,7 +57,11 @@ async function createProdigiOrder(payload, productsDatabase) {
         sku: item.sku,
         copies: parseInt(item.quantity || item.copies || 1, 10),
         sizing: 'fillPrintArea',
-        assets: [{ printArea: 'default', url: product.images.printImageUrl }]
+        assets: [{ printArea: 'default', url: product.images.printImageUrl }],
+        // Echoed back on every callback. Without it a shipment notification
+        // cannot say WHICH print shipped — a SKU like GLOBAL-PAP-12X18 is
+        // shared by every 12x18 lustre print in the catalogue.
+        merchantReference: productId
       };
     });
   } catch (err) {
@@ -71,7 +75,11 @@ async function createProdigiOrder(payload, productsDatabase) {
     // Our order reference, echoed back on Prodigi's side. Gives support a
     // shared key when reconciling, and makes an accidental duplicate obvious
     // instead of anonymous.
-    ...(payload.merchantReference && { merchantReference: payload.merchantReference })
+    ...(payload.merchantReference && { merchantReference: payload.merchantReference }),
+    // Where Prodigi posts status changes and shipment notifications. Also
+    // configurable account-wide in the Prodigi dashboard, which is the only
+    // way to cover orders that were placed before this was set.
+    ...(payload.callbackUrl && { callbackUrl: payload.callbackUrl })
   };
 
   const baseUrl = process.env.PRODIGI_API_URL || DEFAULT_PRODIGI_API_URL;
@@ -131,8 +139,67 @@ async function createProdigiOrder(payload, productsDatabase) {
   return { ok: true, statusCode: 201, data, environment: isSandbox ? 'sandbox' : 'live' };
 }
 
+/**
+ * Fetch one order from Prodigi by its id.
+ *
+ * This is the trust anchor for callback handling. Prodigi's callbacks carry no
+ * signature or auth header, so the callback body is treated purely as a hint
+ * that something changed; every fact we act on is read back from the API using
+ * our own key. A forged callback therefore cannot invent a shipment or
+ * redirect a customer email.
+ */
+async function getProdigiOrder(orderId) {
+  const apiKey = process.env.PRODIGI_API_KEY;
+  if (!apiKey) {
+    return { ok: false, statusCode: 500, error: 'Prodigi print API is not configured on the server.' };
+  }
+  if (!orderId || typeof orderId !== 'string') {
+    return { ok: false, statusCode: 400, error: 'A Prodigi order id is required.' };
+  }
+
+  const baseUrl = process.env.PRODIGI_API_URL || DEFAULT_PRODIGI_API_URL;
+
+  let response;
+  try {
+    response = await fetch(`${baseUrl}/Orders/${encodeURIComponent(orderId)}`, {
+      method: 'GET',
+      headers: { 'X-API-Key': apiKey },
+      signal: AbortSignal.timeout(PRODIGI_TIMEOUT_MS)
+    });
+  } catch (err) {
+    const reason = err.name === 'TimeoutError'
+      ? `Prodigi did not respond within ${PRODIGI_TIMEOUT_MS}ms`
+      : err.message || 'Internal Server Error';
+    // No statusCode: transport failure, so the caller treats it as retryable.
+    return { ok: false, error: reason };
+  }
+
+  let data;
+  try {
+    data = await response.json();
+  } catch {
+    data = null;
+  }
+
+  if (!response.ok) {
+    return {
+      ok: false,
+      statusCode: response.status,
+      error: `Could not fetch Prodigi order ${orderId} (HTTP ${response.status})`,
+      data
+    };
+  }
+
+  if (!data || !data.order) {
+    return { ok: false, statusCode: 502, error: `Prodigi returned no order body for ${orderId}` };
+  }
+
+  return { ok: true, statusCode: 200, order: data.order };
+}
+
 module.exports = {
   createProdigiOrder,
+  getProdigiOrder,
   DEFAULT_PRODIGI_API_URL,
   SANDBOX_PRODIGI_API_URL
 };

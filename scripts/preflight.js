@@ -220,6 +220,59 @@ async function checkResend() {
   }
 }
 
+/**
+ * Shipment-notification callback. Not required to take an order, so a missing
+ * secret is a warning — but a configured-but-unreachable callback is a failure,
+ * because customers would silently never learn their order shipped.
+ */
+async function checkProdigiCallback() {
+  const secret = process.env.PRODIGI_CALLBACK_SECRET;
+  if (!secret) {
+    warn(
+      'Shipping emails',
+      'PRODIGI_CALLBACK_SECRET is not set — customers will not be emailed when their order ' +
+        'ships. Orders are still placed and fulfilled normally.'
+    );
+    return;
+  }
+
+  const url = `${SITE_URL}/api/webhooks/prodigi/${encodeURIComponent(secret)}`;
+
+  // An empty body with the right secret must come back 400 ("no order id"):
+  // proof the route exists AND the deployed secret matches this one, without
+  // touching a real order.
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: '{}',
+      signal: AbortSignal.timeout(15000)
+    });
+
+    if (response.status === 400) {
+      pass('Shipping emails', 'Callback endpoint is live and the deployed secret matches.');
+    } else if (response.status === 403) {
+      fail(
+        'Shipping emails',
+        'The callback endpoint rejected this secret — PRODIGI_CALLBACK_SECRET here does not ' +
+          'match the one deployed. Shipment emails would never send.'
+      );
+    } else if (response.status === 503) {
+      fail('Shipping emails', 'The deployed server has no PRODIGI_CALLBACK_SECRET set.');
+    } else if (response.status === 404) {
+      fail('Shipping emails', `Callback endpoint not found at ${SITE_URL} — is the latest build deployed?`);
+    } else {
+      warn('Shipping emails', `Callback endpoint returned an unexpected HTTP ${response.status}.`);
+    }
+  } catch (error) {
+    fail('Shipping emails', `Could not reach the callback endpoint: ${error.message}`);
+  }
+
+  console.log(
+    `\n  Set this as the callback URL in the Prodigi dashboard (Integrations):\n    ${url}\n`
+  );
+}
+
 async function checkProdigi(stripeMode) {
   const key = process.env.PRODIGI_API_KEY || '';
   if (!key) {
@@ -266,6 +319,7 @@ async function checkProdigi(stripeMode) {
   const stripeResult = await checkStripe();
   await checkResend();
   await checkProdigi(stripeResult ? stripeResult.mode : null);
+  await checkProdigiCallback();
 
   const icon = { pass: '  ok  ', warn: ' warn ', fail: ' FAIL ' };
   for (const r of results) {

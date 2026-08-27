@@ -389,6 +389,58 @@ If a customer complains that a print arrived damaged:
 
 ---
 
+### 6. Automatic "Your Order Has Shipped" Emails
+
+When a print goes out, the customer is emailed automatically with their tracking
+number and a link to track the delivery. You do not have to do anything per
+order. The email uses the same design as the order confirmation, and **never
+mentions Prodigi or the print lab** — as far as the customer is concerned, the
+prints came from you.
+
+**How it works.** Prodigi calls a private URL on the site whenever an order's
+status changes. The site then re-checks the order directly with Prodigi and, for
+each parcel that has actually shipped, emails the customer once.
+
+**One-time setup**
+
+1. Generate a long random secret. On Mac/Linux: `openssl rand -hex 32`.
+2. Set it as `PRODIGI_CALLBACK_SECRET` in Railway.
+3. Run `npm run preflight` — it prints the exact callback URL to use and confirms
+   the deployed server agrees with your secret.
+4. In the Prodigi dashboard, go to **Integrations** and paste that URL as the
+   account-wide callback URL.
+
+Step 4 matters: orders placed *before* the secret existed have no callback URL
+attached to them, and the account-wide setting is the only thing that covers
+them. New orders register the URL automatically as well, so both paths work.
+
+**Things worth knowing**
+
+- **One email per parcel.** If an order splits across several shipments, the
+  customer is emailed as each one goes out, and the email says more is coming.
+- **Never duplicated.** Prodigi calls back on *every* status change, so the same
+  shipment is reported many times. Sent notifications are recorded against the
+  Stripe payment (`glp_shipped_notified`), so the customer is emailed exactly
+  once per parcel even across a redeploy.
+- **The secret is the security.** Prodigi's callbacks are unsigned, so anyone who
+  knows the URL can call it. That is why the site re-fetches the order from
+  Prodigi instead of trusting what was posted — a forged callback cannot invent
+  a shipment or send an email to someone else. Treat the secret like a password;
+  if it leaks, generate a new one and update both Railway and Prodigi.
+- **Turning it off.** Unset `PRODIGI_CALLBACK_SECRET`. Orders are still placed
+  and fulfilled exactly as before; only the shipping email stops.
+
+**If a customer says they never got a shipping email**
+
+1. Check Resend → **Logs** for a `Your order has shipped` message to their address.
+2. Check the Railway logs for `[SHIPPING]` — every callback and every send is logged.
+3. Confirm the parcel actually shows as **Shipped** in the Prodigi dashboard. No
+   email is sent while an order is still `Processing`.
+4. Run `npm run preflight` to confirm the callback endpoint is reachable and the
+   secret still matches.
+
+---
+
 ## Section 6: How to Switch from Test Mode to Live Mode (Launch Checklist)
 
 Follow this checklist when you are ready to launch and accept real payments.
@@ -401,6 +453,7 @@ Follow this checklist when you are ready to launch and accept real payments.
 - [ ] **3. Connect Bank Account:** In Stripe, go to **Settings** -> **External Bank Accounts** to configure your bank deposit details.
 - [ ] **4. Switch Prodigi URL:** In Railway environment variables, switch `PRODIGI_API_URL` to `https://api.prodigi.com/v4.0` and paste your live Prodigi API key into `PRODIGI_API_KEY`.
 - [ ] **5. Verify Resend Domain:** Log into [resend.com](https://resend.com) -> **Domains**, click **Add Domain**, and input `gliciouspics.com`. Add the DNS records provided by Resend to your Spaceship account settings.
+- [ ] **5b. Set Up Shipping Emails:** generate a secret (`openssl rand -hex 32`), set it as `PRODIGI_CALLBACK_SECRET` in Railway, run `npm run preflight` to get the callback URL, and paste that URL into the Prodigi dashboard under **Integrations**. See Section 5.6.
 - [ ] **6. Update Email Addresses:** Confirm your Domain Verification in Resend is active. Order emails send from `orders@gliciouspics.com` (override with `RESEND_FROM_EMAIL` if needed). Set `OWNER_EMAIL` on Railway for admin order alerts.
 - [ ] **7. Domain Name Transfer:** Log into Wix, unlock `gliciouspics.com`, and get your transfer code. Go to Spaceship (spaceship.com), click **Transfer Domain**, paste the code, and complete the check out. Point the domain's DNS settings (A/CNAME records) to Railway.
 - [ ] **8. Run a Real Live Test:** Go to your live site, purchase a print using a real credit card. Verify **all four** of these, in order — a success in one does not imply the next:

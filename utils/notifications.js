@@ -553,9 +553,139 @@ async function sendAdminNotification(orderDetails) {
   );
 }
 
+/**
+ * Item list for a shipment. Deliberately price-free: the customer already has
+ * a receipt, and shipment data carries no pricing we would want to restate.
+ */
+function getShippedItemsHtml(items) {
+  const rows = items.map((item) => {
+    const title = escapeHtml(item.title);
+    const detail = [item.size, item.material].filter(Boolean).map(escapeHtml).join(' / ');
+    const quantity = Number(item.quantity) || 1;
+    const thumbnailCell = item.thumbnailUrl
+      ? `<img src="${encodeURI(item.thumbnailUrl)}" alt="${title}" width="64" height="64" style="display:block;width:64px;height:64px;border-radius:3px;border:1px solid #333333;object-fit:cover;">`
+      : `<div style="width:64px;height:64px;border-radius:3px;border:1px solid #333333;background:#242424;"></div>`;
+
+    return `
+      <tr>
+        <td style="width: 80px; padding-right: 12px;">${thumbnailCell}</td>
+        <td>
+          <div class="order-item-title">${title}</div>
+          ${detail ? `<div class="order-item-desc">${detail}</div>` : ''}
+        </td>
+        <td style="text-align: right;">&times; ${quantity}</td>
+      </tr>
+    `;
+  }).join('');
+
+  return `
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th style="width: 80px;"></th>
+          <th>In This Delivery</th>
+          <th style="width: 15%; text-align: right;">Qty</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows}
+      </tbody>
+    </table>
+  `;
+}
+
+/**
+ * Tell the customer their prints are on the way.
+ *
+ * Everything here is customer-facing brand surface: the print lab is never
+ * named, and the only logistics detail shown is the carrier actually carrying
+ * the parcel. See utils/shipping-notification.js for how the payload is built
+ * and why it is deliberately narrow.
+ */
+async function sendShippingConfirmation(notice) {
+  const {
+    customerEmail, customerName, orderRef, items,
+    carrier, trackingNumber, trackingUrl,
+    shippingName, shippingAddress, isPartialShipment
+  } = notice;
+
+  const greetingName = customerName ? `, ${escapeHtml(customerName)}` : '';
+  const deliveryHtml = formatShippingAddressHtml(shippingName || customerName, shippingAddress);
+  const itemsTable = items && items.length ? getShippedItemsHtml(items) : '';
+
+  const partialNote = isPartialShipment
+    ? `<p class="muted">Your order is arriving in more than one delivery, so some
+       pieces may travel separately. We will email you for each one.</p>`
+    : '';
+
+  const trackingRows = [
+    carrier
+      ? `<p style="margin: 0 0 6px;"><span class="muted">Carrier:</span> <strong>${escapeHtml(carrier)}</strong></p>`
+      : '',
+    trackingNumber
+      ? `<p style="margin: 0; font-family: monospace; font-size: 13px; color: #d4b84a;">${escapeHtml(trackingNumber)}</p>`
+      : ''
+  ].filter(Boolean).join('\n      ');
+
+  const trackingBlock = (trackingNumber || trackingUrl || carrier)
+    ? `
+    <div class="address-box">
+      <div class="address-title">Tracking</div>
+      ${trackingRows || '<p class="muted" style="margin:0;">Tracking details will follow shortly.</p>'}
+    </div>
+    ${trackingUrl ? `
+    <div style="text-align: center; margin: 30px 0 10px;">
+      <a href="${encodeURI(trackingUrl)}" class="btn">Track Your Delivery</a>
+    </div>` : ''}
+  `
+    : '';
+
+  const contentHtml = `
+    <h1>Your prints are on their way${greetingName}</h1>
+    <p>Your order has left our hands and is now with the carrier. Each piece was
+       checked by eye before it was packed, and wrapped to travel safely.</p>
+
+    ${orderRef ? `<p class="muted">Order Ref: <strong>${escapeHtml(orderRef)}</strong></p>` : ''}
+    ${partialNote}
+
+    ${itemsTable}
+
+    ${trackingBlock}
+
+    <div class="address-box">
+      <div class="address-title">Delivering To</div>
+      <p style="margin: 0; font-family: monospace; font-size: 13px; color: #d4b84a;">
+        ${deliveryHtml}
+      </p>
+    </div>
+
+    <p><strong>When it arrives:</strong> unwrap your print with clean, dry hands and
+       handle it by the edges. If anything has not travelled well, reply to this
+       email with a photo and we will put it right.</p>
+
+    <div style="text-align: center; margin: 35px 0 10px;">
+      <p class="muted" style="margin-top: 12px;">Browse more fine art prints at
+        <a href="${SITE_URL}" style="color: #c8a96e;">gliciouspics.com</a></p>
+    </div>
+  `;
+
+  const subject = orderRef
+    ? `${isPartialShipment ? 'Part of your order has shipped' : 'Your order has shipped'}: ${orderRef}`
+    : (isPartialShipment ? 'Part of your order has shipped' : 'Your order has shipped');
+
+  return dispatchEmail(
+    customerEmail,
+    subject,
+    getEmailWrapper(contentHtml),
+    'shipping confirmation'
+  );
+}
+
 module.exports = {
   sendCustomerConfirmation,
   sendAdminNotification,
+  sendShippingConfirmation,
+  getShippedItemsHtml,
   escapeHtml,
   getItemsTableHtml,
   formatShippingAddressHtml

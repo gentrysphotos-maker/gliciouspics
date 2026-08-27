@@ -19,6 +19,7 @@
  */
 
 const { createProdigiOrder } = require('./prodigi');
+const { prodigiCallbackUrl } = require('./shipping-notification');
 const notifications = require('./notifications');
 
 const STAGE_KEYS = {
@@ -214,6 +215,10 @@ async function fulfillOrder({ stripe, record, productsDatabase }) {
           // Lets Prodigi surface our reference on their side, and gives support
           // a shared key when reconciling a duplicate.
           merchantReference: record.orderRef,
+          // Where Prodigi posts shipment updates, so the customer can be told
+          // their prints are on the way. Null when no secret is configured,
+          // in which case the key is simply omitted from the order.
+          callbackUrl: prodigiCallbackUrl(),
           customerEmail: record.customerEmail,
           recipientName: record.shippingName || record.customerName,
           shippingAddress: record.shippingAddress,
