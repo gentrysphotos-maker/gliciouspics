@@ -222,12 +222,65 @@ Testing ensures that payments, automated printing (Prodigi), and emails (Resend)
 
 ---
 
-### 8. Troubleshooting Test Failures
-If the test purchase did not complete, or if the order did not appear in Prodigi:
-- [ ] **Check Stripe Keys:** Are `STRIPE_SECRET_KEY` and `STRIPE_PUBLISHABLE_KEY` correct in your host environment?
-- [ ] **Check Webhook Secret:** Is `STRIPE_WEBHOOK_SECRET` matching the webhook endpoint signing secret in Stripe?
-- [ ] **Check Prodigi Sandbox Key:** Is `PRODIGI_API_KEY` set to your sandbox key?
-- [ ] **Check printImageUrl:** Copy the `printImageUrl` from your `products.json` file and try pasting it in a browser window. If the image does not load, your bucket settings are blocking access, and Prodigi cannot fetch the print file.
+### 8. Troubleshooting: paid, but no email and/or no print order
+
+This is the most important failure to be able to diagnose, so work through it in
+this order. Each step tells you which half of the system to look at next.
+
+**Step 0 — is the listener alive at all?** One command, no dashboard needed:
+
+```bash
+curl -X POST https://gliciouspics.com/api/webhooks/stripe -H 'Content-Type: application/json' -d '{}'
+```
+
+`Webhook Error: No stripe-signature header value was provided.` (HTTP 400) means
+the listener is healthy — an unsigned probe is supposed to be rejected. Anything
+else, especially a 404, means Stripe has nowhere to deliver to. `npm run preflight`
+runs this same probe against whatever URL is actually registered in Stripe.
+
+**Step 1 — did the webhook even arrive?** Stripe Dashboard → **make sure you are
+in the same mode as the payment** → Developers → Webhooks → your endpoint →
+Recent events.
+
+| What you see | What it means | Fix |
+|---|---|---|
+| No endpoint at all, or no event listed | Stripe never called us. Almost always a missing **live-mode** endpoint (see checklist step 2a). | Create the endpoint, then use **Resend** on the event to fulfill the order that was missed. |
+| `404` with `"message": "Application not found"` | That is **Railway's edge answering, not your app** — the hostname in the endpoint URL no longer resolves to a running service. Your code never saw the request. Usually a stale `*.up.railway.app` subdomain. | Edit the endpoint URL to your **custom domain**: `https://gliciouspics.com/api/webhooks/stripe`. Do not use a `*.up.railway.app` subdomain — those can be regenerated or retired, and Railway routes by Host header, so only the domain actually attached to the service answers. |
+| `404` (any other body) | The host is up but nothing serves that path — usually the retired Netlify function path. | Same fix: point it at `https://gliciouspics.com/api/webhooks/stripe`. |
+| `400` | Signature rejected — `STRIPE_WEBHOOK_SECRET` is from the wrong endpoint or the wrong mode. | Paste the correct signing secret, then **Resend** the event. |
+| `500` | We received it but a step failed. | Go to step 2. The response body names the failed stage. |
+| `200` | Fulfillment completed. | Go to step 3. |
+
+**Step 2 — read the Railway logs** for that order. Search for the order ref
+(`GLP-...`) or `[FULFILLMENT_ALERT]`. Every stage logs its own outcome, so the
+log names exactly which one failed and why. `[ORDER_RECORD]` lines contain the
+complete order as JSON, so nothing is lost even when every downstream step fails.
+
+**Step 3 — emails.** Resend → **Domains**: `gliciouspics.com` must read
+**Verified**. An unverified domain returns `403` on *every* send, so neither you
+nor the customer receives anything. Then check the **Logs** tab for the send.
+
+**Step 4 — Prodigi.** Prodigi's order API is synchronous: an accepted order
+appears in the dashboard immediately, so there is no waiting period to sit
+through. If it is not in the **live** dashboard, check the **sandbox** dashboard
+at [sandbox-beta-dashboard.pwinty.com](https://sandbox-beta-dashboard.pwinty.com) —
+a live order landing in the sandbox means `PRODIGI_API_URL` is still set to the
+sandbox URL.
+
+**Other things worth checking**
+- [ ] **Run `npm run preflight`** with the production environment variables. It checks steps 1, 3 and 4 in one command.
+- [ ] **Check `/api/health`** on the live site — it reports any missing configuration without exposing secret values.
+- [ ] **Check printImageUrl:** paste a `printImageUrl` from `products.json` into a browser. If the image does not load, your bucket settings are blocking access and Prodigi cannot fetch the print file.
+
+#### What happens automatically when a step fails
+
+You do not have to catch every one of these by hand:
+
+- The **customer confirmation is sent before** Prodigi is contacted, so a print-lab outage can never leave a customer with no confirmation.
+- Each stage is independent — one failure no longer cancels the others.
+- Failed stages return a non-`2xx` to Stripe, so Stripe **retries the delivery** for up to 3 days and emails you about the failing endpoint.
+- Completed stages are recorded in the payment's metadata, so a retry **never places a second print order or sends a duplicate confirmation**. You can see this state in Stripe on the payment itself (`glp_prodigi_order_id`, `glp_customer_email_at`, `glp_admin_email_at`).
+- Set `ALERT_WEBHOOK_URL` to a Slack or Discord webhook to be notified out-of-band — that path does not depend on email working.
 
 ---
 
@@ -336,18 +389,79 @@ If a customer complains that a print arrived damaged:
 
 ---
 
+### 6. Automatic "Your Order Has Shipped" Emails
+
+When a print goes out, the customer is emailed automatically with their tracking
+number and a link to track the delivery. You do not have to do anything per
+order. The email uses the same design as the order confirmation, and **never
+mentions Prodigi or the print lab** — as far as the customer is concerned, the
+prints came from you.
+
+**How it works.** Prodigi calls a private URL on the site whenever an order's
+status changes. The site then re-checks the order directly with Prodigi and, for
+each parcel that has actually shipped, emails the customer once.
+
+**One-time setup**
+
+1. Generate a long random secret. On Mac/Linux: `openssl rand -hex 32`.
+2. Set it as `PRODIGI_CALLBACK_SECRET` in Railway.
+3. Run `npm run preflight` — it prints the exact callback URL to use and confirms
+   the deployed server agrees with your secret.
+4. In the Prodigi dashboard, go to **Integrations** and paste that URL as the
+   account-wide callback URL.
+
+Step 4 matters: orders placed *before* the secret existed have no callback URL
+attached to them, and the account-wide setting is the only thing that covers
+them. New orders register the URL automatically as well, so both paths work.
+
+**Things worth knowing**
+
+- **One email per parcel.** If an order splits across several shipments, the
+  customer is emailed as each one goes out, and the email says more is coming.
+- **Never duplicated.** Prodigi calls back on *every* status change, so the same
+  shipment is reported many times. Sent notifications are recorded against the
+  Stripe payment (`glp_shipped_notified`), so the customer is emailed exactly
+  once per parcel even across a redeploy.
+- **The secret is the security.** Prodigi's callbacks are unsigned, so anyone who
+  knows the URL can call it. That is why the site re-fetches the order from
+  Prodigi instead of trusting what was posted — a forged callback cannot invent
+  a shipment or send an email to someone else. Treat the secret like a password;
+  if it leaks, generate a new one and update both Railway and Prodigi.
+- **Turning it off.** Unset `PRODIGI_CALLBACK_SECRET`. Orders are still placed
+  and fulfilled exactly as before; only the shipping email stops.
+
+**If a customer says they never got a shipping email**
+
+1. Check Resend → **Logs** for a `Your order has shipped` message to their address.
+2. Check the Railway logs for `[SHIPPING]` — every callback and every send is logged.
+3. Confirm the parcel actually shows as **Shipped** in the Prodigi dashboard. No
+   email is sent while an order is still `Processing`.
+4. Run `npm run preflight` to confirm the callback endpoint is reachable and the
+   secret still matches.
+
+---
+
 ## Section 6: How to Switch from Test Mode to Live Mode (Launch Checklist)
 
 Follow this checklist when you are ready to launch and accept real payments.
 
 - [ ] **1. Toggle Stripe Live Mode:** In your Stripe dashboard, toggle Test Mode off. Copy the live publishable key (`pk_live_...`) and secret key (`sk_live_...`).
-- [ ] **2. Update Environment Variables:** Replace your test keys with live keys in both Railway (for the backend API) and Netlify (for the frontend static pages).
+- [ ] **2. Update Environment Variables:** Replace your test keys with live keys in Railway (which serves both the site and the API).
+- [ ] **2a. Create the LIVE webhook endpoint — DO NOT SKIP.** Stripe webhook endpoints and their signing secrets are **per-mode**. The endpoint you tested in test mode *does not exist* in live mode. With Test Mode still toggled **off**, go to **Developers → Webhooks → Add endpoint**, set the URL to `https://gliciouspics.com/api/webhooks/stripe`, subscribe to `checkout.session.completed`, then copy that endpoint's **Signing secret** (`whsec_...`) into `STRIPE_WEBHOOK_SECRET` on Railway.
+      *Skipping this is silent and expensive:* checkout works, the card is charged, Stripe emails its own receipt — and no confirmation email is ever sent and no order ever reaches Prodigi.
+- [ ] **2b. Run the preflight:** with the live environment variables loaded, run `npm run preflight`. It verifies that a webhook endpoint exists in the same Stripe mode as your key, that your Resend sending domain is actually verified, and that Prodigi is pointed at the matching environment. It exits non-zero if a real order would fail.
 - [ ] **3. Connect Bank Account:** In Stripe, go to **Settings** -> **External Bank Accounts** to configure your bank deposit details.
 - [ ] **4. Switch Prodigi URL:** In Railway environment variables, switch `PRODIGI_API_URL` to `https://api.prodigi.com/v4.0` and paste your live Prodigi API key into `PRODIGI_API_KEY`.
 - [ ] **5. Verify Resend Domain:** Log into [resend.com](https://resend.com) -> **Domains**, click **Add Domain**, and input `gliciouspics.com`. Add the DNS records provided by Resend to your Spaceship account settings.
+- [ ] **5b. Set Up Shipping Emails:** generate a secret (`openssl rand -hex 32`), set it as `PRODIGI_CALLBACK_SECRET` in Railway, run `npm run preflight` to get the callback URL, and paste that URL into the Prodigi dashboard under **Integrations**. See Section 5.6.
 - [ ] **6. Update Email Addresses:** Confirm your Domain Verification in Resend is active. Order emails send from `orders@gliciouspics.com` (override with `RESEND_FROM_EMAIL` if needed). Set `OWNER_EMAIL` on Railway for admin order alerts.
 - [ ] **7. Domain Name Transfer:** Log into Wix, unlock `gliciouspics.com`, and get your transfer code. Go to Spaceship (spaceship.com), click **Transfer Domain**, paste the code, and complete the check out. Point the domain's DNS settings (A/CNAME records) to Railway.
-- [ ] **8. Run a Real Live Test:** Go to your live site, purchase a print using a real credit card, verify that you receive payment in Stripe and the order shows up in live Prodigi, and then refund yourself from the Stripe dashboard.
+- [ ] **8. Run a Real Live Test:** Go to your live site, purchase a print using a real credit card. Verify **all four** of these, in order — a success in one does not imply the next:
+      1. Payment shows in the Stripe dashboard.
+      2. The webhook delivery shows **200 OK** under Developers → Webhooks → your endpoint.
+      3. Both order emails arrive (yours and the customer's), and appear in the Resend **Logs** tab.
+      4. The order appears in the **live** Prodigi dashboard at `dashboard.prodigi.com`.
+      Then refund yourself from the Stripe dashboard. (Refunding does **not** cancel the Prodigi order — cancel that separately in the Prodigi dashboard while it is still `Created`, or you will be billed for a print.)
 - [ ] **9. Cancel Wix Subscription:** Cancel Wix billing only after confirming your new site is active and your domain name has transferred successfully to Spaceship.
 
 ---

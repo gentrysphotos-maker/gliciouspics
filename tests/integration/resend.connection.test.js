@@ -52,8 +52,38 @@ test('Resend: API key is accepted (GET /domains)', { skip: skipMsg }, async () =
 
   const body = await response.json();
   assert.ok(body, 'response body should be valid JSON');
+  assert.ok(Array.isArray(body.data), 'expected body.data to be an array of domains');
+});
+
+/**
+ * The check that a valid-key test cannot make.
+ *
+ * Resend rejects EVERY send from an unverified domain with a 403, so a key
+ * that authenticates perfectly still delivers nothing. That is indistinguishable
+ * from a healthy account until a real customer is waiting on a confirmation,
+ * which is exactly how it slipped into production.
+ */
+test('Resend: the sending domain is verified', { skip: skipMsg }, async () => {
+  const from = process.env.RESEND_FROM_EMAIL || 'G.Licious Pics <orders@gliciouspics.com>';
+  const sendingDomain = (from.match(/@([^>\s]+)/) || [])[1];
+  assert.ok(sendingDomain, `could not read a domain out of RESEND_FROM_EMAIL ("${from}")`);
+
+  const response = await fetch('https://api.resend.com/domains', {
+    headers: { Authorization: `Bearer ${KEY}` },
+  });
+  const body = await response.json();
+  const domains = Array.isArray(body.data) ? body.data : [];
+  const domain = domains.find((d) => d.name === sendingDomain);
+
   assert.ok(
-    Array.isArray(body.data),
-    'expected body.data to be an array of domains (may be empty pre-verification)'
+    domain,
+    `sending from @${sendingDomain}, but that domain is not in this Resend account ` +
+      `(found: ${domains.map((d) => d.name).join(', ') || 'none'}). Every order email will fail.`
+  );
+  assert.equal(
+    domain.status,
+    'verified',
+    `${sendingDomain} is "${domain.status}", not "verified" — Resend will reject every ` +
+      'order email until the DNS records are in place.'
   );
 });

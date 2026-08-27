@@ -24,3 +24,6 @@ node_modules
 
 # Scratch files
 scratch/
+
+# Order records (contain customer PII — never serve or commit)
+.order-records/
