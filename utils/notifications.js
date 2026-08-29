@@ -553,9 +553,80 @@ async function sendAdminNotification(orderDetails) {
   );
 }
 
+// Send Shipment Confirmation to Customer (completely white-labeled)
+async function sendCustomerShipmentNotification(recipientName, customerEmail, orderRef, shipments) {
+  let shipmentsHtml = '';
+  
+  if (Array.isArray(shipments) && shipments.length > 0) {
+    shipmentsHtml = shipments.map((shipment, index) => {
+      const carrier = shipment.carrier || 'Standard Courier';
+      const trackingNumber = shipment.trackingNumber || '';
+      const trackingUrl = shipment.trackingUrl || '';
+      
+      let trackingLinkHtml = '';
+      if (trackingNumber) {
+        if (trackingUrl) {
+          trackingLinkHtml = `
+            <p style="margin: 5px 0;"><strong>Tracking Number:</strong> <a href="${trackingUrl}" style="color: #c8a96e; text-decoration: underline;">${trackingNumber}</a></p>
+            <div style="margin: 15px 0 5px;">
+              <a href="${trackingUrl}" class="btn">Track Shipment</a>
+            </div>
+          `;
+        } else {
+          trackingLinkHtml = `<p style="margin: 5px 0;"><strong>Tracking Number:</strong> <code>${trackingNumber}</code></p>`;
+        }
+      } else {
+        trackingLinkHtml = `<p style="margin: 5px 0; color: #9a9a9a;">Tracking information will be updated soon by the carrier.</p>`;
+      }
+      
+      const title = shipments.length > 1 ? `<div class="address-title" style="margin-top: 10px;">Shipment #${index + 1}</div>` : '';
+      return `
+        <div class="address-box" style="margin-top: 15px;">
+          ${title}
+          <p style="margin: 0 0 10px;"><strong>Carrier:</strong> ${carrier}</p>
+          ${trackingLinkHtml}
+        </div>
+      `;
+    }).join('');
+  } else {
+    shipmentsHtml = `
+      <div class="address-box" style="margin-top: 15px;">
+        <p style="margin: 0;">Your package has been dispatched. Tracking details will update shortly.</p>
+      </div>
+    `;
+  }
+
+  const orderRefText = orderRef ? `<p class="muted">Order Reference: <strong>${orderRef}</strong></p>` : '';
+
+  const contentHtml = `
+    <h1>Your fine art prints are on the way!</h1>
+    <p>Aloha ${recipientName},</p>
+    <p>Great news! Your custom fine art print order has been printed, carefully prepared for transport, and is now shipped. Here are your tracking details:</p>
+
+    ${orderRefText}
+    ${shipmentsHtml}
+
+    <p style="margin-top: 25px;">Please note that tracking links can take up to 24 hours to become active after being scanned by the carrier.</p>
+    <p class="muted">Mahalo for supporting independent photography. If you need any assistance or have questions, feel free to reply directly to this email.</p>
+
+    <div style="text-align: center; margin: 35px 0 10px;">
+      <a href="${SITE_URL}" class="btn">Visit Gallery</a>
+      <p class="muted" style="margin-top: 12px;">Browse more fine art prints at <a href="${SITE_URL}" style="color: #c8a96e;">gliciouspics.com</a></p>
+    </div>
+  `;
+
+  return dispatchEmail(
+    customerEmail,
+    `Your print has shipped!${orderRef ? ` (${orderRef})` : ''}`,
+    getEmailWrapper(contentHtml),
+    'customer shipment notification'
+  );
+}
+
 module.exports = {
   sendCustomerConfirmation,
   sendAdminNotification,
+  sendCustomerShipmentNotification,
   escapeHtml,
   getItemsTableHtml,
   formatShippingAddressHtml

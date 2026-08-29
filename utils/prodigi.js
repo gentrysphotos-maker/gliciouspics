@@ -65,6 +65,7 @@ async function createProdigiOrder(payload, productsDatabase) {
   }
 
   const requestBody = {
+    merchantReference: payload.merchantReference || payload.orderRef || '',
     shippingMethod: payload.shippingMethod || 'Standard',
     recipient,
     items: prodigiItems,
@@ -131,8 +132,26 @@ async function createProdigiOrder(payload, productsDatabase) {
   return { ok: true, statusCode: 201, data, environment: isSandbox ? 'sandbox' : 'live' };
 }
 
+async function getProdigiOrder(orderId) {
+  const apiKey = process.env.PRODIGI_API_KEY;
+  if (!apiKey) {
+    throw new Error('Prodigi print API is not configured on the server (missing key).');
+  }
+  const baseUrl = process.env.PRODIGI_API_URL || DEFAULT_PRODIGI_API_URL;
+  const response = await fetch(`${baseUrl}/Orders/${orderId}`, {
+    method: 'GET',
+    headers: { 'X-API-Key': apiKey }
+  });
+  if (!response.ok) {
+    const errorBody = await response.text().catch(() => '');
+    throw new Error(`Failed to fetch Prodigi order ${orderId} (Status ${response.status}): ${errorBody || response.statusText}`);
+  }
+  return await response.json();
+}
+
 module.exports = {
   createProdigiOrder,
+  getProdigiOrder,
   DEFAULT_PRODIGI_API_URL,
   SANDBOX_PRODIGI_API_URL
 };

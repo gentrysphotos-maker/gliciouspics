@@ -157,6 +157,7 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
   if (!FULFILLABLE_EVENTS.has(event.type)) {
     return res.json({ received: true, handled: false });
   }
+  }
 
   const session = event.data.object;
 
@@ -215,6 +216,76 @@ app.use(express.json());
 // ─────────────────────────────────────────────────────────────────────────
 // API
 // ─────────────────────────────────────────────────────────────────────────
+
+// Webhook route to receive order stage update notifications from Prodigi
+app.post('/api/webhooks/prodigi', async (req, res) => {
+  const webhookSecret = process.env.PRODIGI_WEBHOOK_SECRET;
+  if (webhookSecret) {
+    const secret = req.query.secret;
+    if (secret !== webhookSecret) {
+      console.warn('Unauthorized Prodigi webhook attempt: Invalid secret query parameter.');
+      return res.status(401).send('Unauthorized');
+    }
+  }
+
+  const event = req.body;
+  console.log('Received Prodigi webhook event:', JSON.stringify(event));
+
+  if (!event || !event.type) {
+    return res.status(400).send('Invalid event format: missing type.');
+  }
+
+  // We are specifically looking for stage changes to 'Shipped'
+  const isShipped = event.type.endsWith('#Shipped') || 
+                    (event.data && event.data.status && event.data.status.stage === 'Shipped');
+
+  if (isShipped) {
+    const prodigiOrderId = event.subject || (event.data && event.data.id);
+    if (!prodigiOrderId) {
+      console.error('Prodigi webhook: Shipped event received but missing order ID in subject or data.id');
+      return res.status(400).send('Missing order ID.');
+    }
+
+    try {
+      console.log(`Order ${prodigiOrderId} has shipped! Fetching full details from Prodigi...`);
+      const { getProdigiOrder } = require('./utils/prodigi');
+      const orderData = await getProdigiOrder(prodigiOrderId);
+
+      if (!orderData || !orderData.order) {
+        throw new Error('Order data was empty or invalid.');
+      }
+
+      const order = orderData.order;
+      const recipientName = order.recipient?.name || 'Valued Customer';
+      const customerEmail = order.recipient?.email;
+      const orderRef = order.merchantReference || '';
+      const shipments = order.shipments || [];
+
+      if (!customerEmail) {
+        console.warn(`No recipient email address found for Prodigi order ${prodigiOrderId}. Skipping confirmation.`);
+        return res.status(200).send('No recipient email; notification skipped.');
+      }
+
+      console.log(`Sending white-labeled shipment confirmation to ${customerEmail} for Prodigi order ${prodigiOrderId}...`);
+      const notifications = require('./utils/notifications');
+      await notifications.sendCustomerShipmentNotification(recipientName, customerEmail, orderRef, shipments);
+
+      console.log(`Shipment notification sent successfully for Prodigi order ${prodigiOrderId}`);
+    } catch (err) {
+      console.error(`Error processing Prodigi shipment webhook:`, err.message);
+      return res.status(500).send(`Error: ${err.message}`);
+    }
+  } else {
+    console.log(`Prodigi webhook: Event type is ${event.type}. Stage is not Shipped. Ignoring.`);
+  }
+
+  res.json({ received: true });
+});
+
+// 301 redirects for legacy product page URLs (previously handled by netlify.toml)
+app.get('/pages/product-standard.html', (req, res) => res.redirect(301, '/pages/product.html'));
+app.get('/pages/product-panorama.html', (req, res) => res.redirect(301, '/pages/product.html'));
+app.get('/pages/product-aerial.html', (req, res) => res.redirect(301, '/pages/product.html'));
 
 // Operational health check: reports configuration problems without exposing
 // any secret values. Point Railway's healthcheck or an uptime monitor here.
