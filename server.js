@@ -157,7 +157,6 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
   if (!FULFILLABLE_EVENTS.has(event.type)) {
     return res.json({ received: true, handled: false });
   }
-  }
 
   const session = event.data.object;
 
