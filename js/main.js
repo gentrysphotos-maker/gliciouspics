@@ -48,14 +48,16 @@ const navToggle = document.getElementById('nav-toggle');
 const siteNav   = document.getElementById('site-nav');
 if (navToggle && siteNav) {
   navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('open');
-    siteNav.classList.toggle('open');
+    const isOpen = navToggle.classList.toggle('open');
+    siteNav.classList.toggle('open', isOpen);
+    if (header) header.classList.toggle('nav-open', isOpen);
   });
   // close on link click
   siteNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navToggle.classList.remove('open');
       siteNav.classList.remove('open');
+      if (header) header.classList.remove('nav-open');
     });
   });
   // mobile dropdown

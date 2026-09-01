@@ -111,6 +111,11 @@ a { color: inherit; text-decoration: none; }
   background: rgba(10,10,10,0.96);
   box-shadow: 0 1px 0 rgba(255,255,255,0.05);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.site-header.nav-open {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .logo {
@@ -163,12 +168,20 @@ a { color: inherit; text-decoration: none; }
   transition: opacity var(--transition), transform 0.25s ease;
   transform: translateX(-50%) translateY(-6px);
 }
-.nav-dropdown:hover .dropdown-menu,
-.nav-dropdown:focus-within .dropdown-menu {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+
+@media (min-width: 769px) {
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  .nav-dropdown:hover .dropdown-chevron,
+  .nav-dropdown:focus-within .dropdown-chevron {
+    transform: rotate(0deg);
+  }
 }
+
 .dropdown-chevron {
   display: inline-block;
   margin-left: 0.15em;
@@ -176,8 +189,6 @@ a { color: inherit; text-decoration: none; }
   line-height: 1;
   transform: rotate(180deg);
 }
-.nav-dropdown:hover .dropdown-chevron,
-.nav-dropdown:focus-within .dropdown-chevron,
 .nav-dropdown.open .dropdown-chevron {
   transform: rotate(0deg);
 }
@@ -663,10 +674,21 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 768px) {
   .site-header { padding: 0 1.5rem; }
+  .site-header.scrolled {
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
   .nav-toggle { display: flex; }
   .site-nav {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     background: var(--black);
     flex-direction: column;
     justify-content: flex-start;
@@ -675,18 +697,23 @@ a { color: inherit; text-decoration: none; }
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
-    padding: calc(var(--nav-h) + 2.5rem) 2rem 4rem;
+    padding: calc(var(--nav-h) + 2rem) 2rem 4rem;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     text-align: center;
+    z-index: 99;
   }
-  .site-nav.open { opacity: 1; pointer-events: auto; }
+  .site-nav.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
 
   .nav-dropdown {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: static;
   }
 
   .nav-dropdown .dropdown-trigger {
@@ -694,17 +721,21 @@ a { color: inherit; text-decoration: none; }
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
+    width: 100%;
+    text-align: center;
   }
 
   .dropdown-menu {
     position: static;
-    transform: none;
+    left: auto;
+    right: auto;
+    transform: none !important;
     background: rgba(255, 255, 255, 0.02);
     border: none;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 0.75rem 0;
-    margin-top: 0.75rem;
+    margin: 0.75rem auto 0 auto;
     opacity: 1;
     pointer-events: auto;
     display: none;
@@ -712,22 +743,29 @@ a { color: inherit; text-decoration: none; }
     max-width: 280px;
     text-align: center;
   }
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu {
+    transform: none !important;
+  }
   .nav-dropdown.open .dropdown-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.2rem;
+    transform: none !important;
   }
 
   .dropdown-menu a {
-    padding: 0.55rem 1.5rem;
+    padding: 0.55rem 1.5rem !important;
     font-size: 0.85rem;
     text-align: center;
     width: 100%;
+    transform: none !important;
     transition: color var(--transition);
   }
   .dropdown-menu a:hover {
-    padding-left: 1.5rem;
+    padding-left: 1.5rem !important;
+    transform: none !important;
     color: var(--accent);
   }
   .gallery-grid { grid-template-columns: 1fr; }
