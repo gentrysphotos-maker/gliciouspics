@@ -1,5 +1,27 @@
 [
   {
+    "id": "honolulu-bedroom-office-landscapes",
+    "productId": "landscapes.html",
+    "printTitle": "Landscape Prints",
+    "category": "landscapes",
+    "medium": "Framed Lustre Paper",
+    "size": "12x18",
+    "roomType": "office",
+    "roomLabel": "Bedroom Office",
+    "customerName": "Verified Buyer",
+    "location": "Honolulu, HI",
+    "rating": 5,
+    "quote": "These prints are awesome. They are just what I needed above my desk space. They bring a smile to my face and keep me calm during a busy, hectic work week.",
+    "fullReview": "These prints are awesome. They are just what I needed above my desk space. They bring a smile to my face and keep me calm during a busy, hectic work week. The perfect getaway in my home office. The luster print looks great framed and shows nice color and contrast. Will be back for more for my living room.",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/f_auto,q_auto/v1788728789/gliciouspics/customerphotos/Photo_Sep_06_2026_10_44_51_AM.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/f_auto,q_auto/v1788728789/gliciouspics/customerphotos/Photo_Sep_06_2026_10_43_16_AM.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/f_auto,q_auto/v1788728787/gliciouspics/customerphotos/Photo_Sep_06_2026_10_42_54_AM.jpg"
+    ],
+    "date": "September 2026",
+    "verified": true
+  },
+  {
     "id": "napali-living-room-metal",
     "productId": "hawaii-nature-valley-ridge-line-print",
     "printTitle": "Nā Pali Ridges",

@@ -123,7 +123,7 @@
               </div>
             </div>
             <div class="showcase-card-actions">
-              <a href="product.html?id=${encodeURIComponent(item.productId)}" class="showcase-buy-link">
+              <a href="${item.productId.includes('.html') ? item.productId : ('product.html?id=' + encodeURIComponent(item.productId))}" class="showcase-buy-link">
                 Shop Print →
               </a>
               <button class="showcase-expand-btn" data-index="${index}" type="button">
@@ -312,8 +312,9 @@
     if (modalRoomType) modalRoomType.textContent = item.roomLabel;
 
     if (modalShopBtn) {
-      modalShopBtn.href = `product.html?id=${encodeURIComponent(item.productId)}`;
-      modalShopBtn.textContent = `Shop "${item.printTitle}" Print →`;
+      const productLink = item.productId.includes('.html') ? item.productId : `product.html?id=${encodeURIComponent(item.productId)}`;
+      modalShopBtn.href = productLink;
+      modalShopBtn.textContent = item.productId.includes('.html') ? `Browse ${item.printTitle} →` : `Shop "${item.printTitle}" Print →`;
     }
 
     // Render photo and gallery thumbnails
