@@ -23,12 +23,15 @@ function compileLayout(filePath, isRoot) {
   // Active status
   let homeActive = '';
   let shopActive = '';
+  let showcaseActive = '';
   let cartActive = '';
 
   if (filename === 'index.html') {
     homeActive = 'active';
   } else if (filename === 'cart.html') {
     cartActive = 'active';
+  } else if (filename === 'showcase.html') {
+    showcaseActive = 'active';
   } else if ([
     'underwater.html',
     'landscapes.html',
@@ -50,6 +53,7 @@ function compileLayout(filePath, isRoot) {
     .replace(/PAGES_PREFIX/g, pagesPrefix)
     .replace('HOME_ACTIVE', homeActive)
     .replace('SHOP_ACTIVE', shopActive)
+    .replace('SHOWCASE_ACTIVE', showcaseActive)
     .replace('CART_ACTIVE', cartActive);
 
   // Build footer

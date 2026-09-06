@@ -14,6 +14,7 @@ const urls = [
   'https://gliciouspics.com/pages/aerial.html',
   'https://gliciouspics.com/pages/travel.html',
   'https://gliciouspics.com/pages/panoramas.html',
+  'https://gliciouspics.com/pages/showcase.html',
   'https://gliciouspics.com/pages/faq.html',
   'https://gliciouspics.com/pages/cart.html',
   'https://gliciouspics.com/pages/privacy.html',
