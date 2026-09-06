@@ -302,7 +302,6 @@
     const images = getItemImages(item);
 
     // Set text details
-    if (modalQuote) modalQuote.textContent = `"${item.quote}"`;
     if (modalReviewFull) modalReviewFull.textContent = item.fullReview || item.quote;
     if (modalCustomerName) modalCustomerName.textContent = item.customerName;
     if (modalCustomerLoc) modalCustomerLoc.textContent = item.location;
@@ -310,12 +309,6 @@
     if (modalMedium) modalMedium.textContent = item.medium;
     if (modalSize) modalSize.textContent = item.size;
     if (modalRoomType) modalRoomType.textContent = item.roomLabel;
-
-    if (modalShopBtn) {
-      const productLink = item.productId.includes('.html') ? item.productId : `product.html?id=${encodeURIComponent(item.productId)}`;
-      modalShopBtn.href = productLink;
-      modalShopBtn.textContent = item.productId.includes('.html') ? `Browse ${item.printTitle} →` : `Shop "${item.printTitle}" Print →`;
-    }
 
     // Render photo and gallery thumbnails
     updateModalPhoto(currentModalPhotoIndex, images, item);
@@ -427,6 +420,25 @@
 
   function getEmbeddedFallback() {
     return [
+      {
+        id: 'honolulu-bedroom-office-landscapes',
+        productId: 'landscapes.html',
+        printTitle: 'Landscape Prints',
+        medium: 'Framed Lustre Paper',
+        size: '12x18',
+        roomType: 'office',
+        roomLabel: 'Bedroom Office',
+        customerName: 'Verified Buyer',
+        location: 'Honolulu, HI',
+        rating: 5,
+        quote: 'These prints are awesome. They are just what I needed above my desk space. They bring a smile to my face and keep me calm during a busy, hectic work week.',
+        fullReview: 'These prints are awesome. They are just what I needed above my desk space. They bring a smile to my face and keep me calm during a busy, hectic work week. The perfect getaway in my home office. The luster print looks great framed and shows nice color and contrast. Will be back for more for my living room.',
+        images: [
+          'https://res.cloudinary.com/dbqfibadw/image/upload/f_auto,q_auto/v1788728789/gliciouspics/customerphotos/Photo_Sep_06_2026_10_44_51_AM.jpg',
+          'https://res.cloudinary.com/dbqfibadw/image/upload/f_auto,q_auto/v1788728789/gliciouspics/customerphotos/Photo_Sep_06_2026_10_43_16_AM.jpg',
+          'https://res.cloudinary.com/dbqfibadw/image/upload/f_auto,q_auto/v1788728787/gliciouspics/customerphotos/Photo_Sep_06_2026_10_42_54_AM.jpg'
+        ]
+      },
       {
         id: 'napali-living-room-metal',
         productId: 'hawaii-nature-valley-ridge-line-print',

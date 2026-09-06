@@ -372,7 +372,8 @@ const PUBLIC_ROOT_FILES = [
   'favicon.svg',
   'robots.txt',
   'sitemap.xml',
-  'products.json'
+  'products.json',
+  'showcase.json'
 ];
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 for (const file of PUBLIC_ROOT_FILES) {
