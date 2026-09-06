@@ -82,7 +82,9 @@
       .map((item, index) => {
         const images = getItemImages(item);
         const coverImg = images[0] || '';
-        const mediumBadge = item.medium.includes('Metal') ? 'Chromaluxe Metal' : 'Framed Lustre';
+        const mediumBadge = item.medium.includes('Metal')
+          ? 'Chromaluxe Metal'
+          : (item.medium.includes('Matte') ? 'Matte Paper' : 'Lustre Paper');
         const multiPhotoBadge =
           images.length > 1
             ? `
@@ -186,9 +188,12 @@
           currentFilteredList = [...showcaseData];
         } else if (filter === 'metal') {
           currentFilteredList = showcaseData.filter((x) => x.medium.toLowerCase().includes('metal'));
-        } else if (filter === 'framed') {
+        } else if (filter === 'paper') {
           currentFilteredList = showcaseData.filter(
-            (x) => x.medium.toLowerCase().includes('framed') || x.medium.toLowerCase().includes('lustre')
+            (x) =>
+              x.medium.toLowerCase().includes('paper') ||
+              x.medium.toLowerCase().includes('lustre') ||
+              x.medium.toLowerCase().includes('matte')
           );
         } else {
           currentFilteredList = showcaseData.filter((x) => x.roomType === filter);
@@ -424,7 +429,7 @@
         id: 'honolulu-bedroom-office-landscapes',
         productId: 'landscapes.html',
         printTitle: 'Landscape Prints',
-        medium: 'Framed Lustre Paper',
+        medium: 'Lustre Paper',
         size: '12x18',
         roomType: 'office',
         roomLabel: 'Bedroom Office',

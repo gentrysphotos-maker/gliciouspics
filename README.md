@@ -343,7 +343,7 @@ If you deploy an update that breaks the live site:
 
 ## Section 5: How to Manage Prodigi Print Orders
 
-Prodigi processes, prints, frames, and ships your orders automatically.
+Prodigi processes, prints, and ships your orders automatically.
 
 ### 1. Check Order Status
 1. Log into your Prodigi Dashboard (dashboard.prodigi.com for live orders; [sandbox-beta-dashboard.pwinty.com](https://sandbox-beta-dashboard.pwinty.com) for test orders).
@@ -351,7 +351,7 @@ Prodigi processes, prints, frames, and ships your orders automatically.
 3. Monitor the order status:
    - **Created:** Order submitted to Prodigi.
    - **Validated:** Passed automatic checks, scheduled for print.
-   - **In Production:** Currently being printed, cut, or framed.
+   - **In Production:** Currently being printed and prepared for shipping.
    - **Shipped:** Sent out. Tracking links will appear on the order card.
 
 ---
@@ -361,7 +361,7 @@ If automated fulfillment fails (e.g., if a customer entered an invalid shipping 
 1. In the Prodigi dashboard, click **Create Order**.
 2. Enter the customer's name, email, phone, and shipping address.
 3. Under **Items**, click **Add Item**.
-4. Choose the print style, sizing, and frame combination, and enter the correct SKU.
+4. Choose the print style (Chromaluxe Metal, Lustre, or Matte) and sizing, and enter the correct SKU.
 5. Click **Upload Image** and select your high-resolution original file (or input the R2 URL).
 6. Select the shipping carrier rate and click **Submit Order**. Pay via credit card to initiate printing.
 
