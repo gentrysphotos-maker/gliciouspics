@@ -201,17 +201,17 @@
 
   // Setup modal behavior & controls
   function setupModalEvents() {
-    if (!modalEl) return;
-
     if (modalCloseBtn) {
       modalCloseBtn.addEventListener('click', closeModal);
     }
 
-    modalEl.addEventListener('click', (e) => {
-      if (e.target === modalEl) {
-        closeModal();
-      }
-    });
+    if (modalEl) {
+      modalEl.addEventListener('click', (e) => {
+        if (e.target === modalEl) {
+          closeModal();
+        }
+      });
+    }
 
     if (modalPrevBtn) {
       modalPrevBtn.addEventListener('click', () => {
@@ -225,14 +225,71 @@
       });
     }
 
+    // Submit Modal Events
+    const submitModalEl = document.getElementById('submit-modal');
+    const openSubmitModalBtn = document.getElementById('open-submit-modal-btn');
+    const closeSubmitModalBtn = document.getElementById('submit-modal-close');
+    const copyEmailBtn = document.getElementById('btn-copy-email');
+
+    if (openSubmitModalBtn && submitModalEl) {
+      openSubmitModalBtn.addEventListener('click', () => {
+        submitModalEl.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    if (closeSubmitModalBtn && submitModalEl) {
+      closeSubmitModalBtn.addEventListener('click', () => {
+        submitModalEl.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+
+    if (submitModalEl) {
+      submitModalEl.addEventListener('click', (e) => {
+        if (e.target === submitModalEl) {
+          submitModalEl.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (copyEmailBtn) {
+      copyEmailBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('gentrysphotos@gmail.com');
+          copyEmailBtn.textContent = 'Copied! ✓';
+          copyEmailBtn.style.background = 'var(--accent)';
+          copyEmailBtn.style.color = 'var(--black)';
+          setTimeout(() => {
+            copyEmailBtn.textContent = 'Copy Email';
+            copyEmailBtn.style.background = '';
+            copyEmailBtn.style.color = '';
+          }, 2500);
+        } catch (err) {
+          console.error('Failed to copy', err);
+        }
+      });
+    }
+
     document.addEventListener('keydown', (e) => {
-      if (!modalEl.classList.contains('active')) return;
       if (e.key === 'Escape') {
-        closeModal();
-      } else if (e.key === 'ArrowLeft') {
-        navigatePhotos(-1);
-      } else if (e.key === 'ArrowRight') {
-        navigatePhotos(1);
+        if (submitModalEl && submitModalEl.classList.contains('active')) {
+          submitModalEl.classList.remove('active');
+          document.body.style.overflow = '';
+          return;
+        }
+        if (modalEl && modalEl.classList.contains('active')) {
+          closeModal();
+          return;
+        }
+      }
+      if (modalEl && modalEl.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') {
+          navigatePhotos(-1);
+        } else if (e.key === 'ArrowRight') {
+          navigatePhotos(1);
+        }
       }
     });
   }
