@@ -1,11 +1,12 @@
-/* G.Licious Pics — Customer Wall Showcase & Reviews JavaScript */
+/* G.Licious Pics — Customer Wall Showcase & Multi-Photo Gallery JavaScript */
 
 (function () {
   'use strict';
 
   let showcaseData = [];
   let currentFilteredList = [];
-  let currentModalIndex = 0;
+  let currentModalReviewIndex = 0;
+  let currentModalPhotoIndex = 0;
   let activeFilter = 'all';
 
   const gridEl = document.getElementById('showcase-grid');
@@ -15,6 +16,8 @@
   const modalPrevBtn = document.getElementById('showcase-modal-prev');
   const modalNextBtn = document.getElementById('showcase-modal-next');
   const modalImg = document.getElementById('modal-img');
+  const modalPhotoCounter = document.getElementById('modal-photo-counter');
+  const modalThumbsEl = document.getElementById('modal-thumbs');
   const modalQuote = document.getElementById('modal-quote');
   const modalReviewFull = document.getElementById('modal-review-full');
   const modalCustomerName = document.getElementById('modal-customer-name');
@@ -24,6 +27,17 @@
   const modalSize = document.getElementById('modal-size');
   const modalRoomType = document.getElementById('modal-room-type');
   const modalShopBtn = document.getElementById('modal-shop-btn');
+
+  // Helper to normalize images array
+  function getItemImages(item) {
+    if (Array.isArray(item.images) && item.images.length > 0) {
+      return item.images;
+    }
+    if (item.imageUrl) {
+      return [item.imageUrl];
+    }
+    return [];
+  }
 
   // Initialize Showcase
   async function initShowcase() {
@@ -66,12 +80,25 @@
 
     gridEl.innerHTML = items
       .map((item, index) => {
+        const images = getItemImages(item);
+        const coverImg = images[0] || '';
         const mediumBadge = item.medium.includes('Metal') ? 'Chromaluxe Metal' : 'Framed Lustre';
+        const multiPhotoBadge =
+          images.length > 1
+            ? `
+            <span class="showcase-multi-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              ${images.length} Photos
+            </span>
+          `
+            : '';
+
         return `
         <article class="showcase-card fade-up" data-id="${escapeHtml(item.id)}">
           <div class="showcase-card-img-wrap" data-index="${index}" role="button" tabindex="0" aria-label="View photo of ${escapeHtml(item.printTitle)} in ${escapeHtml(item.roomLabel)}">
-            <img src="${escapeHtml(item.imageUrl)}" alt="${escapeHtml(item.printTitle)} on wall in ${escapeHtml(item.roomLabel)}" loading="lazy" />
+            <img src="${escapeHtml(coverImg)}" alt="${escapeHtml(item.printTitle)} on wall in ${escapeHtml(item.roomLabel)}" loading="lazy" />
             <span class="showcase-card-badge">${escapeHtml(item.roomLabel)} · ${escapeHtml(item.size)}</span>
+            ${multiPhotoBadge}
             <div class="showcase-card-zoom-hint">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
               <span>View Wall Photo</span>
@@ -111,10 +138,10 @@
 
     // Attach click handlers to cards
     gridEl.querySelectorAll('.showcase-card-img-wrap, .showcase-expand-btn').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         const idx = parseInt(btn.getAttribute('data-index'), 10);
         if (!isNaN(idx) && currentFilteredList[idx]) {
-          openModal(idx);
+          openModal(idx, 0);
         }
       });
       btn.addEventListener('keydown', (e) => {
@@ -122,7 +149,7 @@
           e.preventDefault();
           const idx = parseInt(btn.getAttribute('data-index'), 10);
           if (!isNaN(idx) && currentFilteredList[idx]) {
-            openModal(idx);
+            openModal(idx, 0);
           }
         }
       });
@@ -164,7 +191,6 @@
             (x) => x.medium.toLowerCase().includes('framed') || x.medium.toLowerCase().includes('lustre')
           );
         } else {
-          // By roomType (e.g. living-room, bedroom, office)
           currentFilteredList = showcaseData.filter((x) => x.roomType === filter);
         }
 
@@ -189,13 +215,13 @@
 
     if (modalPrevBtn) {
       modalPrevBtn.addEventListener('click', () => {
-        navigateModal(-1);
+        navigatePhotos(-1);
       });
     }
 
     if (modalNextBtn) {
       modalNextBtn.addEventListener('click', () => {
-        navigateModal(1);
+        navigatePhotos(1);
       });
     }
 
@@ -204,22 +230,21 @@
       if (e.key === 'Escape') {
         closeModal();
       } else if (e.key === 'ArrowLeft') {
-        navigateModal(-1);
+        navigatePhotos(-1);
       } else if (e.key === 'ArrowRight') {
-        navigateModal(1);
+        navigatePhotos(1);
       }
     });
   }
 
-  function openModal(index) {
-    if (!currentFilteredList[index]) return;
-    currentModalIndex = index;
-    const item = currentFilteredList[index];
+  function openModal(reviewIndex, photoIndex = 0) {
+    if (!currentFilteredList[reviewIndex]) return;
+    currentModalReviewIndex = reviewIndex;
+    currentModalPhotoIndex = photoIndex;
+    const item = currentFilteredList[reviewIndex];
+    const images = getItemImages(item);
 
-    if (modalImg) {
-      modalImg.src = item.imageUrl;
-      modalImg.alt = `${item.printTitle} on wall in ${item.roomLabel}`;
-    }
+    // Set text details
     if (modalQuote) modalQuote.textContent = `"${item.quote}"`;
     if (modalReviewFull) modalReviewFull.textContent = item.fullReview || item.quote;
     if (modalCustomerName) modalCustomerName.textContent = item.customerName;
@@ -234,8 +259,73 @@
       modalShopBtn.textContent = `Shop "${item.printTitle}" Print →`;
     }
 
+    // Render photo and gallery thumbnails
+    updateModalPhoto(currentModalPhotoIndex, images, item);
+
     modalEl.classList.add('active');
     document.body.style.overflow = 'hidden';
+  }
+
+  function updateModalPhoto(photoIdx, images, item) {
+    if (images.length === 0) return;
+    currentModalPhotoIndex = (photoIdx + images.length) % images.length;
+    const activeSrc = images[currentModalPhotoIndex];
+
+    if (modalImg) {
+      modalImg.style.opacity = '0.4';
+      modalImg.src = activeSrc;
+      modalImg.alt = `${item.printTitle} photo ${currentModalPhotoIndex + 1} of ${images.length} in ${item.roomLabel}`;
+      setTimeout(() => {
+        modalImg.style.opacity = '1';
+      }, 50);
+    }
+
+    // Photo counter
+    if (modalPhotoCounter) {
+      if (images.length > 1) {
+        modalPhotoCounter.style.display = 'block';
+        modalPhotoCounter.textContent = `${currentModalPhotoIndex + 1} / ${images.length}`;
+      } else {
+        modalPhotoCounter.style.display = 'none';
+      }
+    }
+
+    // Nav buttons
+    if (modalPrevBtn && modalNextBtn) {
+      if (images.length > 1 || currentFilteredList.length > 1) {
+        modalPrevBtn.style.display = 'flex';
+        modalNextBtn.style.display = 'flex';
+      } else {
+        modalPrevBtn.style.display = 'none';
+        modalNextBtn.style.display = 'none';
+      }
+    }
+
+    // Render thumbnail strip
+    if (modalThumbsEl) {
+      if (images.length > 1) {
+        modalThumbsEl.style.display = 'flex';
+        modalThumbsEl.innerHTML = images
+          .map((src, idx) => `
+            <button class="showcase-modal-thumb ${idx === currentModalPhotoIndex ? 'active' : ''}" data-photo-idx="${idx}" type="button" aria-label="View photo ${idx + 1}">
+              <img src="${escapeHtml(src)}" alt="Thumbnail ${idx + 1}" />
+            </button>
+          `)
+          .join('');
+
+        modalThumbsEl.querySelectorAll('.showcase-modal-thumb').forEach((thumbBtn) => {
+          thumbBtn.addEventListener('click', () => {
+            const pIdx = parseInt(thumbBtn.getAttribute('data-photo-idx'), 10);
+            if (!isNaN(pIdx)) {
+              updateModalPhoto(pIdx, images, item);
+            }
+          });
+        });
+      } else {
+        modalThumbsEl.style.display = 'none';
+        modalThumbsEl.innerHTML = '';
+      }
+    }
   }
 
   function closeModal() {
@@ -244,15 +334,27 @@
     document.body.style.overflow = '';
   }
 
-  function navigateModal(direction) {
+  function navigatePhotos(direction) {
     if (currentFilteredList.length === 0) return;
-    let nextIndex = currentModalIndex + direction;
-    if (nextIndex < 0) {
-      nextIndex = currentFilteredList.length - 1;
-    } else if (nextIndex >= currentFilteredList.length) {
-      nextIndex = 0;
+    const currentItem = currentFilteredList[currentModalReviewIndex];
+    const images = getItemImages(currentItem);
+
+    if (images.length > 1) {
+      let nextPhotoIdx = currentModalPhotoIndex + direction;
+      if (nextPhotoIdx >= 0 && nextPhotoIdx < images.length) {
+        updateModalPhoto(nextPhotoIdx, images, currentItem);
+        return;
+      }
     }
-    openModal(nextIndex);
+
+    // If reached end of photos in current review, move to next/prev review
+    let nextReviewIdx = currentModalReviewIndex + direction;
+    if (nextReviewIdx < 0) {
+      nextReviewIdx = currentFilteredList.length - 1;
+    } else if (nextReviewIdx >= currentFilteredList.length) {
+      nextReviewIdx = 0;
+    }
+    openModal(nextReviewIdx, direction > 0 ? 0 : 0);
   }
 
   function escapeHtml(str) {
@@ -280,7 +382,10 @@
         rating: 5,
         quote: 'The depth and vibrant greens on the metal print completely transformed our main room. Everyone who visits stops to admire it.',
         fullReview: 'We wanted a statement piece that brought the feeling of the islands into our home. The metal finish catches the light in the most incredible way. Quality and packaging were top tier.',
-        imageUrl: 'https://res.cloudinary.com/dbqfibadw/image/upload/v1779769098/gliciouspics/landscapes/room%20mockups/living-room-mockup-print-06.jpg'
+        images: [
+          'https://res.cloudinary.com/dbqfibadw/image/upload/v1779769098/gliciouspics/landscapes/room%20mockups/living-room-mockup-print-06.jpg',
+          'https://res.cloudinary.com/dbqfibadw/image/upload/v1779768407/gliciouspics/landscapes/black%20frame/hawaii-nature-valley-ridge-line-framed.jpg'
+        ]
       },
       {
         id: 'makapuu-milkyway-suite',
@@ -295,22 +400,10 @@
         rating: 5,
         quote: 'The night sky clarity is unreal. It feels like having an open window directly into the Pacific stars.',
         fullReview: 'I was skeptical about how well night sky photography would print, but Gentry\'s work exceeded every expectation. The blacks are deep and rich, and the stars glisten against the metal surface.',
-        imageUrl: 'https://res.cloudinary.com/dbqfibadw/image/upload/v1779769104/gliciouspics/nightscapes/room%20mockups/living-room-mockup-print-104.jpg'
-      },
-      {
-        id: 'hidden-honu-office',
-        productId: 'hidden-honu-hawaii-green-sea-turtle-underwater',
-        printTitle: 'Hidden Honu',
-        medium: 'Framed Lustre Print',
-        size: '20x30',
-        roomType: 'office',
-        roomLabel: 'Home Office',
-        customerName: 'Dr. Sarah K.',
-        location: 'San Diego, CA',
-        rating: 5,
-        quote: 'Brings immediate calm and serenity to my workspace. The colors of the water and reef are stunning.',
-        fullReview: 'As a marine enthusiast, this turtle print brings so much peace to my daily workspace. The black gallery frame is sleek and modern, and the print paper texture holds every fine detail of the coral and honu shell.',
-        imageUrl: 'https://res.cloudinary.com/dbqfibadw/image/upload/v1779769468/gliciouspics/underwater/room%20mockups/living-room-mockup-print-76.jpg'
+        images: [
+          'https://res.cloudinary.com/dbqfibadw/image/upload/v1779769104/gliciouspics/nightscapes/room%20mockups/living-room-mockup-print-104.jpg',
+          'https://res.cloudinary.com/dbqfibadw/image/upload/v1780708342/gliciouspics/nightscapes/metal%20mockups/Horizontal_Light_Green_REC_3x410.jpg'
+        ]
       }
     ];
   }

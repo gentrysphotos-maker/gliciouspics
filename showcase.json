@@ -13,7 +13,11 @@
     "rating": 5,
     "quote": "The depth and vibrant greens on the metal print completely transformed our main room. Everyone who visits stops to admire it.",
     "fullReview": "We wanted a statement piece that captured the untamed spirit of the islands. The Chromaluxe metal finish catches the morning light in the most incredible way — it literally looks three-dimensional. Quality and packaging were top tier.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769098/gliciouspics/landscapes/room%20mockups/living-room-mockup-print-06.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769098/gliciouspics/landscapes/room%20mockups/living-room-mockup-print-06.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779768407/gliciouspics/landscapes/black%20frame/hawaii-nature-valley-ridge-line-framed.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876749/gliciouspics/landscapes/hawaii-nature-valley-ridge-line-print.jpg"
+    ],
     "date": "May 2026",
     "verified": true
   },
@@ -25,13 +29,17 @@
     "medium": "Chromaluxe Metal",
     "size": "24x36",
     "roomType": "bedroom",
-    "roomLabel": "Primary Suite",
+    "roomLabel": "Primary Bedroom",
     "customerName": "Marcus T.",
     "location": "San Francisco, CA",
     "rating": 5,
     "quote": "The night sky clarity is unreal. It feels like having an open window directly into the Pacific stars.",
-    "fullReview": "I was skeptical about how well astro-photography would print, but Gentry's work exceeded every expectation. The blacks are deep and rich, and the stars glisten against the metal surface. Truly breathtaking craftsmanship.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769104/gliciouspics/nightscapes/room%20mockups/living-room-mockup-print-104.jpg",
+    "fullReview": "I was skeptical about how well night sky photography would print, but Gentry's work exceeded every expectation. The blacks are deep and rich, and the stars glisten against the metal surface. Truly breathtaking craftsmanship.",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769104/gliciouspics/nightscapes/room%20mockups/living-room-mockup-print-104.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1780708342/gliciouspics/nightscapes/metal%20mockups/Horizontal_Light_Green_REC_3x410.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779768431/gliciouspics/nightscapes/black%20frame/oahu-hawaii-milky-way-night-landscape-makapuu-beach-print.jpg"
+    ],
     "date": "April 2026",
     "verified": true
   },
@@ -49,7 +57,11 @@
     "rating": 5,
     "quote": "Brings immediate calm and serenity to my workspace. The colors of the water and reef are stunning.",
     "fullReview": "As a marine enthusiast, this turtle print brings so much peace to my daily workspace. The black gallery frame is sleek and modern, and the print paper texture holds every fine detail of the coral and honu shell.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769468/gliciouspics/underwater/room%20mockups/living-room-mockup-print-76.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769468/gliciouspics/underwater/room%20mockups/living-room-mockup-print-76.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1780708492/gliciouspics/underwater/metal%20mockups/underwater-photography-wildlife-metal-art-print-10.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779768748/gliciouspics/underwater/black%20frame/hawaii-underwater-green-sea-turtle-hiding-portrait-print.jpg"
+    ],
     "date": "June 2026",
     "verified": true
   },
@@ -67,7 +79,10 @@
     "rating": 5,
     "quote": "The panoramic format fits perfectly above our dining buffet. It brings the lush green Mānoa rainforest right into our home.",
     "fullReview": "We hiked Mānoa falls on our anniversary, so this panoramic print holds sentimental value for us. The framing is top quality and arrived with secure hanging hardware ready to mount. Couldn't be happier!",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769297/gliciouspics/panoramas/room%20mockups/living-room-panorama-framed-mockup-11.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769297/gliciouspics/panoramas/room%20mockups/living-room-panorama-framed-mockup-11.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779768469/gliciouspics/panoramas/black%20frame/manoa-garden-pano.jpg"
+    ],
     "date": "March 2026",
     "verified": true
   },
@@ -85,7 +100,11 @@
     "rating": 5,
     "quote": "The sunlight rays piercing through the turquoise ocean water are mesmerizing. A true conversation piece.",
     "fullReview": "We get compliments from every single person who steps into our house. Gentry's underwater perspective is rare — the dolphins look like they're gliding right through the room. Fast shipping and flawless condition.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769461/gliciouspics/underwater/room%20mockups/living-room-mockup-print-48.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769461/gliciouspics/underwater/room%20mockups/living-room-mockup-print-48.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1780708495/gliciouspics/underwater/metal%20mockups/underwater-photography-wildlife-metal-art-print-13.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769450/gliciouspics/underwater/room%20mockups/living-room-double-frame-mockup-03.jpg"
+    ],
     "date": "July 2026",
     "verified": true
   },
@@ -103,7 +122,10 @@
     "rating": 5,
     "quote": "Diamond Head and the turquoise Waikīkī waters in one breathtaking panoramic span. Outstanding sharpness.",
     "fullReview": "Having lived in Honolulu for 5 years before relocating to the Pacific Northwest, this panoramic metal print is my daily reminder of island warmth. The resolution from edge to edge is crystal clear.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769293/gliciouspics/panoramas/room%20mockups/living-room-panorama-framed-mockup-09.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769293/gliciouspics/panoramas/room%20mockups/living-room-panorama-framed-mockup-09.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779768474/gliciouspics/panoramas/black%20frame/waikiki-tropical-city-panorama-black-frame.jpg"
+    ],
     "date": "February 2026",
     "verified": true
   },
@@ -121,7 +143,11 @@
     "rating": 5,
     "quote": "Mount Fuji under the starry night sky with the lake reflection creates the most tranquil ambiance.",
     "fullReview": "The interplay of dark mountain contours and glistening stars on the metal print is remarkable. Shipped in heavy-duty custom packaging and arrived in pristine condition.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769102/gliciouspics/nightscapes/room%20mockups/living-room-mockup-print-39.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769102/gliciouspics/nightscapes/room%20mockups/living-room-mockup-print-39.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1780708342/gliciouspics/nightscapes/metal%20mockups/nighttime_fuji.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769104/gliciouspics/nightscapes/room%20mockups/living-room-mockup-print-126.jpg"
+    ],
     "date": "January 2026",
     "verified": true
   },
@@ -139,7 +165,10 @@
     "rating": 5,
     "quote": "The contrast of the spotted eagle ray against deep blue ocean depths is pure artistic perfection.",
     "fullReview": "I purchased this for my private practice office. Patients frequently comment on how elegant and serene it feels. The print quality is second to none.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769466/gliciouspics/underwater/room%20mockups/living-room-mockup-print-75.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769466/gliciouspics/underwater/room%20mockups/living-room-mockup-print-75.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1780708497/gliciouspics/underwater/metal%20mockups/underwater-photography-wildlife-metal-art-print-12.jpg"
+    ],
     "date": "June 2026",
     "verified": true
   },
@@ -157,7 +186,10 @@
     "rating": 5,
     "quote": "The mist and sheer mountain ridges look so alive on our wall. Brings Hawaii right into our rainy winter days.",
     "fullReview": "The details in the ridges and clouds give an incredible sense of scale. The floating metal mount gives a sleek, borderless modern presentation that fits right into our interior design.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769096/gliciouspics/landscapes/room%20mockups/living-room-mockup-print-111.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769096/gliciouspics/landscapes/room%20mockups/living-room-mockup-print-111.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876863/gliciouspics/landscapes/oahu-mountain-valley-landscape-photography.jpg"
+    ],
     "date": "August 2026",
     "verified": true
   },
@@ -175,7 +207,10 @@
     "rating": 5,
     "quote": "Such a playful and vivid splash of Hawaiian wildlife. The colors pop so warmly against our neutral wall.",
     "fullReview": "The little gold dust day gecko peeking out of the bright orange heliconia always brings a smile to our guests when they enter our home. Super sharp focus and rich colors.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769295/gliciouspics/panoramas/room%20mockups/living-room-panorama-framed-mockup-10.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769295/gliciouspics/panoramas/room%20mockups/living-room-panorama-framed-mockup-10.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779768471/gliciouspics/panoramas/black%20frame/peeking-gecko-pano.jpg"
+    ],
     "date": "May 2026",
     "verified": true
   },
@@ -193,7 +228,11 @@
     "rating": 5,
     "quote": "The celestial glow over the ocean tidepools is absolutely magical. An extraordinary piece of fine art.",
     "fullReview": "We wanted an authentic nightscape of Oahu that felt peaceful and grounded in nature. Gentry's long exposure technique brings out colors in the night sky you could never imagine.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769102/gliciouspics/nightscapes/room%20mockups/living-room-mockup-print-66.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769102/gliciouspics/nightscapes/room%20mockups/living-room-mockup-print-66.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1780708345/gliciouspics/nightscapes/metal%20mockups/Vertical_Warm_BG_25_2x317.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779768429/gliciouspics/nightscapes/black%20frame/hawaii-night-sky-milky-way-starry-fine-art.jpg"
+    ],
     "date": "March 2026",
     "verified": true
   },
@@ -211,7 +250,10 @@
     "rating": 5,
     "quote": "The volcanic sunset gradient from fiery amber to deep indigo is majestic on the metal medium.",
     "fullReview": "The 12x36 panorama makes a commanding focal point over my studio desk. Solid build quality and the print itself is razor sharp across the entire mountain ridge.",
-    "imageUrl": "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769289/gliciouspics/panoramas/room%20mockups/living-room-panorama-framed-mockup-06.jpg",
+    "images": [
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779769289/gliciouspics/panoramas/room%20mockups/living-room-panorama-framed-mockup-06.jpg",
+      "https://res.cloudinary.com/dbqfibadw/image/upload/v1779768472/gliciouspics/panoramas/black%20frame/volcano-mauna-loa-panorama-framed.jpg"
+    ],
     "date": "July 2026",
     "verified": true
   }

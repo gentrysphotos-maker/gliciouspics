@@ -32,6 +32,7 @@
   
   
   
+  
 
   <header class="site-header" id="site-header">
   <a href="../index.html" class="logo">G.Licious</a>
@@ -71,7 +72,8 @@
 
 
 
-  <main id="main-content"       class="showcase-page">
+
+  <main id="main-content"         class="showcase-page">
     <header class="showcase-header">
       <span class="section-eyebrow">In The Wild · Customer Photos</span>
       <h1 class="section-title">Customer Walls</h1>
@@ -118,10 +120,16 @@
     <div class="showcase-modal-dialog">
       <button class="showcase-modal-close" id="showcase-modal-close" type="button" aria-label="Close dialog">✕</button>
 
-      <div class="showcase-modal-media">
-        <button class="showcase-modal-nav-btn showcase-modal-nav-prev" id="showcase-modal-prev" type="button" aria-label="Previous photo">‹</button>
-        <img id="modal-img" src="" alt="Wall photo view" />
-        <button class="showcase-modal-nav-btn showcase-modal-nav-next" id="showcase-modal-next" type="button" aria-label="Next photo">›</button>
+      <div class="showcase-modal-media-col">
+        <span class="showcase-modal-photo-counter" id="modal-photo-counter">1 / 1</span>
+        <div class="showcase-modal-main-view">
+          <button class="showcase-modal-nav-btn showcase-modal-nav-prev" id="showcase-modal-prev" type="button" aria-label="Previous photo">‹</button>
+          <img id="modal-img" src="" alt="Wall photo view" />
+          <button class="showcase-modal-nav-btn showcase-modal-nav-next" id="showcase-modal-next" type="button" aria-label="Next photo">›</button>
+        </div>
+        <div class="showcase-modal-thumbs" id="modal-thumbs">
+          <!-- Dynamically rendered thumbnails -->
+        </div>
       </div>
 
       <div class="showcase-modal-info">
@@ -191,6 +199,7 @@
     <p class="footer-copy">© 2026 G.Licious Pics by Gentry. All rights reserved.</p>
   </div>
 </footer>
+
 
 
 

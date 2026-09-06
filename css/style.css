@@ -1624,20 +1624,111 @@ a { color: inherit; text-decoration: none; }
   border-color: var(--accent);
 }
 
-.showcase-modal-media {
-  background: #000;
+.showcase-multi-badge {
+  position: absolute;
+  bottom: 0.85rem;
+  right: 0.85rem;
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.3rem 0.65rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.showcase-multi-badge svg {
+  color: var(--accent);
+}
+
+.showcase-modal-media-col {
+  background: #050505;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-modal-photo-counter {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--silver);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  z-index: 6;
+}
+
+.showcase-modal-main-view {
+  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   position: relative;
+  min-height: 380px;
+  overflow: hidden;
+  background: #000;
 }
 
-.showcase-modal-media img {
+.showcase-modal-main-view img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  max-height: 85vh;
+  max-height: 70vh;
+  transition: opacity 0.25s ease;
+}
+
+.showcase-modal-thumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(14, 14, 14, 0.98);
+  border-top: 1px solid var(--mid);
+  overflow-x: auto;
+  justify-content: center;
+}
+
+.showcase-modal-thumb {
+  width: 54px;
+  height: 54px;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity var(--transition), border-color var(--transition), transform var(--transition);
+  flex-shrink: 0;
+  background: #000;
+  padding: 0;
+}
+
+.showcase-modal-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase-modal-thumb:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+.showcase-modal-thumb.active {
+  opacity: 1;
+  border-color: var(--accent);
 }
 
 .showcase-modal-nav-btn {
