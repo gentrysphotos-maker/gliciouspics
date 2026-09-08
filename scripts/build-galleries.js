@@ -128,8 +128,8 @@ function arrangeLeftToRight3Cols(arr) {
 // Map categories and details
 const categories = {
   underwater: {
-    title: 'Underwater — G.Licious Pics',
-    description: 'Fine art underwater photography prints by G.Licious — green sea turtles, marine wildlife, and tropical ocean waves.',
+    title: 'Underwater — G.licious Pics',
+    description: 'Fine art underwater photography prints by G.licious — green sea turtles, marine wildlife, and tropical ocean waves.',
     titleDisplay: 'Underwater',
     eyebrow: 'The Collection',
     bottomEyebrow: 'Interested in a print?',
@@ -138,8 +138,8 @@ const categories = {
     layout: 'masonry'
   },
   landscapes: {
-    title: 'Landscapes — G.Licious Pics',
-    description: 'Fine art landscape photography prints by G.Licious — volcanic cliffs, coastal tidepools, mountain valleys, and tropical sunrises in Hawaii.',
+    title: 'Landscapes — G.licious Pics',
+    description: 'Fine art landscape photography prints by G.licious — volcanic cliffs, coastal tidepools, mountain valleys, and tropical sunrises in Hawaii.',
     titleDisplay: 'Landscapes',
     eyebrow: 'The Collection',
     bottomEyebrow: 'Interested in a print?',
@@ -148,8 +148,8 @@ const categories = {
     layout: 'masonry'
   },
   'flora-fauna': {
-    title: 'Plants & Animals — G.Licious Pics',
-    description: 'Fine art flora and fauna photography prints by G.Licious — tropical flowers, gecko lizards, chameleons, and local wildlife of Hawaii.',
+    title: 'Plants & Animals — G.licious Pics',
+    description: 'Fine art flora and fauna photography prints by G.licious — tropical flowers, gecko lizards, chameleons, and local wildlife of Hawaii.',
     titleDisplay: 'Plants & Animals',
     eyebrow: 'The Collection',
     bottomEyebrow: 'Interested in a print?',
@@ -158,8 +158,8 @@ const categories = {
     layout: 'masonry'
   },
   nightscapes: {
-    title: 'Nightscapes — G.Licious Pics',
-    description: 'Fine art nightscape photography prints by G.Licious — Milky Way skies, ocean tidepools under stars, and nighttime scenes in Oahu.',
+    title: 'Nightscapes — G.licious Pics',
+    description: 'Fine art nightscape photography prints by G.licious — Milky Way skies, ocean tidepools under stars, and nighttime scenes in Oahu.',
     titleDisplay: 'Nightscapes',
     eyebrow: 'The Collection',
     bottomEyebrow: 'Interested in a print?',
@@ -168,8 +168,8 @@ const categories = {
     layout: 'masonry'
   },
   aerial: {
-    title: 'Aerial — G.Licious Pics',
-    description: 'Fine art aerial photography prints by G.Licious — Hawaii from above, drone perspectives of coastlines and terrain.',
+    title: 'Aerial — G.licious Pics',
+    description: 'Fine art aerial photography prints by G.licious — Hawaii from above, drone perspectives of coastlines and terrain.',
     titleDisplay: 'Aerial',
     eyebrow: 'The Collection',
     bottomEyebrow: 'Interested in a print?',
@@ -178,8 +178,8 @@ const categories = {
     layout: 'masonry'
   },
   travel: {
-    title: 'Travel — G.Licious Pics',
-    description: 'Fine art travel photography prints by G.Licious — scenic mountaintops, honcho streets in Japan, temples, and international landscapes.',
+    title: 'Travel — G.licious Pics',
+    description: 'Fine art travel photography prints by G.licious — scenic mountaintops, honcho streets in Japan, temples, and international landscapes.',
     titleDisplay: 'Travel',
     eyebrow: 'The Collection',
     bottomEyebrow: 'Interested in a print?',
@@ -188,8 +188,8 @@ const categories = {
     layout: 'masonry'
   },
   panoramas: {
-    title: 'Panoramas — G.Licious Pics',
-    description: 'Fine art panoramic photography prints by G.Licious — sweeping wide-format vistas of Hawaii and beyond.',
+    title: 'Panoramas — G.licious Pics',
+    description: 'Fine art panoramic photography prints by G.licious — sweeping wide-format vistas of Hawaii and beyond.',
     titleDisplay: 'Panoramas',
     eyebrow: 'The Collection',
     bottomEyebrow: 'Make a statement',
@@ -277,7 +277,7 @@ ${customPanoStyles}
 </head>
 <body>
   <header class="site-header" id="site-header">
-    <a href="../index.html" class="logo">G.Licious</a>
+    <a href="../index.html" class="logo">G.licious</a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -314,7 +314,7 @@ ${customPanoStyles}
 function buildFooter() {
   return `  <footer class="site-footer">
     <div class="footer-inner">
-      <a href="../index.html" class="footer-logo">G.Licious</a>
+      <a href="../index.html" class="footer-logo">G.licious</a>
       <nav class="footer-nav">
         <a href="../index.html">Home</a>
         <a href="../index.html#galleries">Shop</a>
@@ -330,7 +330,7 @@ function buildFooter() {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
         </a>
       </div>
-      <p class="footer-copy">© 2026 G.Licious Pics by Gentry. All rights reserved.</p>
+      <p class="footer-copy">© 2026 G.licious Pics by Gentry. All rights reserved.</p>
     </div>
   </footer>
   <script src="../js/main.js"></script>

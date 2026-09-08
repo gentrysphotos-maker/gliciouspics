@@ -1,4 +1,4 @@
-/* G.Licious Pics — cart.js */
+/* G.licious Pics — cart.js */
 
 function getPagesPath(filename) {
   const path = window.location.pathname;

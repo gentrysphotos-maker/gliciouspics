@@ -64,7 +64,7 @@ test('Resend: API key is accepted (GET /domains)', { skip: skipMsg }, async () =
  * which is exactly how it slipped into production.
  */
 test('Resend: the sending domain is verified', { skip: skipMsg }, async () => {
-  const from = process.env.RESEND_FROM_EMAIL || 'G.Licious Pics <orders@gliciouspics.com>';
+  const from = process.env.RESEND_FROM_EMAIL || 'G.licious Pics <orders@gliciouspics.com>';
   const sendingDomain = (from.match(/@([^>\s]+)/) || [])[1];
   assert.ok(sendingDomain, `could not read a domain out of RESEND_FROM_EMAIL ("${from}")`);
 

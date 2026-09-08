@@ -170,7 +170,7 @@ async function checkResend() {
     return;
   }
 
-  const from = process.env.RESEND_FROM_EMAIL || 'G.Licious Pics <orders@gliciouspics.com>';
+  const from = process.env.RESEND_FROM_EMAIL || 'G.licious Pics <orders@gliciouspics.com>';
   const sendingDomain = (from.match(/@([^>\s]+)/) || [])[1];
   if (!sendingDomain) {
     fail('Resend sender', `Could not read a domain out of RESEND_FROM_EMAIL ("${from}").`);

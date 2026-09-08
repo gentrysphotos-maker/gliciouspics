@@ -1,4 +1,4 @@
-// G.Licious Pics — Shared Product Page Logic
+// G.licious Pics — Shared Product Page Logic
 // Handles fetching, rendering options, dynamic pricing, cart addition, and layout adaptions.
 
 (() => {
@@ -20,9 +20,7 @@
     return decodedUrl;
   }
 
-  const DISPLAY_TRANSFORM = 'f_auto,q_auto,w_1200';
-  const LIGHTBOX_TRANSFORM = 'f_auto,q_auto,w_1600';
-  const THUMB_TRANSFORM = 'f_auto,q_auto,w_200';
+  const THUMB_TRANSFORM = 'f_auto,q_auto,c_fill,w_300,h_300';
   const preloadedUrls = {};
   let mainSwapToken = 0;
   let lightboxSwapToken = 0;
@@ -354,13 +352,13 @@
   // ── RENDER PRODUCT ───────────────────────────────────────────────────────
   function renderProduct(product, allProducts) {
     // Document Title
-    document.title = product.title + ' — G.Licious Pics';
+    document.title = product.title + ' — G.licious Pics';
     
     // Dynamic SEO Descriptions & Open Graph Metadata
     const description = product.description || 'Fine Art Photography Print by Gentry.';
     updateMetaTag('name', 'description', description);
     updateMetaTag('property', 'og:url', window.location.href);
-    updateMetaTag('property', 'og:title', product.title + ' — G.Licious Pics');
+    updateMetaTag('property', 'og:title', product.title + ' — G.licious Pics');
     updateMetaTag('property', 'og:description', description);
     
     const shareImgUrl = addTransform(product.images.hero, 'f_auto,q_auto,w_1200,h_630,c_fill');
@@ -368,7 +366,7 @@
     
     // Twitter Cards
     updateMetaTag('property', 'twitter:url', window.location.href);
-    updateMetaTag('property', 'twitter:title', product.title + ' — G.Licious Pics');
+    updateMetaTag('property', 'twitter:title', product.title + ' — G.licious Pics');
     updateMetaTag('property', 'twitter:description', description);
     updateMetaTag('property', 'twitter:image', shareImgUrl);
 
@@ -414,7 +412,7 @@
       "description": description,
       "brand": {
         "@type": "Brand",
-        "name": "G.Licious Pics"
+        "name": "G.licious Pics"
       },
       "offers": {
         "@type": "AggregateOffer",
@@ -493,11 +491,16 @@
     document.getElementById('product-title').textContent = product.title;
     document.getElementById('product-description').textContent = product.description;
 
+    // Main image & lightbox transforms (panoramas use w_2400 to span full width sharply on desktop/retina)
+    const isPano = product.format === 'panorama';
+    const displayTransform = isPano ? 'f_auto,q_auto,w_2400' : 'f_auto,q_auto,w_1600';
+    const lightboxTransform = isPano ? 'f_auto,q_auto,w_3200' : 'f_auto,q_auto,w_2400';
+
     // Main image — display-sized; lightbox uses a larger derivative
     const mainWrap = document.getElementById('main-image-wrap');
     mainWrap.innerHTML = '';
     const mainImg = document.createElement('img');
-    mainImg.src = addTransform(product.images.hero, DISPLAY_TRANSFORM);
+    mainImg.src = addTransform(product.images.hero, displayTransform);
     mainImg.alt = product.title;
     mainImg.decoding = 'async';
     mainImg.fetchPriority = 'high';
@@ -509,8 +512,8 @@
       if (seen[url]) return false; seen[url] = true; return true;
     });
 
-    const displayUrls = thumbUrls.map(url => addTransform(url, DISPLAY_TRANSFORM));
-    const lightboxUrls = thumbUrls.map(url => addTransform(url, LIGHTBOX_TRANSFORM));
+    const displayUrls = thumbUrls.map(url => addTransform(url, displayTransform));
+    const lightboxUrls = thumbUrls.map(url => addTransform(url, lightboxTransform));
 
     const thumbsEl = document.getElementById('thumbnails');
     thumbsEl.innerHTML = '';
@@ -543,7 +546,16 @@
         sizeSet.add(s);
       });
     });
-    const sizes = Array.from(sizeSet);
+
+    function parseSizeArea(sizeStr) {
+      const parts = String(sizeStr).toLowerCase().split('x').map(n => parseFloat(n.trim()));
+      if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+        return parts[0] * parts[1];
+      }
+      return 0;
+    }
+
+    const sizes = Array.from(sizeSet).sort((a, b) => parseSizeArea(a) - parseSizeArea(b));
 
     function showValidationError(msg) {
       const errEl = document.getElementById('validation-error');
@@ -637,7 +649,7 @@
       const qty = parseInt(document.getElementById('qty').value) || 1;
 
       if (!size || !mat) {
-        showValidationError('Please select both a print size and material.');
+        showValidationError('Please select both a print material and size.');
         return;
       }
 
@@ -657,7 +669,7 @@
           material: mat,
           price: price,
           quantity: qty,
-          thumbnail: addTransform(product.images.hero, 'f_auto,q_auto,w_200')
+          thumbnail: addTransform(product.images.hero, 'f_auto,q_auto,w_400')
         });
       }
     };
@@ -668,7 +680,7 @@
 
   // ── NOT-FOUND STATE ───────────────────────────────────────────────────────
   function renderNotFound() {
-    document.title = 'Coming Soon — G.Licious Pics';
+    document.title = 'Coming Soon — G.licious Pics';
     document.getElementById('product-title').textContent = 'Coming Soon';
     document.getElementById('product-description').textContent =
       'This print is not yet listed in the shop. Browse the standard galleries or contact us to request a custom order.';

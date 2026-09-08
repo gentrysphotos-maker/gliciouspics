@@ -1,4 +1,4 @@
-/* G.Licious Pics — Microsoft Clarity
+/* G.licious Pics — Microsoft Clarity
  *
  * Paste the project ID from https://clarity.microsoft.com
  * (Settings → Setup → the string in the tracking snippet after /tag/).

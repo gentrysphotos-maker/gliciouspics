@@ -1,4 +1,4 @@
-# G.Licious Pics — Admin Guide & Instruction Manual
+# G.licious Pics — Admin Guide & Instruction Manual
 
 This manual is written in plain, non-technical language to help you (Gentry) manage your photography website, add new products, process orders, run tests, and push updates live without needing AI or developer assistance.
 

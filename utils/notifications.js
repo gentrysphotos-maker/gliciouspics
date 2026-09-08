@@ -35,7 +35,7 @@ async function sendViaResend(to, subject, htmlBody) {
   // Prefer RESEND_FROM_EMAIL; default to the verified domain sender.
   // onboarding@resend.dev only works for the Resend account owner's inbox.
   const fromEmail =
-    process.env.RESEND_FROM_EMAIL || 'G.Licious Pics <orders@gliciouspics.com>';
+    process.env.RESEND_FROM_EMAIL || 'G.licious Pics <orders@gliciouspics.com>';
 
   let response;
   try {
@@ -265,10 +265,10 @@ function getEmailWrapper(contentHtml) {
 <body>
   <div class="wrapper">
     <div class="container">
-      <div class="logo"><a href="${SITE_URL}" style="color: #c8a96e; text-decoration: none;">G.Licious Pics</a></div>
+      <div class="logo"><a href="${SITE_URL}" style="color: #c8a96e; text-decoration: none;">G.licious Pics</a></div>
       ${contentHtml}
       <div class="footer">
-        <p>&copy; 2026 G.Licious Pics. All rights reserved.</p>
+        <p>&copy; 2026 G.licious Pics. All rights reserved.</p>
         <p>Representing the natural wonders of Hawaiʻi and beyond.</p>
       </div>
     </div>
@@ -402,7 +402,7 @@ async function sendCustomerConfirmation(orderDetails) {
 
   const contentHtml = `
     <h1>Mahalo Nui Loa for your order, ${escapeHtml(customerName)}</h1>
-    <p>We have successfully received your payment. Your fine art prints are being prepared. Each order is checked for accuracy before printing and shipping. Aloha!</p>
+    <p>I have successfully received your payment. Your fine art prints are being prepared. Each order is checked for accuracy before printing and shipping. Aloha!</p>
 
     <p class="muted">Order Ref: <strong>${escapeHtml(orderRef)}</strong></p>
 

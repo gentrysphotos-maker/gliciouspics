@@ -1,4 +1,4 @@
-/* G.Licious Pics — main.js */
+/* G.licious Pics — main.js */
 
 // ── HERO SLIDESHOW ──
 const slides = document.querySelectorAll('.slide');

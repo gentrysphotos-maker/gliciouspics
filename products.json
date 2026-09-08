@@ -586,7 +586,7 @@
       "category": "nightscapes",
       "format": "standard",
       "description": "Oʻahu is very populated and not known for having dark skies, but if you go to the right spot on the right night things can line up. Makapuʻu is an amazing beach by day and a solid spot for stargazing on a warm summer night",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877565/gliciouspics/nightscapes/oahu-makapuu-beach-night-sky-milky-way-photography.jpg",
         "thumbnails": [
@@ -598,14 +598,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -626,7 +624,7 @@
       "category": "nightscapes",
       "format": "standard",
       "description": "Rabbit Island, where the galaxy begins or ends. Time slows down when you stare up into the universe. Make sure to spend at least a couple nights each summer out in the wild night, gazing into the stars, contemplating life and getting some perspective.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877553/gliciouspics/nightscapes/hawaii-rabbit-island-milky-way-night-photography.jpg",
         "thumbnails": [
@@ -638,14 +636,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -666,7 +662,7 @@
       "category": "nightscapes",
       "format": "standard",
       "description": "Mt Fuji under a blanket of stars. Yamanakako lake reflecting a perfect Fujisan, with a bright moon and a sky full of stars. It is cold but so peaceful, enjoying this scene on a winter night in Japan.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877563/gliciouspics/nightscapes/japan-mt-fuji-night-sky-starry-lake-reflection-fine-art-print.jpg",
         "thumbnails": [
@@ -679,14 +675,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -707,7 +701,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "Crystal clear water and a solo spotted eagle ray, hovering just above the sand, in search of food. This one kept burying its nose in the sand while looking for something to eat. They have such amazing spots with so much intricate detail, it is hard to look away.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878185/gliciouspics/underwater/oahu-spotted-eagle-ray-nature-portrait-fine-art.jpg",
         "thumbnails": [
@@ -719,14 +713,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -747,7 +739,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "A quiet Hawaiian Honu rests on the ocean floor, hiding behind a wall of yellow snappers. The Hawaiian green sea turtle is one of the most iconic sea creatures in Hawaiʻi.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878155/gliciouspics/underwater/hidden-honu-hawaii-green-sea-turtle-underwater.jpg",
         "thumbnails": [
@@ -759,14 +751,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -787,7 +777,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "When I first moved to Oʻahu, I did not have a car, so I had to take the bus to go on adventures. This day, I made the long trip out west to go for a snorkel and I was rewarded with a perfect, crystal clear day. On top of that, there were so many dolphins that came close to shore that I could feel the traffic underwater. I got there just in time for rush hour and it did not disappoint",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878193/gliciouspics/underwater/underwater-dolphin-nature-fine-art-print-01.jpg",
         "thumbnails": [
@@ -800,14 +790,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -828,7 +816,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "Six spotted eagle rays gracefully gliding above the ocean floor. They can be found in deep waters and shallow waters, in large groups called fevers.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878129/gliciouspics/underwater/hawaii-tropical-spotted-eagle-ray-nature-fine-art-print-02.jpg",
         "thumbnails": [
@@ -841,14 +829,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -869,7 +855,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "Spotted Eagle Rays, fascinating, graceful, majestic and shy. The details of their patterns and the grace with which they swim is something to admire. They are such amazing creatures and my favorite to see when in the water.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878142/gliciouspics/underwater/hawaii-tropical-spotted-eagle-ray-nature-fine-art-print-03.jpg",
         "thumbnails": [
@@ -882,14 +868,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -910,7 +894,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "The ocean is life, it is power, it is home. There is nothing like riding a wave and experiencing the ocean's power. Getting caught inside a barrel is the dream. Put yourself right there, in the perfect spot and enjoy the water breaking just over your head!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878150/gliciouspics/underwater/hawaii-tropical-wave-beach-print-01.jpg",
         "thumbnails": [
@@ -922,14 +906,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -950,7 +932,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "While most people go snorkeling to see fish and wild life, others notice details, textures and patterns that many miss. There is something really fascinating about the sea floor, how the sand moves and how the swells and nature shape it.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878125/gliciouspics/underwater/hawaii-ocean-sand-texture-photography.jpg",
         "thumbnails": [
@@ -962,14 +944,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -990,7 +970,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "Nothing like exploring the waters of a new country. Japan has Okinawa, which is nicknamed the \"Hawaiʻi\" of Japan, and it does not disappoint. There are so many varieties of the iconic clownfish everywhere.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878187/gliciouspics/underwater/japan-underwater-tropical-clown-fish-nature-print-02.jpg",
         "thumbnails": [
@@ -1002,14 +982,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1030,7 +1008,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "The ocean in Okinawa Japan is incredible, with its crystal clear, water and warm temperatures, it has been nicknamed the \"Hawaiʻi of Japan\". One thing you cannot find in the Hawaiian islands are clownfish. These two peeking out of their purple anemone to say hi.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878175/gliciouspics/underwater/japan-underwater-tropical-clown-fish-nature-print-01.jpg",
         "thumbnails": [
@@ -1042,14 +1020,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1070,7 +1046,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "A Hawaiian Green Sea Turtle floats magically just under the surface. They can be seen all over the Hawaiian island chain and are one of the most iconic sea creatures to boot.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878188/gliciouspics/underwater/oahu-underwater-hawaii-green-sea-turtle-print.jpg",
         "thumbnails": [
@@ -1082,14 +1058,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1110,7 +1084,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "There are so many colorful fish to see underwater and luckily, Hawaiian waters are some of the best in the world for snorkeling and exploring. This school of bright, yellow butterfly fish is no exception.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878115/gliciouspics/underwater/hawaii-fish-school-underwater-print.jpg",
         "thumbnails": [
@@ -1122,14 +1096,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1150,7 +1122,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "Hawaiian Spinner Dolphins are super social creatures, swimming, hunting and eating in pods, not only for protection, but for fun. They rest during the day and can be seen traveling in small pods of 10-30 on a normal day.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878216/gliciouspics/underwater/underwater-dolphin-nature-fine-art-print-03.jpg",
         "thumbnails": [
@@ -1162,14 +1134,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1190,7 +1160,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "Hawaiian Green Sea Turtles can hold their breath for hours when sleeping or relaxing, but usually when they are active they surface much more frequently. Here a Honu is coming up for a quick breath before diving back down to hang out on the sandy ocean floor. It almost appears as if she is flying, using her front flippers as wings.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878216/gliciouspics/underwater/underwater-honu-hawaiian-green-sea-turtle-01.jpg",
         "thumbnails": [
@@ -1202,14 +1172,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1230,7 +1198,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "A Galapagos Shark casually cruises by. Out in the deeper water, you never know what will come up to greet you. Being able to get up close and personal with a few sharks is a humbling experience, mixed with fear and respect, it is something special and inspiring.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878215/gliciouspics/underwater/underwater-hawaii-tropical-ocean-galapagos-shark-photography.jpg",
         "thumbnails": [
@@ -1242,14 +1210,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1270,7 +1236,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "One of my favorite sea creatures has got to be the Spotted Eagle Ray. The way they effortlessly glide through the water, in formation, is so awesome to witness. They glide and turn and travel all in unison like it's a performance!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878126/gliciouspics/underwater/hawaii-tropical-spotted-eagle-ray-nature-fine-art-print-01.jpg",
         "thumbnails": [
@@ -1282,14 +1248,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1310,7 +1274,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "Humpback whales migrate thousands of miles each year in order to give birth and raise their young. In Tahiti an incredible encounter with a mother and her calf was something I never thought that I would get to experience and is one thing that will stick with me forever!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878188/gliciouspics/underwater/tahiti-underwater-humpback-whale-photography-01.jpg",
         "thumbnails": [
@@ -1322,14 +1286,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1350,7 +1312,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "A Hawaiian Green Sea Turtle hovers just above some very shallow reef on a very calm north shore day. Sharks cove during the summer is one of the best spots on island to spend a day snorkeling and relaxing.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878125/gliciouspics/underwater/hawaii-honu-green-sea-turtle-underwater.jpg",
         "thumbnails": [
@@ -1362,14 +1324,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1390,7 +1350,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "A mellow pod of Hawaiian Spinner Dolphins cruising in crystal clear Hawaiian waters. Another underwater icon of Hawaiʻi that is so fun to see while snorkeling or standing on the shore.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878211/gliciouspics/underwater/underwater-dolphin-nature-fine-art-print-02.jpg",
         "thumbnails": [
@@ -1402,14 +1362,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1430,7 +1388,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "School is in session with this huge school of surgeon fish. It is very common to see these guys cruising around the warm, crystal clear water at any time if the day.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778878233/gliciouspics/underwater/underwater-fish-school-tropical-photography-01.jpg",
         "thumbnails": [
@@ -1442,14 +1400,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1470,7 +1426,7 @@
       "category": "travel",
       "format": "standard",
       "description": "While walking along a path lined with cherry trees, I saw a distant train pass through the scene. The spring cherry blossoms perfectly framing the train looked so magical. I had to stop. I was standing there for the next 30 minutes, waiting patiently, for another train to pass through the right spot.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877889/gliciouspics/travel/japan-cherry-blossom-travel-fine-art-print-01.jpg",
         "thumbnails": [
@@ -1483,14 +1439,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1511,7 +1465,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Tokyo has so many cherry blossoms, sakura in Japanese, its incredible. They line city streets and parks and rivers and every part of the area. I caught this boat cruising along a river, floating peacefully under lines and lines of gorgeous sakura.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877890/gliciouspics/travel/japan-cherry-blossom-travel-fine-art-print-02.jpg",
         "thumbnails": [
@@ -1524,14 +1478,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1552,7 +1504,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Itsukushima Island is a popular tourist destination in Hiroshima Japan. Most people go to see the floating torii and then leave, but if you spend some time exploring the small island you will be delighted by the temples and cherry blossoms that abound.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877929/gliciouspics/travel/japan-spring-hidden-temple-cherry-blossom.jpg",
         "thumbnails": [
@@ -1564,14 +1516,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1592,7 +1542,7 @@
       "category": "travel",
       "format": "standard",
       "description": "On a small island, just off the coast of Hiroshima, sits an icon, the Itsukushima Shrine. This place is known for the famous \"floating torii\" when, at high tide, the water hides the base, making it appear as if it were floating out at sea. If you travel Itsukushima Island you will find beautiful cherry blossoms and empty stairways leading around a small village.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877898/gliciouspics/travel/Japan-itsukushima-shrine-travel-photography.jpg",
         "thumbnails": [
@@ -1605,14 +1555,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1633,7 +1581,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Itsukushima Island, home of the famous \"floating torii\". It is usually viewed from down at waters edge, but if you hike around the island, there are many other amazing perspectives. Spring cherry blossoms surrounding the shrine was another Japan dream come true.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877873/gliciouspics/travel/japan-cherry-blossom-shrine-travel-fine-art-print.jpg",
         "thumbnails": [
@@ -1646,14 +1594,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1674,7 +1620,7 @@
       "category": "travel",
       "format": "standard",
       "description": "There are so many famous spots in Japan that it is hard to count. Honcho Street is known for its view of Mount Fuji at the end. A cloudy, snow-capped Fujisan is all I needed to be happy.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1780692962/gliciouspics/travel/japan-mount-fuji-honcho-street-photography.jpg",
         "thumbnails": [
@@ -1686,14 +1632,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1714,7 +1658,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Fall in Kyoto Japan may be the best time of year to visit. Take a ride on a traditional style Japanese boat up a river lined with maple trees. The guys use long bamboo poles to glide up and down the river.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877946/gliciouspics/travel/kyoto-japan-fall-maple-tree-boats-travel-print.jpg",
         "thumbnails": [
@@ -1726,14 +1670,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1754,7 +1696,7 @@
       "category": "travel",
       "format": "standard",
       "description": "A small shrine area tucked away, hidden in the trees. It offers the perfect glimpse of Japan in the fall with its mind blowing color and red maple leaves.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877900/gliciouspics/travel/japan-fall-hidden-temple-maple-leaf-photography.jpg",
         "thumbnails": [
@@ -1766,14 +1708,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1794,7 +1734,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Tokyo is so big and so densely populated that many residents do not drive, you have tons of public transportation. The number of taxi drivers in the city is outrageous.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877935/gliciouspics/travel/japan-taxi-city-photography.jpg",
         "thumbnails": [
@@ -1806,14 +1746,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1834,7 +1772,7 @@
       "category": "travel",
       "format": "standard",
       "description": "One of the most popular and lively districts in Tokyo, Kabukichō, where gates made of red lights glow so bright you cannot look away. These are some of the most famous gates in all of Japan. This close up get you nice and person with the famous red gate.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877946/gliciouspics/travel/tokyo-cityscape-japan-travel-photography.jpg",
         "thumbnails": [
@@ -1846,14 +1784,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1874,7 +1810,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Right when we got to this train station, I knew that I was going to get one of my favorite shots of the trip. Chicago has so many stations and each one is unique. The wavy roof and cool blue tones created a really nice ambiance with the lines to framing the train and a few awaiting passengers.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877846/gliciouspics/travel/chicago-train-blue-line-fine-art-ptint.jpg",
         "thumbnails": [
@@ -1886,14 +1822,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1914,7 +1848,7 @@
       "category": "travel",
       "format": "standard",
       "description": "One of my favorite cities to travel to is Chicago. Its such a cool city and the train system makes it so easy to get around. Its above ground tracks and below ground tunnels offer some very interesting photo opportunities.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877858/gliciouspics/travel/chicago-train-metro-subway-photography.jpg",
         "thumbnails": [
@@ -1926,14 +1860,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1954,7 +1886,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Japan has so many popular spots and I think Fushimi Inarai has got to be the top destination in Kyoto. The orange-red gates wind up the mountain, leading endlessly to a serene shrine. The higher up you get, the fewer people you encounter.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877903/gliciouspics/travel/japan-fushimi-inari-shrine-kyoto-travel.jpg",
         "thumbnails": [
@@ -1966,14 +1898,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -1994,7 +1924,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Clear skies, a snow-capped volcano, crisp fall air, and a crescent moon directly above the peak of Mount Fuji, what more could you ask for?",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1780693180/gliciouspics/travel/japan-travel-mount-fuji-moon-photography.jpg",
         "thumbnails": [
@@ -2006,14 +1936,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2034,7 +1962,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Japan is a bucket list destination and a once in a lifetime trip for most. My first time there I knew that it was going to be more than just a one trip destination. Fall is one of the most amazing seasons to experience, the bright red maple leaves, golden ginkgo leaves Mt Fuji make fall the best time. Fujisan engulfed in the boldest, most intense red maple leaves I only imagined in my dreams! (In a vertical orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877862/gliciouspics/travel/fuji-love-mount-fuji-japan-travel-photography-02.jpg",
         "thumbnails": [
@@ -2047,14 +1975,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2075,7 +2001,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Japan is gorgeous during the fall season. Crisp air, snow capped volcanoes and red and golden leaves a plenty. Mount Fuji is amazing from almost any angle and especially nestled between some perfect fall foliage.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877852/gliciouspics/travel/fuji-fall-japan-autumn-print.jpg",
         "thumbnails": [
@@ -2087,14 +2013,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2115,7 +2039,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Japan is a bucket list destination and a once in a lifetime trip for most. My first time there I knew that it was going to be more than just a one trip destination. Fall is one of the most amazing seasons to experience, the bright red maple leaves, golden ginkgo leaves Mt Fuji make fall the best time. Fujisan engulfed in the boldest, most intense red maple leaves I only imagined in my dreams! (In a horizontal orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877866/gliciouspics/travel/fuji-love-mount-fuji-japan-travel-photography-01.jpg",
         "thumbnails": [
@@ -2127,14 +2051,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2155,7 +2077,7 @@
       "category": "travel",
       "format": "standard",
       "description": "If I lived in Nagano Japan, I would probably spend a lot of time in the hot springs. This Japanese Macaque or Snow Monkey saw me taking his photo and stared me down. I got the impression that I was interrupting his quiet time so I snapped the shot and let him return to relaxing in peace.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877924/gliciouspics/travel/japan-snow-monkey-travel-nature-photography-02.jpg",
         "thumbnails": [
@@ -2167,14 +2089,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2195,7 +2115,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Japanese Macaques spend a lot of time in and around these natural hot springs in Nagano Japan. There is nothing better than relaxing in the springs without a care in the world. I wonder what he was thinking about and what he was looking at.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877932/gliciouspics/travel/japan-snow-monkey-travel-portrait-nature-photography.jpg",
         "thumbnails": [
@@ -2208,14 +2128,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2236,7 +2154,7 @@
       "category": "travel",
       "format": "standard",
       "description": "A cute little baby Japanese Macaque, just as amazed by all the humans as we were of it. This guy was hanging out, close to mom and near the onsen, as we waited for the snow to start falling.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877923/gliciouspics/travel/japan-snow-monkey-portrait-nature-fine-art-print.jpg",
         "thumbnails": [
@@ -2248,14 +2166,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2276,7 +2192,7 @@
       "category": "travel",
       "format": "standard",
       "description": "On a chilly fall day in Nagano Japan, a baby Japanese Macaque, affectionately known as a \"Snow Monkey\", chills in a onsen on its moms back. They are both enjoying its warm waters and escaping the frigid air just before a light snowfall.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877920/gliciouspics/travel/japan-snow-monkey-travel-nature-photography-01.jpg",
         "thumbnails": [
@@ -2288,14 +2204,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2316,7 +2230,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Japan has every season and they all shine. Fall is no exception. It is cool and the air is crisp and the maple leaves show their signature color before hibernating for the winter. Seeing Mt Fuji capped in snow with a beautiful, bright red maple tree draping over it is something words cannot describe.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778877862/gliciouspics/travel/fuji-japan-fall-maple-leaves-fine-art-print.jpg",
         "thumbnails": [
@@ -2328,14 +2242,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2356,7 +2268,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Simple, clean and moody. Clouds sitting just behind a beautiful, lush, green peak in the Koʻolau Mountain range.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876768/gliciouspics/landscapes/hawaii-volcanic-landscape-fine-art-photography.jpg",
         "thumbnails": [
@@ -2368,14 +2280,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2396,7 +2306,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "It does not get any better than a classic sunset on the water. The sun slowly going down, disappering into the horizon as the sky lights up and the ocean gets darker. Perfection!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876725/gliciouspics/landscapes/hawaii-beach-sunset.jpg",
         "thumbnails": [
@@ -2409,14 +2319,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2437,7 +2345,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "A sunrise from a tidepool near Makapu'u beach with Manana Island, aka Rabbit Island, in the distance.  The Island once had rabbits but is now a protected bird sanctuary.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876737/gliciouspics/landscapes/hawaii-makapuu-beach-tidepool-sunrise.jpg",
         "thumbnails": [
@@ -2449,14 +2357,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2477,7 +2383,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Mānoa Falls is a popular hike for locals and tourists alike. It is full of dense jungle and bamboo. The entrance is like a gateway to another world or another time, as if leading to some place Jurassic.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876742/gliciouspics/landscapes/hawaii-manoa-hiking-photography.jpg",
         "thumbnails": [
@@ -2489,14 +2395,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2517,7 +2421,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "The most dangerous and infamous hike on Oʻahu! Worth all the risks for this insane view.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876741/gliciouspics/landscapes/hawaii-mountain-landscape-print.jpg",
         "thumbnails": [
@@ -2529,14 +2433,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2557,7 +2459,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "A close up and personal view of the ridges of the Nā Pali coastline. Kauaʻi has the best views.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876749/gliciouspics/landscapes/hawaii-nature-valley-ridge-line-print.jpg",
         "thumbnails": [
@@ -2569,14 +2471,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2597,7 +2497,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "A Rainbow, close up and personal! A classic and magical Hawaiian phenomenon.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876761/gliciouspics/landscapes/hawaii-rainbow-sky.jpg",
         "thumbnails": [
@@ -2609,14 +2509,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2637,7 +2535,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "A fire sunrise from a quiet and secluded neighborhood. The mornings bring many surprises when you wake up early.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876759/gliciouspics/landscapes/hawaii-sunrise-kahala-beach.jpg",
         "thumbnails": [
@@ -2649,14 +2547,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2677,7 +2573,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Tucked away in the corner of a small neighborhood sits a quiet little beach spot. Great for sunrise and some peaceful meditation. The perfect way to reset and prepare for the day.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876781/gliciouspics/landscapes/kahala-oahu-beach-palm-tree-sunrise-purple-sky.jpg",
         "thumbnails": [
@@ -2689,14 +2585,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2717,7 +2611,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "A close up view of the red and green ridges that are the Waimea Canyon. This canyon has earned the nickname, The Grand Canyon of Hawaiʻi, because of how grand and expansive it is. This place is insane to see with your own eyes",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876780/gliciouspics/landscapes/kauai-hawaii-landscape-waimea-valley-print.jpg",
         "thumbnails": [
@@ -2729,14 +2623,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2757,7 +2649,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "On the west side of Kauaʻi there is a massive canyon know as the, \"Grand Canyon of the Pacific\". Its gorgeous red and green ridges are the perfect contrasting  colors after a nice drive along a winding road.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876784/gliciouspics/landscapes/kauai-landscape-waimea-valley-canyon-volcanic-landscape.jpg",
         "thumbnails": [
@@ -2769,14 +2661,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2797,7 +2687,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Kauaʻi has so many incredible hikes and views, making it my favorite spot for outoor activities. You end up on top of the world gazing down at lush, green valleys below.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876791/gliciouspics/landscapes/kauai-valley-mountain-photography.jpg",
         "thumbnails": [
@@ -2809,14 +2699,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2837,7 +2725,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "A close up view of the red and green ridges that are the Waimea Canyon. This canyon has earned the nickname, The Grand Canyon of Hawaiʻi, because of how grand and expansive it is. This place is insane to see with your own eyes.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876796/gliciouspics/landscapes/kauai-waimea-valley-hawaii.jpg",
         "thumbnails": [
@@ -2849,14 +2737,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2877,7 +2763,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Just as you begin , Mānoa Falls trail, you are greeted with an incredible view of dense green trees. It looks like something straight out of a Jurassic Park scene.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876805/gliciouspics/landscapes/manoa-hawaii-forest-jungle-landscape.jpg",
         "thumbnails": [
@@ -2889,14 +2775,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2917,7 +2801,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "On a peaceful little Tahitian island sits on of the most picturesque bays. Views of the mountains and the ocean make it a great spot to wake up early and start your day.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876810/gliciouspics/landscapes/moorea-tahiti-bay-landscape.jpg",
         "thumbnails": [
@@ -2929,14 +2813,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2957,7 +2839,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "A nice sunset at Waimea Bay. The rocks and the palms silhouetted against a purple and orange dream.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876816/gliciouspics/landscapes/north-shore-sunset-waimea-bay.jpg",
         "thumbnails": [
@@ -2969,14 +2851,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -2997,7 +2877,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "A moody sunset falls over the famous Waimea Bay on Oʻahu. As the light fades, a few brave souls standing silhouetted on top of \"The Rock\" waiting and contemplating their final jump.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876821/gliciouspics/landscapes/oahu-beach-landscape-sunset-waimea-bay.jpg",
         "thumbnails": [
@@ -3009,14 +2889,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3037,7 +2915,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Koko Head is an iconic, well known hike on Oʻahu. From the front you can see the 1000+ steps that makes the hike difficult for most. This view is the back side seen from one of the many rugged coastlines.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876830/gliciouspics/landscapes/oahu-coastline-landscape-hawaii-print-01.jpg",
         "thumbnails": [
@@ -3049,14 +2927,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3077,7 +2953,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Hawaiʻi, a land full of rugged coastlines and volcanic craters. A view of the backside  of Koko Head Crater from a rugged beach.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876840/gliciouspics/landscapes/oahu-coastline-landscape-hawaii-print-02.jpg",
         "thumbnails": [
@@ -3089,14 +2965,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3117,7 +2991,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Sometimes the sky just absolutely explodes with light and color. This sunrise at Kāhala Beach was the most insane and perfect explosion of color that I have ever seen. It hurts to get up before the sun, but on occasion it is very worth it.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876847/gliciouspics/landscapes/oahu-coastline-ocean-sunrise-kahala.jpg",
         "thumbnails": [
@@ -3129,14 +3003,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3157,7 +3029,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "The iconic Koko Head Crater viewed from an abandoned pillbox. Most people only recognize it from the front with its 1000+ stairs leading to the summit, but from behind you can really see the size and the shape. I like to imagine it erupting and enjoying that show would be incredible from this viewpoint. (In a vertical orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876850/gliciouspics/landscapes/oahu-koko-head-landscape-fine-art.jpg",
         "thumbnails": [
@@ -3169,14 +3041,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3197,7 +3067,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Dangerous, Infamous, Iconic! The only way to Heaven.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876854/gliciouspics/landscapes/oahu-mountain-hike-landscape-stairway.jpg",
         "thumbnails": [
@@ -3209,14 +3079,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3237,7 +3105,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "The iconic Koko Head Crater viewed from an abandoned pillbox. Most people only recognize it from the front with its 1000+ stairs leading to the summit, but from behind you can really see the size and the shape. I like to imagine it erupting and enjoying that show would be incredible from this viewpoint. (In a horizontal orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1780695323/gliciouspics/landscapes/oahu-koko-head-landscape-fine-art-02.jpg",
         "thumbnails": [
@@ -3249,14 +3117,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3277,7 +3143,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "There are a lot of places in Hawaiʻi that feel like heaven. This view is definitely one of them. Its a long, steep, dangerous hike with other risks involved, but sometimes you just gotta live life on the edge.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876863/gliciouspics/landscapes/oahu-mountain-valley-landscape-photography.jpg",
         "thumbnails": [
@@ -3289,14 +3155,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3317,7 +3181,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "A perfect golden morning view of the third peak. Considered one of the most dangerous legal hikes on Oʻahu, Olomana Trail also known as Three Peaks. The third and final peak is the most treacherous and steep climb of them all. (A horizontal orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876868/gliciouspics/landscapes/oahu-mountain-valley-landscape-photography-01.jpg",
         "thumbnails": [
@@ -3329,14 +3193,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3357,7 +3219,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "A perfect golden morning view of the third peak. Considered one of the most dangerous legal hikes on Oʻahu, Olomana Trail also known as Three Peaks. The third and final peak is the most treacherous and steep climb of them all. (A vertical orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876875/gliciouspics/landscapes/oahu-mountain-valley-landscape-photography-02.jpg",
         "thumbnails": [
@@ -3369,14 +3231,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3397,7 +3257,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Morning light breaks through the clouds and shines on a small part of the Koʻolau Mountain Range. The range is home to some of the tallest peaks on Oʻahu, accessed via long ridge trails leading to insane views.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876876/gliciouspics/landscapes/oahu-mountain-valley-landscape-photography-03.jpg",
         "thumbnails": [
@@ -3409,14 +3269,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3437,7 +3295,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Coastal cities are the best. I could not imagine living anywhere far away from the ocean. In San Diego I was blessed with one of the most incredible sunsets over La Jolla and Scripps pier.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876879/gliciouspics/landscapes/san-diego-pier-sunset.jpg",
         "thumbnails": [
@@ -3450,14 +3308,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3478,7 +3334,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Hawaiʻi has so much wildlife and a lot of it is protected. Seeing a Hawaiian Monk Seal is rare enough, but seeing three at the same time has only happened once in my time here. Throw in a golden sunset, glowing green palm trees and crystal clear water and you have a recipe for something incredible! The awesome, unexpected wildlife moments make Hawaiʻi  extra special to me. (In a horizontal orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876883/gliciouspics/landscapes/seal-beach-hawaii-coastal-landscape-sunset-01.jpg",
         "thumbnails": [
@@ -3490,14 +3346,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3518,7 +3372,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Hawaiʻi has so much wildlife and a lot of it is protected. Seeing a Hawaiian Monk Seal is rare enough, but seeing three at the same time has only happened once in my time here. Throw in a golden sunset, glowing green palm trees and crystal clear water and you have a recipe for something incredible! The awesome, unexpected wildlife moments make Hawaiʻi  extra special to me. (In a vertical orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876888/gliciouspics/landscapes/seal-beach-hawaii-coastal-landscape-sunset-02.jpg",
         "thumbnails": [
@@ -3530,14 +3384,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3558,7 +3410,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Tahiti holds a special place in my heart. It is more natural and more green and more wild than any place I have been. I imagine this is how Hawaiʻi once was, before it was discovered.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876895/gliciouspics/landscapes/tahiti-beach-relaxing-nature-photography.jpg",
         "thumbnails": [
@@ -3570,14 +3422,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3598,7 +3448,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Tohivea. My favorite peak in Tahiti on the island of Moʻorea. It can be seen from all over the island and stand tall with its unique form and rugged lines. Clouds, morning light and sea birds make it a sight to see.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876908/gliciouspics/landscapes/tahiti-mountain-landscape-fine-art.jpg",
         "thumbnails": [
@@ -3611,14 +3461,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3639,7 +3487,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "The island of Moʻorea has so many awesome peaks and is littered in palm trees and coconut trees. This huge tree lined up perfectly with one of the many rugged peaks.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876915/gliciouspics/landscapes/tahiti-palm-tree-mountain-tropical-print.jpg",
         "thumbnails": [
@@ -3651,14 +3499,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3679,7 +3525,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Palm trees that hang over the water and dip into the ocean on lower tides. These are some lucky trees.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876921/gliciouspics/landscapes/tahiti-palm-trees-beach-photography.jpg",
         "thumbnails": [
@@ -3691,14 +3537,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3719,7 +3563,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Waikīkī and Honolulu viewed from the top of the Diamond Head Crater Trail. From here it looks more like a bustling city than a tropical island, but that is the allure of Oʻahu. The pink hotel stands at the center of Waikīkī Beach, surrounded by towering hotels and the most picturesque water you have ever seen. (A vertical orietnation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876915/gliciouspics/landscapes/waikiki-diamond-head-hike-landscape-photography-01.jpg",
         "thumbnails": [
@@ -3732,14 +3576,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3760,7 +3602,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Waikīkī and Honolulu viewed from the top of the Diamond Head Crater Trail. From here it looks more like a bustling city than a tropical island, but that is the allure of Oʻahu. The pink hotel stands at the center of Waikīkī Beach, surrounded by towering hotels and the most picturesque water you have ever seen. (A horizontal orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876916/gliciouspics/landscapes/waikiki-diamond-head-hike-landscape-photography-02.jpg",
         "thumbnails": [
@@ -3772,14 +3614,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3800,7 +3640,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "One of the lesser known critters in Hawaiʻi is the chameleon. They are hard to find and popular as pets. Such a unique creature, able to change colors and move its eyes independently. Found on a trail while hiking on Oʻahu.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876311/gliciouspics/flora-fauna/hawaii-chameleon-exotic-wildlife-fine-art.jpg",
         "thumbnails": [
@@ -3812,14 +3652,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3840,7 +3678,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "A bright green Gold Dust Day Gecko, smiling at the camera, posing for its portrait and ready to be admired by everyone.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876307/gliciouspics/flora-fauna/hawaii-gecko-tropical-wildlife-fine-art.jpg",
         "thumbnails": [
@@ -3852,14 +3690,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3880,7 +3716,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "A mellow Gold Dust Day Gecko, chilling and fearless, soaking up some midday sun. It does not get much closer than this. The detail of the blue eyes, red stripes on its nose and the blue feet are awesome.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876322/gliciouspics/flora-fauna/hawaii-gecko-tropical-wildlife-macro-fine-art.jpg",
         "thumbnails": [
@@ -3893,14 +3729,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3921,7 +3755,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "This was the first time that I had ever seen a Hibiscus hanging down like that. It caught my eye immediately and I could not help but admire it and snap a photo. It is known as the Japanese Lantern Hibiscus!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876319/gliciouspics/flora-fauna/hawaii-hibiscus-tropical-flower-nature-print.jpg",
         "thumbnails": [
@@ -3933,14 +3767,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -3961,7 +3793,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The brown anole. They are everywhere!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876320/gliciouspics/flora-fauna/hawaii-lizard-tropical-wildlife-nature-photography.jpg",
         "thumbnails": [
@@ -3973,14 +3805,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4001,7 +3831,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The most iconic fruit in Hawaiʻi, the pineapple. There are so many varieties with so many different colors, but the spiky crown on top stays constant.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876330/gliciouspics/flora-fauna/hawaii-pineapple-nature-plant-print.jpg",
         "thumbnails": [
@@ -4013,14 +3843,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4041,7 +3869,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Synonymous with Hawaiʻi, and especially Kauaʻi, is the chicken. They can be found pretty much everywhere walking around, strutting their stuff like they own the place. This king showed up ready for his debut.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876330/gliciouspics/flora-fauna/hawaii-tropical-bird-oahu-nature-print.jpg",
         "thumbnails": [
@@ -4053,14 +3881,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4081,7 +3907,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "A Parrot Heliconia tucked away in some dense green foliage. It stands tall and strong, showing off its bright flower.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876341/gliciouspics/flora-fauna/hawaii-tropical-flower-heliconia-fine-art-print-01.jpg",
         "thumbnails": [
@@ -4093,14 +3919,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4121,7 +3945,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Another of the beautiful Heliconia family, the Parrot Heliconia, stand upright with its bright orange flowers and deep green leaves.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876349/gliciouspics/flora-fauna/hawaii-tropical-flower-heliconia-fine-art-print-02.jpg",
         "thumbnails": [
@@ -4133,14 +3957,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4161,7 +3983,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "While on a hike on Oʻahu, I saw the tallest, most perfectly white flower. The light hitting it just right in the dark, moody forest. Looks like a variety of the Peace Lily.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876338/gliciouspics/flora-fauna/hawaii-tropical-flower-print.jpg",
         "thumbnails": [
@@ -4173,14 +3995,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4201,7 +4021,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Geckos are everywhere in Hawaiʻi if you know where to look. Their bright green complexion can be hard to spot when laying on a bright green leaf of similar color. This little guy is just enjoying some Hawaiian sun after a short spring shower.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876347/gliciouspics/flora-fauna/hawaii-tropical-gecko-wildlife-photography-01.jpg",
         "thumbnails": [
@@ -4213,14 +4033,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4241,7 +4059,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The ever so popular Gold Dust Day Gecko, while bright and colorful, can be shy. The like to hide and stay camouflaged and hidden from sight. If you get too close they will run off and disappear, but if you get just close enough, they will stare you down waiting for you to make a move.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876361/gliciouspics/flora-fauna/hawaii-tropical-gecko-wildlife-photography-02.jpg",
         "thumbnails": [
@@ -4253,14 +4071,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4281,7 +4097,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "One of the most most well known flowers in Hawaiʻi, at least to the locals, is the ʻōhiʻa Lehua. In Hawaiian culture it signifies love and resilience, often found growing in barren lava fields and in higher elevation forests throughout Hawaiʻi. It also makes my personal favorite flavor of local honey.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876365/gliciouspics/flora-fauna/hawaii-tropical-local-flower-ohia-lehua-photography.jpg",
         "thumbnails": [
@@ -4293,14 +4109,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4321,7 +4135,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Does it get any more perfect than this rooster portrait? Usually they run away or scatter when you get close, but this time he froze and made the most majestic portrait pose I have ever seen.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876363/gliciouspics/flora-fauna/kauai-wildlife-chicken-portrait-photography.jpg",
         "thumbnails": [
@@ -4333,14 +4147,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4361,7 +4173,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The soft light shines through the canopy to illuminate a beautiful heliconia with its gecko friend standing by. This is my favorite combo to see in nature and I am always looking for geckos nearby when I see a colorful heliconia.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876362/gliciouspics/flora-fauna/oahu-gecko-tropical-heliconia-flower-wildlife-print-01.jpg",
         "thumbnails": [
@@ -4373,14 +4185,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4401,7 +4211,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The perfect pair, a green Gold Dust Day Gecko and a Red Heliconia are the best natural compliments for each other.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876369/gliciouspics/flora-fauna/oahu-gecko-tropical-heliconia-flower-wildlife-print-02.jpg",
         "thumbnails": [
@@ -4413,14 +4223,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4441,7 +4249,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "A bright green day gecko takes a sip on a hot Hawaiian day. The beautiful heliconia flowers make the perfect basin to collect water and provide shelter for this colorful Hawaiian icon.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876368/gliciouspics/flora-fauna/oahu-gecko-tropical-heliconia-flower-wildlife-print-03.jpg",
         "thumbnails": [
@@ -4453,14 +4261,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4481,7 +4287,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Hanging Lobster Claw Heliconia are one of the coolest plants in Hawaiʻi. Their bright reds and yellows make them stand out wherever they are. At the right time if year you can find them all flowering at the same time.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876377/gliciouspics/flora-fauna/oahu-heliconia-flower-nature-photo-01.jpg",
         "thumbnails": [
@@ -4493,14 +4299,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4521,7 +4325,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The hanging Lobster Claw Heliconia, a beautiful staple here in the Hawaiian Islands. This one standing alone, showing off its colors, while also holding a secret. If you look closely at the left side of the flower, towards the bottom, you may spot a hidden visitor.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876384/gliciouspics/flora-fauna/oahu-heliconia-flower-nature-photo-02.jpg",
         "thumbnails": [
@@ -4533,14 +4337,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4561,7 +4363,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The bright red color of the heliconia and the bright green of the gecko compliment each other so naturally. A Gold Dust Day Gecko peeks out from behind a heliconia flower, looking for a drink while staying hidden and protected.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876376/gliciouspics/flora-fauna/oahu-hidden-gecko-tropical-heliconia-flower-wildlife-print.jpg",
         "thumbnails": [
@@ -4573,14 +4375,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4601,7 +4401,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The Green and Black Dart Frog, while not native, was introduced to Hawaiʻi from Panama in hopes of helping put with mosquito control. They are hard to find, but can be seen in Mānoa valley on Oʻahu if you know where to look. Their strong green and deep brown colors are even more stunning in person.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876376/gliciouspics/flora-fauna/oahu-tropical-poison-dart-frog-wildlife-print.jpg",
         "thumbnails": [
@@ -4613,14 +4413,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4641,7 +4439,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "A close-up of a beautiful Purple Water Lily. The burning yellow center and the shimmering purple petals, calling for their intricate details to be admired.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876390/gliciouspics/flora-fauna/oahu-water-lily-flower-macro-print-01.jpg",
         "thumbnails": [
@@ -4653,14 +4451,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4681,7 +4477,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Hawaiʻi is dotted with botanical gardens full of beautiful plants and animals. This Purple Water Lily just opening up shows off its burning yellow and purple center in extravagant detail.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876398/gliciouspics/flora-fauna/oahu-water-lily-flower-macro-print-02.jpg",
         "thumbnails": [
@@ -4693,14 +4489,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4721,7 +4515,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The Blue Tropical Water Lily. Beautiful, detailed, colorful and sparkling with rain drops. Caught it opening up just as the sun peeked out from behind the clouds!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876408/gliciouspics/flora-fauna/oahu-water-lily-flower-photography-02.jpg",
         "thumbnails": [
@@ -4733,14 +4527,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4761,7 +4553,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "As the rain subsides and the sun comes out, a raindrop covered Purple Water Lily emerges from the pond. The amazing purple and yellow colors leave an impression on anyone that stumbles upon this hidden gem, tucked away in a Hawaiian botanical garden.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876397/gliciouspics/flora-fauna/oahu-water-lily-flower-photography-01.jpg",
         "thumbnails": [
@@ -4773,14 +4565,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4801,7 +4591,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Coconut Trees have such crazy textures and details. The deep greens and rigid lines make for pleasing visuals.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876407/gliciouspics/flora-fauna/palm-tree-nature-macro-texture-photography.jpg",
         "thumbnails": [
@@ -4813,14 +4603,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4841,7 +4629,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Coconut Trees have such crazy textures and details. They are sharp and soft while also strong and flexible.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876411/gliciouspics/flora-fauna/palm-tree-texture-nature-photo.jpg",
         "thumbnails": [
@@ -4853,14 +4641,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4881,7 +4667,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Coconuts! The challenge is half the fun. Cutting in to a hard green coconut just to get a sip of the fresh, sweet water is an experience everyone should enjoy at least once in their life.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876418/gliciouspics/flora-fauna/tahiti-coconut-nature-print.jpg",
         "thumbnails": [
@@ -4893,14 +4679,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4921,7 +4705,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The best fruit, found abundantly on so many tropical islands around the world, the Mango. This little beauty was the last one on a lush tree in Tahiti. The bright orange exterior dotted in rain drops was calling my name!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1778876419/gliciouspics/flora-fauna/tahiti-tropical-mango.jpg",
         "thumbnails": [
@@ -4933,14 +4717,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -4961,7 +4743,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Japan in the springtime is known for its wonderful cherry blossom trees or sakura. The weather is nice and things begin to warm up. They are sign of beauty and life after the cold winters. There are hundreds of varieties throughout the country, some in large groves and others scattered and hidden amongst other trees.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1781295030/gliciouspics/travel/japan-cherry-blossom-camo-nature-photography.jpg",
         "thumbnails": [
@@ -4973,14 +4755,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5001,7 +4781,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Hawaiian for Mountain Apple, this tree was brought to the islands on canoes and used for its wood and fruit. The beautiful purple blossom closely resembling the native ʻŌhiʻa lehua. Fresh covered in droplets after a light morning rain. The fruit is sweet and crisp and is a summer to fall treat.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783968556/gliciouspics/flora-fauna/tropical-fruit-hawaii-travel-plant-photo-mountain-apple-blossom.jpg",
         "thumbnails": [
@@ -5013,14 +4793,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5041,7 +4819,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The Hanging Hibiscus otherwise know as the Japanese Lantern has a unique and very distinct look compared to other hibiscus flowers. The flower is fringed and unlike any other hubiscus around. One of the coolest hibiscus flowers around!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783968563/gliciouspics/flora-fauna/hawaii-tropical-flower-japanese-lantern-hanging-hibiscus-photo.jpg",
         "thumbnails": [
@@ -5053,14 +4831,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5081,7 +4857,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "A zoomed in shot of the tip pf a Japanese Lantern. The intricate details of the stigma branches ready to receive pollen and the long, slender tube leading there. Flowers are so complex and interesting and getting a up close and personal view of the unique details and complexities of nature is something that I really enjoy. Nature really is something wonderful to be enjoyed and admired.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783968563/gliciouspics/flora-fauna/hawaii-hibiscus-japanese-lantern-flower-fine-art.jpg",
         "thumbnails": [
@@ -5093,14 +4869,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5121,7 +4895,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Don't ask me to say that twice. One of the few native Hawaiian hibiscus plants. This flower with white petals and a distinct long, red staminal column is only found in Hawaii and most commonly on O‘ahu in the mountains. Got lucky enough to come across a large shrub while hiking, but it was just after a windy rainstorm and only a solo flower was left standing strong.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783968558/gliciouspics/flora-fauna/hawaiian-native-tropical-flower-hibiscus-waiamea-photo.jpg",
         "thumbnails": [
@@ -5133,14 +4907,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5161,7 +4933,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "Aka White Butterfly Ginger, named after the delicate, butterfly-shaped petals. It is super fragrant during the late summer months and can be found in wet forested areas. Its beautiful and because of the aroma, is often used in Leis. Hiking and smelling this sweet scent is one of the most magical experiences.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783968559/gliciouspics/flora-fauna/hawaii-ginger-tropical-jungle-nature-photography.jpg",
         "thumbnails": [
@@ -5173,14 +4945,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5201,7 +4971,7 @@
       "category": "flora-fauna",
       "format": "standard",
       "description": "The Hawaiian state bird. Adapted for life in the grasslands as well as the harsh hawaiian lava fields. Found on Big Island, Kauaʻi and Maui, they give off a  soft call that sounds like, nay-nay. They are distinct and cool and pretty mellow as long as you leave them alone. I was exploring Kauaʻi when I came across these beauties, standing tall and enjoying some light rain on a partly cloudy day.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783968563/gliciouspics/flora-fauna/hawaii-native-birds-nene-goose-nature-fine-art.jpg",
         "thumbnails": [
@@ -5213,14 +4983,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5241,7 +5009,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Coastal cities are the best. I could not imagine living anywhere far away from the ocean. In San Diego I was blessed with one of the most incredible sunsets over La Jolla and Scripps pier. (In a horizontal view)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783971396/gliciouspics/landscapes/san-diego-la-jolla-scripps-pier-sunset-fine-art.jpg",
         "thumbnails": [
@@ -5253,14 +5021,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5281,7 +5047,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "Big Island has so many great waterfalls and this one is on the top of the list. A huge waterfall that drops over 400ft into a deep valley, surrounded by lush greenery, is out of this world. Crazy fact, a freshwater Goby, the ʻoʻopu ʻalamoʻo, is known to scale this steep fall to get to the streams above.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783971401/gliciouspics/landscapes/hawaii-landscape-waterfall-big-island-photography.jpg",
         "thumbnails": [
@@ -5293,14 +5059,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5321,7 +5085,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "The famous Waimea Bay jump rock stand 25-30 feet above the crystal clear waters of the north shore. In the summer, thousands test their fears and jump from the rock into the warm waters below. A great place to hang out and enjoy the show, I witnessed one of the best sunsets I have ever seen in my life!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783971399/gliciouspics/landscapes/hawaii-sunset-waimea-bay-jump-rock-art-print.jpg",
         "thumbnails": [
@@ -5333,14 +5097,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5361,7 +5123,7 @@
       "category": "landscapes",
       "format": "standard",
       "description": "On one of the calmest days, I went exploring with a few friends. We found the most insane view of the Kualoa Mountains reflected in the bay. The iconic mountains, a small boat and Chinamanʻs Hat just off the point was something out of a dream.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783971397/gliciouspics/landscapes/beautiful-hawaii-travel-landscape-photography-oahu.jpg",
         "thumbnails": [
@@ -5373,14 +5135,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5401,7 +5161,7 @@
       "category": "nightscapes",
       "format": "standard",
       "description": "It is hard to catch a clear night at the right time on Oʻahu, but when you do there is nothing like it. The calm of the night, the sound of the waves and the glow of the milky way above. These are the nights that I live for.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783973025/gliciouspics/nightscapes/hawaii-night-milky-way-travel-long-exposure-photography.jpg",
         "thumbnails": [
@@ -5413,14 +5173,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5441,7 +5199,7 @@
       "category": "travel",
       "format": "standard",
       "description": "A gorgeous slot canyon famous for the amazing colors and curves that have been created naturally by time, wind and flooding. The power of mother nature to create landscapes like this will always be inspiring. Depending on the time of day you visit, the canyon could be a deep blue and purple to a bright orange and red. (Vertical Orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783974293/gliciouspics/travel/antelope-canyon-arizona-travel-landscape-photography-01.jpg",
         "thumbnails": [
@@ -5453,14 +5211,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5481,7 +5237,7 @@
       "category": "travel",
       "format": "standard",
       "description": "A gorgeous slot canyon famous for the amazing colors and curves that have been created naturally by time, wind and flooding. The power of mother nature to create landscapes like this will always be inspiring. Depending on the time of day you visit, the canyon could be a deep blue and purple to a bright orange and red. (Horizontal Orientation)",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783974295/gliciouspics/travel/antelope-canyon-arizona-travel-landscape-photography-02.jpg",
         "thumbnails": [
@@ -5493,14 +5249,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5521,7 +5275,7 @@
       "category": "travel",
       "format": "standard",
       "description": "Located in the Shinsekai district of Osaka Japan, this tower is the center of attention. Tsutenkaku in japanese means, tower reaching heaven. The famous Hondori shopping street leads to an incredible view of the amazing tower. You can also find some really good takoyaki on this street.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783974298/gliciouspics/travel/japan-city-night-long-exposure-travel-art-print.jpg",
         "thumbnails": [
@@ -5533,14 +5287,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5561,7 +5313,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "Every morning that you get up early for a dive, you are hoping for a nice day in the water, but you never know when it's going to be better than nice. This day was perfect clarity, warm morning light and a pod of dolphins circling us. The dream dive encounter!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783974479/gliciouspics/underwater/hawaii-dolphin-underwater-nature-photography-print-01.jpg",
         "thumbnails": [
@@ -5573,14 +5325,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5601,7 +5351,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "One of my favorite dolphin photos that I have taken. Iʻve been lucky enough to score a few crystal clear mornings with dolphins as icing on the cake. This time a small pod was swimming around for an hour and I was able to capture this small group of four split off like their own little family. It never gets old.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783974481/gliciouspics/underwater/hawaii-dolphin-underwater-nature-photography-print-02.jpg",
         "thumbnails": [
@@ -5613,14 +5363,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5641,7 +5389,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "I love Okinawa and especially these little guys. In Hawaiʻi we do not have clownfish, so every time I see one in Okinawa I get super excited. The relationship they share with their anemone is so captivating and it is fun to watch them pop in and out, hiding and staying protected, while also showing their curiosity.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783974484/gliciouspics/underwater/japan-okinawa-travel-clownfish-underwater-nature-photography.jpg",
         "thumbnails": [
@@ -5653,14 +5401,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5681,7 +5427,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "A crazy interaction with a very curious baby humpback whale. In Tahiti the whale migration is awesome to experience. The baby whales are so curious and like to come up nice and close. They have no fear and its probably because they are the size of a small bus and also, mom is never far behind.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783974488/gliciouspics/underwater/tahiti-baby-humpback-whale-underwater-nature-fine-art-print-01.jpg",
         "thumbnails": [
@@ -5693,14 +5439,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5721,7 +5465,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "Playing tag with a baby humpback whale. This little guy swam up to me, turned around and seemingly tagged me then began to swim away as if it wanted me to chase it. They are so playful and curious. The mom was right below, keeping an eye on things, making sure her baby was safe. Beautiful!",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783974491/gliciouspics/underwater/tahiti-baby-humpback-whale-underwater-nature-fine-art-print-02.jpg",
         "thumbnails": [
@@ -5733,14 +5477,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
@@ -5761,7 +5503,7 @@
       "category": "underwater",
       "format": "standard",
       "description": "Baby humpback whales are super curious. They seem to be as interested in us as we are in them. I had an incredible moment when a baby came right up to me and then swam around and turned upside down as if it was checking me out, wondering what this weird creature was. Never a dull moment during breeding season.",
-      "startingPrice": 50,
+      "startingPrice": 60,
       "images": {
         "hero": "https://res.cloudinary.com/dbqfibadw/image/upload/v1783974495/gliciouspics/underwater/tahiti-baby-humpback-whale-underwater-nature-fine-art-print-03.jpg",
         "thumbnails": [
@@ -5773,14 +5515,12 @@
       },
       "pricing": {
         "Lustre Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,
           "24x36": 110
         },
         "Matte Paper": {
-          "8x12": 50,
           "12x18": 60,
           "16x24": 75,
           "20x30": 90,

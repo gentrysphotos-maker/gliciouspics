@@ -41,10 +41,10 @@ function processFile(filePath, isRoot) {
 
   // Extract title and description
   const titleMatch = content.match(/<title>(.*?)<\/title>/i);
-  const title = titleMatch ? titleMatch[1].trim() : 'G.Licious Pics';
+  const title = titleMatch ? titleMatch[1].trim() : 'G.licious Pics';
 
   const descMatch = content.match(/<meta name="description" content="(.*?)"/i) || content.match(/<meta name="description" content='(.*?)'/i);
-  const description = descMatch ? descMatch[1].trim() : 'Fine art photography prints by G.Licious Pics';
+  const description = descMatch ? descMatch[1].trim() : 'Fine art photography prints by G.licious Pics';
 
   const pageUrl = isRoot ? 'https://gliciouspics.com/' : `https://gliciouspics.com/pages/${filename}`;
   const imageUrl = imageMap[filename] || imageMap['index.html'];
