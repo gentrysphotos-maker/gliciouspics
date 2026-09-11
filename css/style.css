@@ -2203,6 +2203,14 @@ a { color: inherit; text-decoration: none; }
     padding: calc(var(--nav-h) + 1.5rem) 1.25rem 4rem;
   }
 
+  .home-showcase-section {
+    padding: 4rem 1.25rem;
+  }
+
+  .showcase-under-construction {
+    padding: 3rem 1.5rem;
+  }
+
   .showcase-grid,
   .home-showcase-grid {
     grid-template-columns: 1fr;
